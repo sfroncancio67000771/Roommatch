@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #AAE2E2;
+            background-color: #98D0D0;
             margin: 0;
             padding: 0;
         }
@@ -17,6 +17,13 @@
             color: #010000;
             padding: 20px;
             text-align: center;
+        }
+
+        header img.logo {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 150px; /
         }
         .container {
             width: 90%;
@@ -60,9 +67,10 @@
 <body>
     <header>
         <h1>Habitación en Teusaquillo</h1>
+        <img src="C:\Users\ronca\Downloads\Descargas\Universidad\Ingenieria Web\Mock-up\logo.jpg" alt="Logo" class="logo">
     </header>
-    <div class="container">
-        <div class="description">
+    <div class="featured-section">
+        <div class="featured-item">
             <h2>Descripción de la Habitación</h2>
             <img src="C:\Users\ronca\Downloads\Descargas\Universidad\Ingenieria Web\Mock-up\image3.webp" alt="Habitación Amueblada">
             <p><strong>Tamaño:</strong> 25 m²</p>
@@ -89,7 +97,8 @@
                 initialView: 'dayGridMonth',
                 events: [
                     { title: 'Ocupado', start: '2024-08-01', end: '2024-08-23', color: '#ff0000' },
-                    { title: 'Disponible', start: '2024-08-23', end: '2024-09-22', color: '#00ff00' }
+                    { title: 'Disponible', start: '2024-08-23', end: '2024-08-25', color: '#00ff00' },
+                    { title: 'Tempralmente', start: '2024-08-26', end: '2024-09-01', color: '#f9e37c' }
                 ]
             });
 
