@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-    
 <head>
     <meta charset="UTF-8"> 
     <title>Área Principal</title>
@@ -8,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -18,9 +18,9 @@
         </div>
         <nav>
             <ul class="opciones">
-                <li>Habitación</li>
-                <li>Apartaestudio</li>
-                <li>Apartamentos</li>
+                <li><a href="#habitacion">Habitación</a></li>
+                <li><a href="#apartaestudio">Apartaestudio</a></li>
+                <li><a href="#apartamentos">Apartamentos</a></li>
             </ul>
         </nav>
         <div class="user-options">
@@ -29,8 +29,9 @@
             </div>
             <div class="language-dropdown">
                 <label for="language_choose">Es </label>
-                <select name="language_choose" id="language_choose">
-                    <option value="English">English</option>
+                <select name="language_choose" id="language_choose" onchange="changeLanguage()">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
                 </select>                        
             </div>
         </div>
@@ -46,15 +47,15 @@
     <main>
         <h2 class="h2">Destacados</h2>
         <div class="featured-section">
-            <div class="featured-item">
+            <div class="featured-item" id="habitacion" tabindex="0">
                 <img src="image1.jpg" alt="Hermoso apartamento en Chapinero">
                 <p>Hermoso apartamento en Chapinero<br>Propietario: Luis Jimenez</p>
             </div>
-            <div class="featured-item">
+            <div class="featured-item" id="apartaestudio" tabindex="0">
                 <img src="image2.webp" alt="Amplia habitación en Chapinero">
                 <p>Amplia habitación en Chapinero<br>Propietaria: María Jimenez</p>
             </div>
-            <div class="featured-item">
+            <div class="featured-item" id="apartamentos" tabindex="0">
                 <img src="image3.jpg" alt="Apartaestudio en Chapinero">
                 <p>Apartaestudio en Chapinero<br>Propietaria: Isabella Ballesteros</p>
             </div>
@@ -63,12 +64,13 @@
 
     <footer class="footer">
         <div class="contact-info">
-            <p>Contáctanos</p>
-            <p>Roommatch@getyourhome.com<br>3232353608</p>
+            <p tabindex="0">Contáctanos</p>
+            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
         </div>
         <div class="policies">
-            <p>Políticas</p>
-            <p>Tratamiento de datos<br>Política de privacidad</p>
+            <p tabindex="0">Políticas</p>
+            <p tabindex="0">Tratamiento de datos</p>
+            <p tabindex="0">Política de privacidad</p>
         </div>
     </footer>
 
