@@ -1,0 +1,146 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.form-group {
+    margin-bottom: 20px; /* Espacio entre campos */
+}
+.form-group label {
+    display: block;
+    margin-bottom: 10px; /* Espacio entre label y campo */
+    font-weight: bold;
+    padding-left: 10px; /* Espacio del borde izquierdo */
+    padding-right: 10px; /* Espacio del borde derecho */
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: calc(100% - 20px); /* Ajusta el ancho para incluir el padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 10px; /* Espacio a los lados del campo */
+}
+.form-group textarea {
+    height: 100px;
+}
+.form-group input[type="file"] {
+    margin: 0 10px;
+}
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+.form-group button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px; /* Espacio a los lados del botón */
+}
+.form-group button:hover {
+    background-color: #0056b3;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 8px;
+        margin: 0 5px; /* Espacio reducido a los lados en pantallas medianas */
+    }
+    .form-group button {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 0 5px; /* Espacio reducido a los lados en pantallas medianas */
+    }
+}
+@media (max-width: 480px) {
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 6px;
+        margin: 0 3px; /* Espacio reducido a los lados en pantallas pequeñas */
+    }
+    .form-group button {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin: 0 3px; /* Espacio reducido a los lados en pantallas pequeñas */
+    }
+}
+@media (orientation: landscape) and (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 8px;
+        margin: 0 5px; /* Espacio reducido a los lados en pantallas en orientación horizontal */
+    }
+    .form-group button {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 0 5px; /* Espacio reducido a los lados en pantallas en orientación horizontal */
+    }
+}
+
+@media (orientation: portrait) and (max-width: 480px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 6px;
+        margin: 0 3px; /* Espacio reducido a los lados en pantallas en orientación vertical */
+    }
+    .form-group button {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin: 0 3px; /* Espacio reducido a los lados en pantallas en orientación vertical */
+    }
+}
+
