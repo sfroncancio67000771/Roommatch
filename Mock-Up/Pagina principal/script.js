@@ -19,6 +19,64 @@ async function changeLanguage() {
     }
 }
 
+ // Elementos del botón de accesibilidad y el menú de opciones de accesibilidad
+
+document.addEventListener('DOMContentLoaded', function() {
+    const accessibilityButton = document.querySelector('.accessibility-button');
+    const accessibilityOptions = document.querySelector('.accessibility-options');
+    let timeoutId;
+
+    // Mostrar u ocultar las opciones de accesibilidad al hacer clic
+    accessibilityButton.addEventListener('click', function() {
+        if (accessibilityOptions.classList.contains('show')) {
+            hideAccessibilityOptions(); // Oculta si ya está visible
+        } else {
+            showAccessibilityOptions(); // Muestra si no está visible
+            hideAccessibilityOptionsWithDelay(); // Oculta después de un tiempo
+        }
+    });
+
+    // Mostrar el menú
+    function showAccessibilityOptions() {
+        accessibilityOptions.classList.add('show');
+        clearTimeout(timeoutId); // Cancelar cualquier temporizador previo
+    }
+
+    // Ocultar el menú después de 3 segundos
+    function hideAccessibilityOptionsWithDelay() {
+        timeoutId = setTimeout(function() {
+            accessibilityOptions.classList.remove('show');
+        }, 3000); // 3000ms = 3 segundos
+    }
+
+    // Ocultar el menú inmediatamente
+    function hideAccessibilityOptions() {
+        accessibilityOptions.classList.remove('show');
+    }
+
+    // Función de manejo del selector de accesibilidad
+    document.getElementById('accessibility_checkbox_select').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const selectedOption = this.querySelector('select').value;
+
+        if (selectedOption === 'high-contrast') {
+            // Redirigir a la página de Alto Contraste
+            window.location.href = 'AltoContraste.html';
+        } else if (selectedOption === 'normal-mode') {
+            // Redirigir a la página normal (Español.html)
+            window.location.href = 'Español.html';
+        }
+
+
+        accessibilityOptions.style.display = 'none';
+    });
+});
+
+
+///////////////
+
+
+
 // Función para traducir el contenido
 async function translateText(text, fromLang, toLang, subscriptionKey, endpoint, region) {
     const url = `${endpoint}/translate?api-version=3.0&from=${fromLang}&to=${toLang}`;
@@ -120,3 +178,5 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
         console.error('Error:', error);
     });
 });
+
+
