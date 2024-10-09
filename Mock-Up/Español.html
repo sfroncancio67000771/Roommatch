@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <title>Área Principal</title>
     <link rel="stylesheet" href="styless.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +18,7 @@
             <img src="logo.jpg" alt="Logo de Roommatch">
         </div>
         <nav>
-            <ul class="opciones">
+            <ul class="options">
                 <li><a href="#habitacion">Habitación</a></li>
                 <li><a href="#apartaestudio">Apartaestudio</a></li>
                 <li><a href="#apartamentos">Apartamentos</a></li>
@@ -28,24 +29,28 @@
                 <img src="usericon.png" alt="Ícono de Usuario">
             </div>
             <div class="language-dropdown">
-                <label for="language_choose">Es </label>
-                <select name="language_choose" id="language_choose" onchange="changeLanguage()">
+                <label for="language_choose">Idioma: </label>
+                <select name="language_choose" id="language_choose" aria-label="Selecciona un idioma" onchange="changeLanguage()">
                     <option value="es">Español</option>
                     <option value="en">English</option>
-                </select>                        
+                </select>
             </div>
         </div>
     </header>
 
+    <!-- Agregar <h1> para mejorar la jerarquía del contenido -->
+    <h1 class="main-title">Encuentra tu Alojamiento Ideal</h1>
+
+    <!-- Barra de búsqueda con etiquetas accesibles -->
     <div class="search-bar">
-        <input type="search" placeholder="Busca tu alojamiento">
-        <button> 
-            <img src="Lupa.png" alt="Botón de Búsqueda">
+        <input type="search" id="search-input" placeholder="Busca tu alojamiento" label = "Busca tu alojamiento" aria-label="Campo de búsqueda de alojamiento">
+        <button aria-label="Buscar">
+            <img src="Lupa.png" alt="Buscar">
         </button>
     </div>
 
     <main>
-        <h2 class="h2">Destacados</h2>
+        <h2>Destacados</h2>
         <div class="featured-section">
             <div class="featured-item" id="habitacion" tabindex="0">
                 <img src="image1.jpg" alt="Hermoso apartamento en Chapinero">
@@ -75,4 +80,5 @@
     </footer>
 
 </body>
+
 </html>
