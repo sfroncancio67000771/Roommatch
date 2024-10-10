@@ -28,7 +28,7 @@ header {
 
 /* Estilos para el botón de cambio de idioma */
 #change-language-button {
-  background-color: #629898; /* Color de fondo del botón */
+  background-color: #4e7a78; /* Color de fondo del botón */
   color: #ffffff; /* Color del texto */
   border: none; /* Sin borde */
   border-radius: 5px; /* Bordes redondeados */
@@ -165,13 +165,13 @@ h1, h2 {
   margin-bottom: 15px;
 }
 
-
+/* Estilo del botón de accesibilidad */
 .accessibility-button {
   position: fixed;
-  bottom: 20px;
+  bottom: 25px;
   right: 20px;
-  background-color: #004f4f; /* Cambiado a un tono más oscuro para mayor contraste */
-  color: white; /* Texto blanco */
+  background-color: #004f4f;
+  color: white;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -180,24 +180,58 @@ h1, h2 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 24px; /* Aumentado para asegurarnos de que sea considerado texto grande */
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.accessibility-button:hover {
+  background-color: #006767;
 }
 
 .accessibility-button:focus {
-  outline: 3px solid #ffffff; /* Borde blanco para un enfoque visible */
+  outline: 3px solid #ffffff;
 }
 
-
-.accessibility-options {
-  display: none;
+/* Opciones de accesibilidad que se muestran al hacer clic */
+#accessibility-option {
   position: fixed;
   bottom: 80px;
   right: 20px;
   background-color: #fff;
   border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  width: 160px;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
 }
+
+#accessibility-option.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilo de alto contraste para toda la página */
+.high-contrast-mode {
+  background-color: black;
+  color: white;
+}
+
+.high-contrast-mode a {
+  color: yellow;
+}
+
+.high-contrast-mode button {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
 
 /* Footer */
 .footer {

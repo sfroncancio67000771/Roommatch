@@ -17,8 +17,8 @@
         <form id="language-form">
             <label for="language-select">Change language:</label>
             <select id="language-select">
-                <option value="es">Español</option>
-                <option value="en">English</option>
+                <option value="español">Español</option>
+                <option value="english">English</option>
             </select>
             <button type="button" id="change-language-button">Change</button>
         </form>
@@ -70,19 +70,13 @@
                 <p>Si eres arrendatario, publica tu inmueble sin costo alguno.</p>
             </div>
         </div>
-
-        <button class="accessibility-button" aria-label="Opciones de accesibilidad">⚙️</button>
-
-        <div class="accessibility-options" label="accessibility-butoon" aria-hidden="true">
-            <form id="accessibility_checkbox_select" label="accessibility-checkbox">
-                <select name="accessibility-options" label="accessibility-options">
-                    <option value="high-contrast">Modo Alto Contraste</option>
-                    <option value="text-magnifier">Ampliador de Texto</option>
-                    <option value="screen-reader">Lector de Pantalla</option>
-                </select>
-                <input type="submit" value="Aplicar">
-            </form>
-        </div>
+        <button class="accessibility-button" aria-label="Opciones de accesibilidad" onclick="toggleAccessibilityForm()">⚙️
+            <div id="accessibility-option" style="display: none;">
+                <label for="high-contrast-toggle">Alto Contraste:</label>
+                <button id="high-contrast-toggle" onclick="toggleHighContrast()">Activar</button>
+            </div>
+        </button>
+        
     </main>
 
     <footer class="footer">
