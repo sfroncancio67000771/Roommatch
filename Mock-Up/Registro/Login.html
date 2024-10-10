@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="StyleLR.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container login-form">
+            <img src="logo.jpg" alt="Logo"> 
+            <h2>Iniciar Sesión</h2>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button>Ingresar</button>
+
+            <!-- Botón para ingresar con GitHub -->
+            <a href="http://localhost:8081/oauth2/authorization/github" class="oauth-btn github">
+                <i class="fab fa-github"></i> Ingresar con GitHub
+            </a>
+
+            <!-- Botón para ingresar con Outlook -->
+            <a href="http://localhost:8081/oauth2/authorization/microsoft" class="oauth-btn outlook">
+                <i class="fab fa-microsoft"></i> Ingresar con Outlook
+            </a>
+
+            <div class="register-link">
+                <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

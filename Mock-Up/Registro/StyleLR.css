@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #98D0D0;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Main container for forms */
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 600px; /* Ajustado para pantallas de portátil */
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease;
+    position: relative;
+}
+
+/* Form container styles */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Input, select, and button styles */
+input, select, button {
+    width: 100%; /* Ajustado para márgenes */
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Button styles */
+button {
+    background-color: #74ABAB;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+button i {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+button:hover {
+    background-color: #629898;
+}
+/* Estilos para el botón de OAuth */
+.oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 95%;
+    padding: 12px;
+    margin: 12px 0;
+    background-color: #74ABAB;
+    color: white;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.oauth-btn:hover {
+    background-color: #629898;
+}
+
+.oauth-btn.github {
+    background-color: #333;
+}
+
+.oauth-btn.github:hover {
+    background-color: #24292e;
+}
+
+.oauth-btn.outlook {
+    background-color: #0078d4;
+}
+
+.oauth-btn.outlook:hover {
+    background-color: #005ea1;
+}
+
+.oauth-btn i {
+    font-size: 18px;
+}
+
+/* Link styles */
+.register-link a {
+    color: #333;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Image styles */
+img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Media Queries for laptops */
+@media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        margin: 0 10px;
+    }
+}

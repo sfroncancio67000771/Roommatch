@@ -45,7 +45,7 @@
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
+            <input id="descripcion" name="descripcion" required></textarea>
         </div>
         <div class="form-group">
             <label for="direccion">Dirección:</label>
@@ -53,7 +53,11 @@
         </div>
         <div class="form-group">
             <label for="ciudad">Ciudad:</label>
-            <input type="text" id="ciudad" name="ciudad" required>
+            <select type="text" id="ciudad" name="ciudad" required>
+                <option value="">Elige</option>
+                <option value="Bogotá">Bogotá</option>
+            
+            </select>
         </div>
         <div class="form-group">
             <label for="precio">Precio:</label>
@@ -66,6 +70,7 @@
         <div class="form-group">
             <label for="tipoAlojamiento">Tipo de Alojamiento:</label>
             <select id="tipoAlojamiento" name="tipoAlojamiento" required>
+                <option value="">Elige</option>
                 <option value="1">Habitación</option>
                 <option value="2">Apartamentos</option>
                 <option value="3">Apartaestudio</option>
