@@ -72,11 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-///////////////
-
-
-
 // Función para traducir el contenido
 async function translateText(text, fromLang, toLang, subscriptionKey, endpoint, region) {
     const url = `${endpoint}/translate?api-version=3.0&from=${fromLang}&to=${toLang}`;
