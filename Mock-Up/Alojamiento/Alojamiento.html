@@ -20,13 +20,14 @@
             <div class="user-icon">
                 <img src="usericon.png" alt="Ícono de Usuario">
             </div>
-            <div class="language-dropdown">
-                <label for="language_choose">Idioma: </label>
-                <select name="language_choose" id="language_choose" aria-label="Selecciona un idioma" onchange="changeLanguage()" aria-controls="alojamientoForm">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
+            <form id="language-form">
+                <label for="language-select">Change language:</label>
+                <select id="language-select">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
                 </select>
-            </div>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
         </div>
     </header>
 
@@ -58,7 +59,7 @@
         </div>
         <div class="form-group">
             <label for="idPropietario">ID del Propietario:</label>
-            <input type="text" id="idPropietario" name="idPropietario" pattern="\d*" required>
+            <input type="text" id="idPropietario" label="idPropietario" name="idPropietario" pattern="\d*" required>
         </div>
         <div class="form-group">
             <label for="tipoAlojamiento">Tipo de Alojamiento:</label>
@@ -82,9 +83,21 @@
             <input type="checkbox" id="tieneParqueaderoBicicleta" name="tieneParqueaderoBicicleta">
         </div>
      <button type="submit">Enviar</button>   
+
     </form>    
     
-
+    <footer class="footer">
+        <div class="contact-info">
+            <p tabindex="0">Contáctanos</p>
+            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0">Políticas</p>
+            <p tabindex="0">Tratamiento de datos</p>
+            <p tabindex="0">Política de privacidad</p>
+        </div>
+    </footer>
+    
     <script src="Alojamiento.js" defer></script> 
 
 </body>
