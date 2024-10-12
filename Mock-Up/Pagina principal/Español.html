@@ -14,18 +14,20 @@
         <div class="logo">
             <img src="logo.jpg" alt="Logo de Roommatch">
         </div>
-        <form id="language-form">
-            <label for="language-select">Change language:</label>
-            <select id="language-select">
+        <div class="user-options">
+        </div>
+        <form id="language-form" aria-label="language-form">
+            <button id="login-button">Iniciar Sesión</button>
+            
+            <!-- Asociar el label con el select usando el atributo 'for' -->
+            <label class="change-language-label" for="language-select">Change language:</label>
+            <select id="language-select" aria-label="Select a language">
                 <option value="español">Español</option>
                 <option value="english">English</option>
             </select>
+            
             <button type="button" id="change-language-button">Change</button>
         </form>
-        
-        <div class="user-options">
-            <button id="login-button">Iniciar Sesión</button>
-        </div>
         
     </header>
 
@@ -70,13 +72,46 @@
                 <p>Si eres arrendatario, publica tu inmueble sin costo alguno.</p>
             </div>
         </div>
-        <button class="accessibility-button" aria-label="Opciones de accesibilidad" onclick="toggleAccessibilityForm()">⚙️
-            <div id="accessibility-option" style="display: none;">
-                <label for="high-contrast-toggle">Alto Contraste:</label>
-                <button id="high-contrast-toggle" onclick="toggleHighContrast()">Activar</button>
+
+        <button id="accessibility-button" class="accessibility-button" aria-label="Opciones de accesibilidad">⚙️</button>
+
+        <!-- Panel de Accesibilidad Unificado -->
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;">
+            <button class="close-btn" onclick="closePanel()">✖</button>
+            <h2>Accesibilidad</h2>
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia<br><small>Atenúa el color y elimina los parpadeos</small></label>
             </div>
-        </button>
-        
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual<br><small>Mejora las imágenes de los sitios web</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="cognitive-disability-mode">
+                <label for="cognitive-disability-mode">Modo de discapacidad cognitiva<br><small>Ayuda a concentrarse en contenido específico</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="adhd-mode">
+                <label for="adhd-mode">Modo compatible con TDAH<br><small>Reduce las distracciones y mejora la concentración</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode">
+                <label for="blindness-mode">Modo de ceguera<br><small>Permite usar el sitio con tu lector de pantalla</small></label>
+            </div>
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()">+</button>
+            </div>
+            <button class="reset-btn" onclick="resetSettings()">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()">Ocultar para siempre</button>
+            <div class="declaration-link">
+                <a href="#">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+
     </main>
 
     <footer class="footer">

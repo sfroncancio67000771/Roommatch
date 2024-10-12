@@ -1,10 +1,93 @@
-/* Global Styles */
+/* Global Styles */ 
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f4ede3, #30a7a7);
-  color: #333; /* Mejor contraste */
+  background: linear-gradient(135deg, #f4ede3, #30a7a7); /* Modo normal: degradado de blanco a azul */
+  color: #333;
+  min-height: 100vh; /* Asegura que el cuerpo cubra toda la pantalla */
+}
+
+/* Modo normal: Cambia el color del texto "Change language" a negro */
+.change-language-label {
+  color: #000 !important;  /* Texto negro en modo normal */
+}
+
+/* Modo de alto contraste */
+body.high-contrast {
+  background: linear-gradient(135deg, #ffffff, #2d6400) !important; /* Fondo en modo alto contraste: degradado blanco a amarillo */
+  color: #fff;  /* Texto en blanco */
+  min-height: 100vh;  /* Asegura que el fondo cubra toda la pantalla */
+}
+
+body.high-contrast .change-language-label {
+  color: #ffff00 !important; /* Texto en amarillo en modo alto contraste */
+}
+
+body.high-contrast a {
+  color: #ffff00;  /* Enlaces en amarillo */
+}
+
+body.high-contrast .logo img {
+  filter: invert(1);  /* Invertir colores de la imagen */
+}
+
+body.high-contrast .search-bar input[type="search"] {
+  border: 2px solid #ffff00;  /* Borde amarillo */
+  background-color: #333;  /* Fondo gris oscuro */
+  color: #fff;  /* Texto blanco */
+}
+
+body.high-contrast .search-bar button {
+  background-color: #ffff00;  /* Botón de búsqueda amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+body.high-contrast header {
+  background-color: #333; /* Fondo oscuro en el encabezado */
+  color: #fff; /* Texto en blanco */
+}
+
+body.high-contrast .featured-item {
+  background-color: #333;  /* Fondo de los elementos destacados en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+  border: 2px solid #ffff00;  /* Borde amarillo */
+}
+
+body.high-contrast .services-item {
+  background-color: #333; /* Fondo negro para las tarjetas de servicios */
+  color: #ffff00; /* Texto en amarillo */
+  border: 2px solid #ffff00; /* Borde amarillo */
+}
+
+body.high-contrast h1, 
+body.high-contrast h2, 
+body.high-contrast h3, 
+body.high-contrast h4, 
+body.high-contrast h5, 
+body.high-contrast h6 {
+  color: #ffff00; /* Títulos en amarillo */
+}
+
+body.high-contrast .footer {
+  background-color: #333;  /* Fondo del pie de página en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+}
+
+body.high-contrast p, 
+body.high-contrast .featured-item p, 
+body.high-contrast .services-item p, 
+body.high-contrast .services-item h2 {
+  color: #ffff00;  /* Texto general en amarillo */
+}
+
+/* Asegura que el texto de los botones también sea amarillo */
+body.high-contrast button {
+  color: #ffff00; /* Texto en amarillo para los botones */
+}
+
+body.high-contrast label {
+  color: #ffff00;  /* Texto de las etiquetas en amarillo */
 }
 
 /* Header Styles */
@@ -26,39 +109,21 @@ header {
   max-width: 150px;
 }
 
-/* Estilos para el botón de cambio de idioma */
-#change-language-button {
-  background-color: #4e7a78; /* Color de fondo del botón */
-  color: #ffffff; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 5px 10px; /* Espaciado interno */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  font-size: 14px; /* Tamaño de la fuente */
-  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+/* Estilos para botones */
+#change-language-button, #login-button {
+  background-color: #4e7a78;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-#change-language-button:hover {
-  background-color: #4e7a78; /* Color de fondo al pasar el mouse */
+#change-language-button:hover, #login-button:hover {
+  background-color: #3e6d69;
 }
-
-/* Estilos para el botón de iniciar sesión */
-#login-button {
-  background-color: #4e7a78; /* Color de fondo del botón */
-  color: #ffffff; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 5px 10px; /* Espaciado interno */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  font-size: 14px; /* Tamaño de la fuente */
-  transition: background-color 0.3s; /* Transición suave para el color de fondo */
-  margin-left: 10px; /* Margen a la izquierda para separarlo del otro botón */
-}
-
-#login-button:hover {
-  background-color: #4e7a78; /* Color de fondo al pasar el mouse */
-}
-
 
 /* Search Bar */
 .search-bar {
@@ -182,56 +247,105 @@ h1, h2 {
   cursor: pointer;
   font-size: 24px;
   transition: background-color 0.3s ease;
+  z-index: 9999;
 }
 
-.accessibility-button:hover {
-  background-color: #006767;
+body.high-contrast .accessibility-button {
+  background-color: #ffff00;  /* Botón de accesibilidad en amarillo */
+  color: #000;  /* Texto en negro */
 }
 
-.accessibility-button:focus {
-  outline: 3px solid #ffffff;
-}
-
-/* Opciones de accesibilidad que se muestran al hacer clic */
-#accessibility-option {
+/* Ajustes para el panel de accesibilidad */
+.accessibility-panel {
+  width: 300px;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
   position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: none;
-  width: 160px;
+  top: 50px;
+  right: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 0;
-  transform: translateY(10px);
 }
 
-#accessibility-option.show {
+body.high-contrast .accessibility-panel {
+  background-color: #333;
+}
+
+.accessibility-panel h2 {
+  margin-top: 0;
+}
+
+.accessibility-panel .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.accessibility-option input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.accessibility-option label {
+  font-size: 14px;
+}
+
+.content-size {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.content-size span {
   display: block;
-  opacity: 1;
-  transform: translateY(0);
+  margin-bottom: 10px;
 }
 
-/* Estilo de alto contraste para toda la página */
-.high-contrast-mode {
-  background-color: black;
-  color: white;
+.content-size button {
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
 }
 
-.high-contrast-mode a {
-  color: yellow;
+.reset-btn, .hide-btn {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: none;
+  color: #4a90e2;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-.high-contrast-mode button {
-  background-color: white;
-  color: black;
-  border: 2px solid black;
+.declaration-link {
+  text-align: center;
 }
 
+.declaration-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 12px;
+}
 
 /* Footer */
 .footer {
@@ -251,3 +365,138 @@ h1, h2 {
   text-decoration: underline;
   outline: 2px solid #005f5f;
 }
+
+body.high-contrast .footer {
+  background-color: #333;
+  color: #ffff00;  /* Texto en amarillo */
+}
+
+/* Ajuste para etiquetas en un tono oscuro */
+label {
+  color: #ffffff;
+}
+
+
+@media (min-width: 1600px) {
+  body {
+      font-size: 20px; /* Aumenta el tamaño de fuente */
+  }
+
+  header {
+      padding: 40px 80px;
+  }
+
+  .logo img {
+      max-width: 200px;
+  }
+
+  .search-bar input[type="search"] {
+      width: 70%;
+  }
+
+  .featured-item img {
+      width: 500px; /* Aumenta el tamaño de las imágenes */
+      height: auto;
+  }
+}
+
+/* Media queries para tablets (pantallas entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+      font-size: 16px; /* Ajusta el tamaño de fuente */
+  }
+
+  header {
+      flex-direction: column;
+      padding: 20px 40px;
+  }
+
+  .logo img {
+      max-width: 120px;
+  }
+
+  .search-bar input[type="search"] {
+      width: 80%;
+  }
+
+  .featured-item {
+      flex-direction: column;
+  }
+
+  .featured-item img {
+      width: 350px; /* Ajusta el tamaño de las imágenes */
+      height: auto;
+  }
+}
+
+/* Media queries para celulares (pantallas de menos de 768px) */
+@media (max-width: 768px) {
+
+  header {
+      flex-direction: column;
+      padding: 10px 20px;
+  }
+
+  .logo img {
+      max-width: 100px;
+  }
+
+  .search-bar {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .search-bar input[type="search"] {
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 25px;
+  }
+
+  .search-bar button {
+      border-radius: 25px;
+  }
+
+  .featured-section {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .featured-item {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .featured-item img {
+      width: 100%; /* Imágenes ocupan todo el ancho */
+      height: auto;
+  }
+
+  .services-item {
+      width: 100%;
+  }
+
+  .accessibility-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+  }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    img {
+        max-width: 100%; /* Ajusta el ancho de las imágenes a la pantalla */
+        height: auto;
+    }
+
+}
+
