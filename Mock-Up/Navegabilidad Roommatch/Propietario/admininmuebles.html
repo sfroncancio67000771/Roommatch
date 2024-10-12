@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propietario - Administrar mis Inmuebles</title>
+    <link rel="stylesheet" href="styleIN.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Propietario.html">Inicio</a></li>
+                <li><a href="admininmuebles.html"  class="active">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html">Mensajes</a></li>
+                <li><a href="publicarinmueble.html">Publicar Inmuebles</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <div class="user-icon">
+                <img src="usericon.png" alt="Ícono de Usuario">
+            </div>
+            <form id="language-form">
+                <label for="language-select">Change language:</label>
+                <select id="language-select">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Asignar Valor a la Habitación</h2>
+            <form action="#" method="POST" class="form-asignar-valor">
+                <div class="form-group">
+                    <label for="nombre-habitacion">Nombre de la Habitación:</label>
+                    <input type="text" id="nombre-habitacion" name="nombre-habitacion" placeholder="Ej: Habitación 1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descripcion-habitacion">Descripción:</label>
+                    <textarea id="descripcion-habitacion" name="descripcion-habitacion" rows="4" placeholder="Descripción breve de la habitación..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor-habitacion">Valor Mensual (COP):</label>
+                    <input type="number" id="valor-habitacion" name="valor-habitacion" min="0" placeholder="Ej: 500000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="moneda">Moneda:</label>
+                    <select id="moneda" name="moneda" required>
+                        <option value="COP">COP (Pesos Colombianos)</option>
+                        <option value="USD">USD (Dólares)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="disponibilidad-habitacion">Disponibilidad:</label>
+                    <select id="disponibilidad-habitacion" name="disponibilidad-habitacion" required>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Ocupada">Ocupada</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Asignar Valor</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <p>Contacto: propietario@ejemplo.com</p>
+        </div>
+        <div class="policies">
+            <p>Política de privacidad</p>
+        </div>
+    </footer>
+    <script src="script.js"></script> 
+</body>
+</html>
