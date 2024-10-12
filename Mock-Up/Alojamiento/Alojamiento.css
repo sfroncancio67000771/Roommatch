@@ -8,14 +8,16 @@ body {
 
 header {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: sticky;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
   z-index: 50;
-  margin-bottom: 10px;
-  padding: 5px 10px;
 }
 
 .logo img {
@@ -25,7 +27,8 @@ header {
 .user-options {
   display: flex;
   align-items: center;
-  gap: 30px;
+  padding: 0;
+  margin: 0;
 }
 
 .user-icon img {
@@ -280,6 +283,10 @@ input:focus, select:focus {
   .form-group {
     margin-bottom: 15px; /* Aumentar margen inferior */
   }
+  .footer{
+    display: flex;
+    flex-direction: column;
+   }
 }
 
 
@@ -346,6 +353,11 @@ input:focus, select:focus {
   h1, h2 {
     font-size: 28px; /* Tamaño de títulos para tablet */
   }
+
+  .footer{
+    display: flex;
+    flex-direction: column;
+   }
 }
 
 /* Estilos para pantallas grandes (16 pulgadas o más) */
@@ -379,4 +391,9 @@ input:focus, select:focus {
   h1, h2 {
     font-size: 32px; /* Tamaño de títulos para pantallas grandes */
   }
+
+  .footer{
+    display: flex;
+    flex-direction: column;
+   }
 }
