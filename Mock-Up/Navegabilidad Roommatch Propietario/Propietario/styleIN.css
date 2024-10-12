@@ -1,0 +1,261 @@
+/* Estilos generales aplicables a todas las páginas */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4ede3, #005f5f);
+    color: #333;
+}
+  
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+  
+.logo img {
+    max-width: 150px;
+}
+  
+header .logo img {
+    max-width: 150px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+
+header nav ul li {
+    font-size: 18px;
+    font-weight: 600;
+    color: #005a5a;
+    cursor: pointer;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header nav ul li a.active {
+    color: #527575;
+    border-bottom: 2px solid #527575;
+}
+
+header .user-options {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+header .user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+header .language-dropdown select {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #629898;
+    background-color: #f8f8f8;
+    color: #629898;
+    cursor: pointer;
+}
+
+.language-dropdown {
+    display: flex;
+    flex-direction: row; /* Configuración por defecto en pantallas grandes */
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .language-dropdown select {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #005f5f;
+    background-color: #f8f8f8;
+    color: #005f5f;
+    cursor: pointer;
+  }
+  
+  .language-dropdown select:focus {
+    outline: 2px solid #005f5f;
+  }
+/* Contenedor Principal */
+main .container {
+    max-width: 1200px; /* Ajusta el tamaño según lo requerido */
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Contenido Principal */
+main {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ocupa todo el ancho disponible */
+}
+
+.dashboard-overview {
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 20px; /* Aumentar padding para más espacio */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.large-card {
+    grid-column: span 2; /* Tarjeta grande ocupará más espacio */
+}
+
+.medium-card {
+    grid-column: span 1;
+}
+
+.small-card {
+    grid-column: span 1;
+}
+
+.card h3 {
+    font-size: 20px; /* Tamaño de fuente más grande */
+    color: #629898;
+}
+
+.card p {
+    font-size: 18px; /* Tamaño de fuente más grande */
+    color: #333;
+}
+
+/* Ajustes para imágenes */
+.card img {
+    width: 100%; /* Ajusta la imagen al ancho del cuadro */
+    height: auto; /* Altura automática para mantener proporción */
+    object-fit: contain; /* Ajusta la imagen sin cortarla */
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Sección de Gráfico */
+.chart-section {
+    margin-top: 40px;
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.chart-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Formulario de Asignar Valor */
+.form-asignar-valor {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #629898;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #86BDBD;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f8f8;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: #44E2E2;
+}
+
+.btn-submit {
+    padding: 12px 20px;
+    background-color: #44E2E2;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #98D0D0;
+}
+
+/* Pie de página (Footer) */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    color: #629898;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer .contact-info, footer .policies {
+    font-size: 14px;
+    color: #005a5a;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    header, footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        gap: 20px;
+    }
+
+    .overview-cards {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+
+    main .container {
+        padding: 20px 15px;
+    }
+}

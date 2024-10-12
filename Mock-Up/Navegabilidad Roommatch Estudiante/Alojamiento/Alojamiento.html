@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nueva Habitación</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Alojamiento.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <div class="user-options">
+            <div class="user-icon">
+                <img src="usericon.png" alt="Ícono de Usuario">
+            </div>
+            <form id="language-form">
+                <label for="language-select">Change language:</label>
+                <select id="language-select">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+
+    <h1>Registrar Nueva Habitación</h1>
+    <form id="alojamientoForm">
+        <div class="form-group">
+            <label for="nombre">Nombre del Alojamiento:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+        </div>
+        <div class="form-group">
+
+            <label for="ciudad">Ciudad:</label>
+            <select id="ciudad" name="ciudad" required>
+                <option value="">Elige</option>
+                <option value="Bogotá">Bogotá</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" required>
+        </div>
+        <div class="form-group">
+            <label for="idPropietario">ID del Propietario:</label>
+            <input type="text" id="idPropietario" label="idPropietario" name="idPropietario" pattern="\d*" required>
+        </div>
+        <div class="form-group">
+            <label for="tipoAlojamiento">Tipo de Alojamiento:</label>
+            <select id="tipoAlojamiento" name="tipoAlojamiento" required>
+                <option value="">Elige</option>
+                <option value="1">Habitación</option>
+                <option value="2">Apartamentos</option>
+                <option value="3">Apartaestudio</option>
+            </select>
+        </div>
+        <div class="form-group flex-row"> 
+            <label for="tieneLavanderia">¿Tiene Lavandería?</label>
+            <input type="checkbox" id="tieneLavanderia" name="tieneLavanderia">
+        </div>
+        <div class="form-group flex-row">
+            <label for="tieneRoomie">¿Tiene Roomie?</label>
+            <input type="checkbox" id="tieneRoomie" name="tieneRoomie">
+        </div>
+        <div class="form-group flex-row">
+            <label for="tieneParqueaderoBicicleta">¿Tiene Parqueadero para Bicicleta?</label>
+            <input type="checkbox" id="tieneParqueaderoBicicleta" name="tieneParqueaderoBicicleta">
+        </div>
+     <button type="submit">Enviar</button>   
+
+    </form>    
+    
+    <footer class="footer">
+        <div class="contact-info">
+            <p tabindex="0">Contáctanos</p>
+            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0">Políticas</p>
+            <p tabindex="0">Tratamiento de datos</p>
+            <p tabindex="0">Política de privacidad</p>
+        </div>
+    </footer>
+    
+    <script src="Alojamiento.js" defer></script> 
+
+</body>
+</html>
