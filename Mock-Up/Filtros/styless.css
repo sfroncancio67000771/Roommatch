@@ -1,337 +1,227 @@
-.poppins-thin {
-    font-family: "Poppins", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .poppins-extralight {
-    font-family: "Poppins", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
-  
-  .poppins-light {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .poppins-medium {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  .poppins-semibold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-  
-  .poppins-bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .poppins-extrabold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 800;
-    font-style: normal;
-  }
-  
-  .poppins-black {
-    font-family: "Poppins", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .poppins-thin-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .poppins-extralight-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 200;
-    font-style: italic;
-  }
-  
-  .poppins-light-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .poppins-regular-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .poppins-medium-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  .poppins-semibold-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: italic;
-  }
-  
-  .poppins-bold-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .poppins-extrabold-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 800;
-    font-style: italic;
-  }
-  
-  .poppins-black-italic {
-    font-family: "Poppins", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background-color: #ffffff; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
-    max-width: 150px; 
+  max-width: 150px;
 }
 
 nav ul.opciones {
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
-    display: flex; 
-    gap: 50px; 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 50px;
 }
 
 nav ul.opciones li {
-    font-size: 18px;
-    font-weight: 600; /* Negrita para las opciones */
-    display: flex;
-    align-items: center;
-    color: #629898;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #005f5f;
 }
 
 nav ul.opciones li img {
-    margin-right: 8px; /* Espacio entre icono y texto */
+  margin-right: 8px;
 }
 
 .user-options {
-    display: flex;
-    align-items: center;
-    gap: 30px; /* Espacio entre icono de usuario y dropdown de idioma */
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .user-icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* Redondear icono de usuario */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .language-dropdown {
-    position: relative;
+  position: relative;
 }
 
-.language-dropdown select {
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #629898;
-    background-color: #f8f8f8;
-    color: #629898;
-    cursor: pointer;
+.language-dropdown button {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #005f5f;
+  background-color: #f8f8f8;
+  color: #005f5f;
+  cursor: pointer;
 }
 
 /* Barra de búsqueda */
 .search-bar {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 .search-bar input[type="search"] {
-    padding: 15px;
-    font-size: 18px;
-    width: 60%;
-    border: 2px solid #629898;
-    border-radius: 25px 0 0 25px;
-    outline: none;
+  padding: 15px;
+  font-size: 18px;
+  width: 60%;
+  border: 2px solid #005f5f;
+  border-radius: 25px 0 0 25px;
+  outline: none;
 }
 
 .search-bar button {
-    background-color: #629898;
-    border: none;
-    padding: 15px;
-    border-radius: 0 25px 25px 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #629898;
+  border: 1px solid #005f5f;
+  padding: 15px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-bar button img {
-    max-width: 20px;
-    height: auto;
+  max-width: 20px;
+  height: auto;
 }
 
 /* Sección de destacados */
-
-h2{
-    text-align: center;
-}
-
 .featured-section {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 40px;
-    background-color: #629898; /* Fondo de la sección de destacados */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Usar flex-wrap para que las tarjetas se ajusten */
+  gap: 20px;
+  padding: 40px;
+  background: linear-gradient(135deg, #f4ede3, #30a7a7);
 }
 
 .featured-item {
-    text-align: center;
-    width: 250px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 280px; /* Ajuste de ancho para evitar que se estire demasiado */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
 }
 
 .featured-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.featured-item:hover {
+  transform: scale(1.05);
 }
 
 .featured-item p {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
 }
-
 
 /* Contenedor de la barra de filtros */
 .filter-bar {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; 
+  gap: 10px;
   padding: 15px;
   background-color: #ffffff;
-  border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  margin: 20px 0;
+  border-color: #005f5f;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
 }
 
-
 .filter-bar button {
-  background-color: #629898; 
-  color: #ffffff; 
+  background-color: #005f5f;
+  color: #ffffff;
   border: none;
-  padding: 10px 20px; 
-  border-radius: 5px; 
-  font-size: 16px; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-
 .filter-bar button:hover {
-  background-color: #507b77; 
+  background-color: #507b77;
   transform: scale(1.05);
 }
 
-
 .filter-bar button:focus {
   outline: 2px solid #507b77;
-  outline-offset: 2px; 
+  outline-offset: 2px;
 }
 
-
-.filter-bar select, .filter-bar input {
+.filter-bar select,
+.filter-bar input {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   padding: 10px;
-  border: 2px solid #629898;
+  border: 2px solid #005f5f;
   border-radius: 5px;
   background-color: #ffffff;
-  color: #629898;
+  color: #272a2a;
   margin-right: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-.filter-bar select:focus, .filter-bar input:focus {
+.filter-bar select:focus,
+.filter-bar input:focus {
   border-color: #507b77;
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
-/* Footer */
 .footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    color: #629898;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  color: #005f5f;
 }
 
-.footer .contact-info, .footer .policies {
-    font-size: 14px;
-    color: #629898;
-    
+.footer p,
+.footer a {
+  color: #005f5f;
+  text-decoration: none;
 }
 
-.footer p {
-    color: #629898;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-}
-
-.calendar {
-  max-width: 600px;
-  margin: auto;
+.footer a:hover,
+.footer a:focus {
+  text-decoration: underline;
+  outline: 2px solid #005f5f;
 }
 
 .contact button {
-  background: #12bac4;
+  background: #0a5f63;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -339,25 +229,24 @@ h2{
   cursor: pointer;
   border-radius: 5px;
 }
-.description, .calendar {
-  flex: 1;
-  background: #fff;
-  padding: 12px;
-  border-radius: 8px;
-}
 
-.roomset {
-  text-align: left;
-  width: 651px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+/* Estilos responsivos para pantallas móviles */
+@media (max-width: 768px) {
+  .featured-section {
+      flex-direction: column; /* Hace que los elementos se apilen en columna */
+      align-items: center;
+  }
+  
+  .description, .calendar {
+      width: 100%; /* Asegura que ambos elementos tomen el 100% del ancho en pantallas pequeñas */
+      margin-bottom: 20px;
+  }
+  
+     .footer{
+      display: flex;
+      flex-direction: column;
+     }
+  
+  }
 
-.roomset img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
+
