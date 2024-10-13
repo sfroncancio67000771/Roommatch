@@ -53,6 +53,11 @@ document.getElementById('alojamientoForm').addEventListener('submit', function(e
     });
 });
 
+
+// Script para el cambio de idioma 
+
+
+
 let originalContent = document.documentElement.innerHTML;
 
 document.getElementById('change-language-button').addEventListener('click', changeLanguage);

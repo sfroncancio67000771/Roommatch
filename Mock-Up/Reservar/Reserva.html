@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Alojamiento</title>
+    <link rel="stylesheet" href="styless.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Reserva de Alojamiento</h1>
+    <form id="reservaForm">
+        <label for="selectAlojamientos">Selecciona un Alojamiento:</label>
+        <select id="selectAlojamientos" required>
+            <option value="">Selecciona un alojamiento</option>
+        </select>
+        <div class="error-message" id="error-selectAlojamientos"></div>
+
+        <!-- Recuadro para la descripción del alojamiento -->
+        <div id="descripcionAlojamiento" style="display: none;">
+            <strong>Descripción:</strong>
+            <p id="descripcionTexto"></p> <!-- Contenedor para la descripción -->
+        </div>
+
+        <label for="emailEstudiante">Email del Estudiante:</label>
+        <input type="email" id="emailEstudiante" required>
+        <div class="error-message" id="error-emailEstudiante"></div>
+
+        <label for="fechaInicio">Fecha de Inicio:</label>
+        <input type="date" id="fechaInicio" required>
+        <div class="error-message" id="error-fechaInicio"></div>
+
+        <label for="fechaFin">Fecha de Fin:</label>
+        <input type="date" id="fechaFin" required>
+        <div class="error-message" id="error-fechaFin"></div>
+
+        <button type="submit">Crear Reserva</button>
+    </form>
+
+    <div id="mensaje"></div>
+    <div id="mensajeExito"></div> <!-- Mensaje de éxito -->
+</body>
+<script src="script.js"></script>
+</html>

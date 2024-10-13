@@ -99,13 +99,9 @@ async function translateText(text, fromLanguage, toLanguage, subscriptionKey, en
   }
   
   document.getElementById('contact-button').addEventListener('click', function() {
-    const fadeElement = document.createElement('div');
-    fadeElement.classList.add('fade');
-    document.body.appendChild(fadeElement);
-    fadeElement.classList.add('show');
-
-    setTimeout(() => {
-        window.open('http://127.0.0.1:5501/Reservar/Reserva.html', 'Reservar', 'width=600,height=400');
-        document.body.removeChild(fadeElement);
-    }, 500); // Espera 0.5 segundos antes de abrir la ventana emergente
+    // Mostrar mensaje de alerta indicando que debe iniciar sesión
+    alert('Por favor, inicie sesión primero para poder contactar con el propietario.');
+    
+    // Si quieres redirigir al usuario a la página de login después del mensaje, descomenta la siguiente línea
+    // window.location.href = "../Registro/login.html";
 });
