@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apartaestudio Chapinero</title>
+    <link rel="stylesheet" href="calendariocss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5" rel="stylesheet"/>   
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <div class="user-options">
+        </div>
+        
+        <form id="language-form" aria-label="language-form">
+            <a href="http://127.0.0.1:5501/Registro/Login.html" id="login-button">Iniciar Sesión</a>
+            <!-- Asociar el label con el select usando el atributo 'for' -->
+            <label class="change-language-label" for="language-select">Change language:</label>
+            <select id="language-select" aria-label="Select a language">
+                <option value="español">Español</option>
+                <option value="english">English</option>
+            </select>
+            
+            <button type="button" id="change-language-button">Change</button>
+        </form>
+        
+        
+    </header>
+    
+    <main>
+        <h1 class="visually-hidden"> Encuentra tu alojamiento </h1>
+        <div class="featured-section">
+            <div class="roomset">
+                <h2>Apartaestudio en Chapinero</h2>
+                <img src="image5.png" alt="Habitación Amueblada">
+                <p><strong>Tamaño:</strong> 25 m²</p>
+                <p><strong>Precio:</strong> $300000 al mes</p>
+                <p><strong>Ubicación:</strong> Cerca a la sede carrera 13 y la estación calle 45</p>
+                <p><strong>Características:</strong> Cama individual, escritorio, silla, armario, conexión Wi-Fi gratuita</p>
+                <p><strong>Descripción:</strong> Habitación cómoda amoblada para estudiante sin mascotas</p>
+                <div class="buttons"> <!-- Nuevo contenedor para ambos botones -->
+                    <div class="contact">
+                        <button id="contact-button">Contactar</button>
+                    </div>
+                    <div class="Return">
+                        <a href="Pagina Principal.html"><button aria-label="Ver detalles del apartaestudio en Chapinero">Volver</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar">
+                <h2>Calendario de Disponibilidad</h2>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5"></script>
+    <script src="Calendariojs.js"></script>
+
+    <footer class="footer">
+        <div class="contact-info">
+            <p>Contáctanos</p>
+            <p>Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p>Políticas</p>
+            <p>Tratamiento de datos<br>Política de privacidad</p>
+        </div>
+    </footer>
+</body>
+</html>

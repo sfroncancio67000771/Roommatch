@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        .error-title {
+            font-size: 100px;
+            margin: 0;
+            color: #74ABAB;
+        }
+
+        .error-subtitle {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .floating-character {
+            width: 200px;
+            height: 200px;
+            background: url('logo.jpg') no-repeat center center;
+            background-size: contain;
+            animation: float 3s ease-in-out infinite;
+            margin: 0 auto 40px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .back-home-btn {
+            padding: 10px 20px;
+            background-color: #74ABAB;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .back-home-btn:hover {
+            background-color: #74ABAB;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="floating-character"></div>
+        <h1 class="error-title">404</h1>
+        <p class="error-subtitle">Oops... página no encontrada</p>
+        <p class="error-message">Parece que esta Sección no existe… ¿Te ayudamos a encontrar otra?</p>
+        <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch/Pagina%20principal/Home_Login.html" class="back-home-btn">Volver al Inicio</a>
+    </div>
+</body>
+</html>

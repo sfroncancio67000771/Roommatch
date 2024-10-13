@@ -4,32 +4,160 @@ function validarNumero(event) {
     }
 }
 
+// Validación de campos vacíos y correo electrónico
+function validarCampoVacio(input) {
+    const inputContainer = input.closest('.input-container');
+    if (!input.value.trim()) {
+        inputContainer.classList.add('invalid');
+    } else {
+        inputContainer.classList.remove('invalid');
+    }
+}
+
+function validarEmail(input) {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const inputContainer = input.closest('.input-container');
+    if (!emailPattern.test(input.value)) {
+        inputContainer.classList.add('invalid');
+    } else {
+        inputContainer.classList.remove('invalid');
+    }
+}
+
+// Función para asignar validaciones a los campos (estáticos y dinámicos)
+function agregarValidaciones() {
+    document.querySelectorAll('.input-container input').forEach(input => {
+        input.addEventListener('blur', function () {
+            if (input.type === 'email') {
+                validarEmail(input);
+            } else {
+                validarCampoVacio(input);
+            }
+        });
+
+        input.addEventListener('input', function () {
+            const inputContainer = input.closest('.input-container');
+            inputContainer.classList.remove('invalid');
+        });
+    });
+}
+
+// Función para generar los campos dinámicos según el rol
 function updateFields() {
     const role = document.getElementById('role').value;
     const dynamicFields = document.getElementById('dynamic-fields');
 
+    dynamicFields.innerHTML = ''; // Limpiar los campos anteriores
+
     if (role === "estudiante") {
         dynamicFields.innerHTML = `
-            <input type="text" id="codigo" placeholder="Código Estudiante" onkeypress="validarNumero(event)" required>
-            <input type="text" id="nombre" placeholder="Nombre Completo" required>
-            <input type="number" id="edad" placeholder="Edad" required>
-            <input type="email" id="email" placeholder="Correo electrónico" required>
-            <input type="text" id="telefono" placeholder="Teléfono" onkeypress="validarNumero(event)" required>
-            <input type="password" id="contraseña" placeholder="Contraseña" required>
-        `;
+            <div class="input-container">
+                <input type="text" id="codigo" onkeypress="validarNumero(event)" required>
+                <label for="codigo">Código Estudiante</label>
+                <span class="error-message"></span>
+            </div>
+            <div class="input-container">
+                <input type="number" id="edad" required>
+                <label for="edad">Edad</label>
+                <span class="error-message"></span>
+            </div>
+            <div class="input-container">
+                <input type="email" id="email" required>
+                <label for="email">Correo Electrónico</label>
+                <span class="error-message"></span>
+            </div>`;
     } else if (role === "propietario") {
         dynamicFields.innerHTML = `
-            <input type="text" id="idPropietario" placeholder="Identificación" onkeypress="validarNumero(event)" required>
-            <input type="text" id="nombrePropietario" placeholder="Nombre Completo" required>
-            <input type="email" id="emailPropietario" placeholder="Correo electrónico" required>
-            <input type="text" id="telefonoPropietario" placeholder="Teléfono" onkeypress="validarNumero(event)" required>
-            <input type="password" id="contraseñaPropietario" placeholder="Contraseña" required>
-        `;
+            <div class="input-container">
+                <input type="text" id="idPropietario" onkeypress="validarNumero(event)" required>
+                <label for="idPropietario">Identificación</label>
+                <span class="error-message"></span>
+            </div>
+            <div class="input-container">
+                <input type="email" id="email" required>
+                <label for="email">Correo Electrónico</label>
+                <span class="error-message"></span>
+            </div>`;
+    }
+
+    // Asignar validaciones a los campos recién generados
+    agregarValidaciones();
+}
+
+function validarContraseñas(contraseña, confirmarContraseña) {
+    const inputContainer = confirmarContraseña.closest('.input-container');
+    if (contraseña.value !== confirmarContraseña.value) {
+        inputContainer.classList.add('invalid');
+        return false; // Contraseñas no coinciden
     } else {
-        dynamicFields.innerHTML = ''; // Limpia los campos si no hay selección
+        inputContainer.classList.remove('invalid');
+        return true; // Contraseñas coinciden
     }
 }
 
+// Asignar validaciones a los campos estáticos una vez que se carga la página
+document.addEventListener('DOMContentLoaded', function () {
+    agregarValidaciones(); // Esto se aplica a los campos estáticos iniciales
+});
+
+// Validar todos los campos al enviar el formulario
+document.getElementById('miFormulario').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const inputs = document.querySelectorAll('.input-container input');
+    inputs.forEach(input => {
+        if (input.type === 'email') {
+            validarEmail(input);
+        } else {
+            validarCampoVacio(input);
+        }
+    });
+    
+    if (document.querySelector('.input-container.invalid')) {
+        // Mostrar mensaje de error si hay campos inválidos
+        document.getElementById('respuesta').innerText = 'Por favor, corrige los errores en el formulario.';
+        document.getElementById('respuesta').style.color = 'red';
+    } else {
+        // Aquí iría el código para enviar el formulario
+        document.getElementById('respuesta').innerText = 'Formulario enviado correctamente';
+        document.getElementById('respuesta').style.color = 'green';
+    }
+});
+
+
+document.getElementById('miFormulario').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const inputs = document.querySelectorAll('.input-container input');
+    let valid = true; // Variable para verificar la validez de los campos
+
+    inputs.forEach(input => {
+        if (input.type === 'email') {
+            validarEmail(input);
+        } else {
+            validarCampoVacio(input);
+        }
+    });
+
+    // Validar contraseñas si existen
+    const contraseña = document.getElementById('contraseña');
+    const confirmarContraseña = document.getElementById('confirmarContraseña');
+    
+    if (contraseña && confirmarContraseña) {
+        valid = validarContraseñas(contraseña, confirmarContraseña) && valid;
+    }
+
+    if (document.querySelector('.input-container.invalid') || !valid) {
+        // Mostrar mensaje de error si hay campos inválidos
+        document.getElementById('respuesta').innerText = 'Por favor, corrige los errores en el formulario.';
+        document.getElementById('respuesta').style.color = 'red';
+    } else {
+        // Aquí iría el código para enviar el formulario
+        document.getElementById('respuesta').innerText = 'Formulario enviado correctamente';
+        document.getElementById('respuesta').style.color = 'green';
+    }
+});
+
+
+// Manejar el envío de datos al servidor
 document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -64,19 +192,19 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
         };
     } else if (role === "propietario") {
         // Obtener los valores del formulario para propietario
-        const nombrePropietario = document.getElementById('nombrePropietario').value;
         const idPropietario = document.getElementById('idPropietario').value;
-        const emailPropietario = document.getElementById('emailPropietario').value;
-        const telefonoPropietario = document.getElementById('telefonoPropietario').value;
-        const contraseñaPropietario = document.getElementById('contraseñaPropietario').value;
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value;
+        const contraseña = document.getElementById('contraseña').value;
 
         // Crear objeto de datos para propietario
         datos = {
             idPropietario: idPropietario,
-            nombre: nombrePropietario,
-            email: emailPropietario,
-            contraseña: contraseñaPropietario,
-            telefono: telefonoPropietario
+            nombre: nombre,
+            email: email,
+            contraseña: contraseña,
+            telefono: telefono
         };
     }
 

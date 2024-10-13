@@ -5,25 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="StyleLR.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="StyleR.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-container register-form">
-            <img src="logo.jpg" alt="Logo"> 
-            <h2>Registro</h2>
-            <select id="role" onchange="updateFields()">
-                <option value="" disabled selected>Selecciona un rol</option>
-                <option value="estudiante">Estudiante</option>
-                <option value="propietario">Propietario</option>
-            </select>
-            <form id="miFormulario">
-                <div id="dynamic-fields"></div>
-                <button type="submit">Registrarse</button>
-            </form>
-            <div id="respuesta"></div>
+    <header>
+    </header>
+
+    <main role="main">
+        <div class="container">
+            <!-- Primera columna: Logo e imagen -->
+            <div class="logo-container">
+                <h1><img src="logo.jpg" alt="Logo de la empresa"></h1>
+                <h2>Registro De Usuario</h2>
+            </div>
+
+            <!-- Segunda columna: Formulario -->
+            <div class="form-container">
+                <form id="miFormulario">
+                    <!-- Contenedor de las dos columnas -->
+                    <div class="row">
+                        <!-- Primera columna -->
+                        <div class="column">
+                            <div class="input-container">
+                                <input type="text" id="nombre" required>
+                                <label for="nombre">Nombre Completo</label>
+                            </div>
+                            <div class="input-container">
+                                <input type="password" id="contraseña" required>
+                                <label for="contraseña">Contraseña</label>
+                            </div>
+                        </div>
+
+                        <!-- Segunda columna -->
+                        <div class="column">
+                            <div class="input-container">
+                                <input type="text" id="telefono" onkeypress="validarNumero(event)" required>
+                                <label for="telefono">Teléfono</label>
+                            </div>
+                            <div class="input-container">
+                                <input type="password" id="confirmarContraseña" required>
+                                <label for="confirmarContraseña">Confirmar Contraseña</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fila de selección de rol (ambas columnas) -->
+                    <div class="input-container full-width">
+                            <select id="role" onchange="updateFields()" required>
+                                <option value="" disabled selected>...</option>
+                                <option value="estudiante">Estudiante</option>
+                                <option value="propietario">Propietario</option>
+                            </select>
+                            <label for="role">Selecciona una opción</label>
+                        
+                    </div>
+
+                    <!-- Campos dinámicos -->
+                    <div id="dynamic-fields" class="full-width"></div>
+
+                    <!-- Botón de envío -->
+                    <div class="full-width">
+                        <button type="submit">Registrarse</button>
+                    </div>
+
+                    <div id="respuesta"></div>
+                </form>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+    </footer>
 
     <script src="register.js" defer></script>
 </body>

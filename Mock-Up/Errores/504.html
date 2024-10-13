@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 500 - Problema del Servidor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        .error-title {
+            font-size: 100px;
+            margin: 0;
+            color: #e74c3c;
+        }
+
+        .error-subtitle {
+            font-size: 24px;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: #bdc3c7;
+            margin-bottom: 30px;
+        }
+
+        .repairing-character {
+            width: 200px;
+            height: 200px;
+            background: url('img/robot-reparando.png') no-repeat center center;
+            background-size: contain;
+            animation: shake 1s infinite;
+            margin: 0 auto 40px;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(5px, 5px); }
+            50% { transform: translate(0, 0); }
+            75% { transform: translate(-5px, -5px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .back-home-btn {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .back-home-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="repairing-character"></div>
+        <h1 class="error-title">500</h1>
+        <p class="error-subtitle">Error del Servidor</p>
+        <p class="error-message">Algo ha salido mal... Nuestro equipo está trabajando en solucionarlo.</p>
+        <a href="/" class="back-home-btn">Volver al Inicio</a>
+    </div>
+</body>
+</html>

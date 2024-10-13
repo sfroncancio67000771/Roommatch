@@ -1,0 +1,168 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.featured-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  background: linear-gradient(135deg, #f4ede3, #30a7a7); /* Fondo de la sección de destacados */
+}
+
+.logo img {
+  max-width: 150px; 
+}
+
+nav ul.opciones {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+  display: flex; 
+  gap: 50px; 
+}
+
+nav ul.opciones li {
+  font-size: 18px;
+  font-weight: 600; 
+  display: flex;
+  align-items: center;
+  color: #005f5f;
+}
+
+nav ul.opciones li img {
+  margin-right: 8px; 
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 30px; 
+}
+
+.user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+}
+
+.language-dropdown {
+  position: relative;
+}
+
+.language-dropdown button {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #005f5f;
+  background-color: #f8f8f8;
+  color: #005f5f;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.calendar {
+  max-width: 600px;
+  margin: auto;
+}
+
+body {
+  background: linear-gradient(135deg, #f4ede3, #30a7a7);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px; /* Espacio entre los botones */
+  margin-top: 20px;
+}
+
+.buttons .contact button, 
+.buttons .Return button {
+  background: #0a5f63;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttons a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.description, .calendar {
+  flex: 1;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.roomset {
+  text-align: left;
+  width: 651px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.roomset img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  color: #005f5f;
+}
+
+.footer p, .footer a {
+  color: #005f5f;
+  text-decoration: none;
+}
+
+.footer a:hover, .footer a:focus {
+  text-decoration: underline;
+  outline: 2px solid #005f5f;
+}
+
+/* Estilos responsivos para pantallas móviles */
+@media (max-width: 768px) {
+  .featured-section {
+      flex-direction: column; 
+      align-items: center;
+  }
+  
+  .description, .calendar {
+      width: 100%; 
+      margin-bottom: 20px;
+  }
+}
