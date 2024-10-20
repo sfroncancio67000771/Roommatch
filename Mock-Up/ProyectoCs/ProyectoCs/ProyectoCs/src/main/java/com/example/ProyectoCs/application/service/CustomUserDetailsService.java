@@ -1,45 +1,39 @@
 package com.example.ProyectoCs.application.service;
 
-import com.example.ProyectoCs.application.usecase.EstudianteUserDetails;
-import com.example.ProyectoCs.application.usecase.PropietarioUserDetails;
+
 import com.example.ProyectoCs.domain.model.Estudiante;
-import com.example.ProyectoCs.domain.model.Propietario;
-import com.example.ProyectoCs.domain.repository.EstudianteRepository;
-import com.example.ProyectoCs.domain.repository.PropietarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.ProyectoCs.infrastructure.gateway.EstudianteGateway;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private EstudianteRepository estudianteRepository;
+    private final EstudianteGateway estudianteGateway;
 
-    @Autowired
-    private PropietarioRepository propietarioRepository;
+    public CustomUserDetailsService(EstudianteGateway estudianteGateway) {
+        this.estudianteGateway = estudianteGateway;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // Buscar en la tabla Estudiante
-        Estudiante estudiante = estudianteRepository.findByEmail(email);
+        // Cargar el estudiante completo por email
+        Estudiante estudiante = estudianteGateway.buscarEstudiantePorEmail(email);
 
-        if (estudiante != null) {
-            return new EstudianteUserDetails(estudiante);
+        // Si el estudiante no existe, lanzar excepción
+        if (estudiante == null) {
+            throw new UsernameNotFoundException("Estudiante no encontrado con el email: " + email);
         }
 
-        // Si no se encuentra en la tabla Estudiante, buscar en la tabla Propietario
-        Optional<Propietario> propietario = propietarioRepository.findByEmail(email);
-
-        if (propietario != null) {
-            return new PropietarioUserDetails(propietario);
-        }
-
-        // Si no se encuentra el usuario en ninguna de las dos tablas, lanzar excepción
-        throw new UsernameNotFoundException("Usuario no encontrado con el email: " + email);
+        // Devolver el objeto User de Spring Security
+        return User.withUsername(estudiante.getEmail())  // El email será el nombre de usuario
+                .password(estudiante.getContraseña()) // Cargar la contraseña cifrada
+                .roles(estudiante.getRole()) // Asignar el rol del estudiante
+                .build();
     }
 }
