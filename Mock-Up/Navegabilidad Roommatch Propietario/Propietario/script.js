@@ -17,16 +17,27 @@ draggables.forEach(draggable => {
 });
 
 // Añadir eventos al contenedor para soltar los elementos
+// Cuando el card es soltado, agrega la clase 'moved' para la animación de rebote
 container.addEventListener('dragover', e => {
     e.preventDefault();
     const afterElement = getDragAfterElement(container, e.clientY);
     const dragging = document.querySelector('.dragging');
+    
     if (afterElement == null) {
         container.appendChild(dragging);
     } else {
         container.insertBefore(dragging, afterElement);
     }
+    
+    // Añadir la clase 'moved' para animar el card
+    dragging.classList.add('moved');
+    
+    // Eliminar la clase 'moved' después de que la animación termine
+    setTimeout(() => {
+        dragging.classList.remove('moved');
+    }, 300); // 300ms es el tiempo de la animación de rebote
 });
+
 
 // Función para determinar la posición en la que se debe soltar el elemento
 function getDragAfterElement(container, y) {
@@ -133,6 +144,7 @@ function applyPreferredLanguage() {
         changeLanguageToSpanish(); // Restaura el contenido original en español
     }
 }
+
 
 // Llama a esta función cuando cargue la página
 document.addEventListener('DOMContentLoaded', applyPreferredLanguage);
@@ -316,3 +328,138 @@ function assignEventListeners() {
     }
   }
   
+  document.addEventListener("DOMContentLoaded", () => {
+    // Obtener datos de la API para el resumen de habitaciones
+    fetch(`http://localhost:8081/api/v1/propietarios/habitaciones/conteo?idPropietario=1027150257`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("habitacionesDisponibles").textContent = data.totalHabitaciones - data.habitacionesReservadas;
+            document.getElementById("habitacionesOcupadas").textContent = data.habitacionesReservadas;
+
+            // Renderizar gráfico de habitaciones
+            renderHabitacionesChart(data.totalHabitaciones, data.habitacionesReservadas);
+        })
+        .catch(error => console.error("Error al obtener el conteo de habitaciones:", error));
+        
+        // Función para el gráfico de habitaciones
+        function renderHabitacionesChart(total, reservadas) {
+            const ctx = document.getElementById("habitacionesChart").getContext("2d");
+            new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: ["Disponibles", "Ocupadas"],
+                    datasets: [{
+                        data: [total - reservadas, reservadas],
+                        backgroundColor: ["#4CAF50", "#FF5722"]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+            
+        }
+
+});
+
+// La función que obtiene y grafica los datos
+async function obtenerDatos() {
+    try {
+        const response = await fetch('http://localhost:8081/api/v1/propietarios/habitaciones/precios?idPropietario=1027150257');
+        if (!response.ok) throw new Error("Error al obtener datos");
+        
+        const data = await response.json();
+        
+        // Procesa los datos para el gráfico
+        const nombresHabitaciones = data.map(item => item[0]);
+        const preciosHabitaciones = data.map(item => item[1]);
+
+        generarGrafico(nombresHabitaciones, preciosHabitaciones);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function generarGrafico(nombres, precios) {
+    const ctx = document.getElementById('precioHabitacionesChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: nombres,
+            datasets: [{
+                label: 'Precio de la Habitación (COP)',
+                data: precios,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Precio (COP)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Habitación'
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Llama a la función obtenerDatos cuando el DOM haya cargado
+document.addEventListener('DOMContentLoaded', obtenerDatos);
+
+// Función para cargar las reservas desde la API
+function cargarReservas() {
+    fetch('http://localhost:8081/api/v1/estudiantes/reservas')
+        .then(response => response.json())
+        .then(data => {
+            const reservasRecientesDiv = document.getElementById("reservasRecientes");
+            reservasRecientesDiv.innerHTML = ''; // Limpiar cualquier reserva anterior
+
+            if (data.length > 0) {
+                data.forEach(reserva => {
+                    // Validar que los datos están presentes
+                    const correoEstudiante = reserva.correoEstudiante || 'No disponible';
+                    const fechaInicio = new Date(reserva.fechaInicio).toLocaleDateString();
+                    const fechaFin = new Date(reserva.fechaFin).toLocaleDateString();
+
+                    // Crear el contenido HTML para cada reserva
+                    const reservaDiv = document.createElement("div");
+                    reservaDiv.classList.add("reserva-item");
+
+                    reservaDiv.innerHTML = `
+                        <p><strong>Correo:</strong> ${correoEstudiante}</p>
+                        <p><strong>Fecha de Inicio:</strong> ${fechaInicio}</p>
+                        <p><strong>Fecha de Fin:</strong> ${fechaFin}</p>
+                    `;
+
+                    // Agregar la reserva a la tarjeta
+                    reservasRecientesDiv.appendChild(reservaDiv);
+                });
+            } else {
+                reservasRecientesDiv.innerHTML = `<p>No hay reservas recientes.</p>`;
+            }
+        })
+        .catch(error => {
+            console.error("Error al cargar las reservas:", error);
+            document.getElementById("errorMessage").style.display = "block";
+        });
+}
+
+// Llamar a la función para cargar las reservas cuando se cargue la página
+cargarReservas();

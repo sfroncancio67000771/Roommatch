@@ -4,36 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Bienvenido!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleIN.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="logo.jpg" alt="Logo de Roommatch">
-        </div>
-        <nav aria-label="Menú principal de navegación">
+
+        <a href="Propietario.html">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace al inicio del sitio" tabindex="0">
+            </div>
+        </a>
+        
+	
+		<nav aria-label="Menú de navegación principal">
             <ul>
-                <li><a href="Propietario.html" class="active" aria-label="Página de inicio">Inicio</a></li>
-                <li><a href="admininmuebles.html" aria-label="Administrar tus inmuebles">Administrar Inmuebles</a></li>
-                <li><a href="historialhabitaciones.html" aria-label="Historial de habitaciones">Historial de Habitaciones</a></li>
-                <li><a href="mensajes.html" aria-label="Publicar imágenes en el sitio">Publicar Imágenes</a></li>
-                <li><a href="Alojamiento.html" aria-label="Publicar inmuebles en alquiler">Publicar Inmuebles</a></li>
+                <li><a href="Propietario.html" class="active" aria-current="page" aria-label="Ir a la página de inicio">Inicio</a></li>
+                <li><a href="admininmuebles.html" aria-label="Ir a la página para administrar inmuebles">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html" aria-label="Ver historial de habitaciones">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html" aria-label="Publicar imágenes de inmuebles">Publicar Imágenes</a></li>
+                <li><a href="Alojamiento.html" aria-label="Publicar nuevos inmuebles">Publicar Inmuebles</a></li>
             </ul>
         </nav>
-        <div class="user-options">
-            <div class="user-icon-container">
+        
+        <div class="user-options" aria-label="Opciones de usuario">
+            <div class="user-icon-container" aria-label="Ícono de usuario y opción para cerrar sesión" tabindex="0">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon" aria-hidden="true">
                 <div class="logout-option">
-                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html" aria-label="Cerrar tu sesión actual">Cerrar Sesión</a>
+                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html" aria-label="Cerrar sesión en Roommatch">Cerrar Sesión</a>
                 </div>
             </div>
-            <form id="language-form" aria-label="Formulario para seleccionar idioma">
+            
+            <form id="language-form" aria-label="Formulario para cambiar el idioma de la página">
                 <label class="change-language-label" for="language-select">Cambiar idioma:</label>
-                <select id="language-select" aria-label="Seleccionar un idioma">
-                    <option value="español">Español</option>
-                    <option value="english">English</option>
+                <select id="language-select" aria-label="Selecciona un idioma para la página">
+                    <option value="español" aria-label="Idioma Español">Español</option>
+                    <option value="english" aria-label="Idioma Inglés">English</option>
                 </select>
-                <button type="button" id="change-language-button" aria-label="Botón para cambiar el idioma seleccionado">Cambiar</button>
+                <button type="button" id="change-language-button" aria-label="Botón para aplicar el cambio de idioma">Cambiar</button>
             </form>
         </div>
     </header>
@@ -42,38 +54,35 @@
         <div class="dashboard-overview" aria-labelledby="dashboard-title">
             <h1 id="dashboard-title">¡Bienvenido!</h1>
             <div class="overview-cards" role="region" aria-label="Tarjetas de resumen del panel">
-                <div class="card large-card" draggable="true" aria-label="Resumen de Habitaciones">
-                    <h2>Resumen de Habitaciones</h2>
-                    <p aria-label="Número de habitaciones disponibles: 5">Habitaciones Disponibles: 5</p>
-                    <p aria-label="Número de habitaciones ocupadas: 10">Habitaciones Ocupadas: 10</p>
-                    <p aria-label="Ingresos totales actuales de 2500 dólares">Ingresos Totales: $2,500</p>
-                    <img src="https://www.researchgate.net/publication/28121237/figure/fig1/AS:669569421160460@1536649198877/Figura-4-Grafico-de-avance-del-rendimiento.ppm" alt="Gráfico visual de resumen de habitaciones">
+                <div class="card large-card" draggable="true" aria-label="Habitaciones Disponibles">
+                    <h2>Listado de Habitaciones</h2>
+                    <div id="habitaciones-list"></div> <!-- Contenedor para los posters de habitaciones -->
+                    <canvas id="precioHabitacionesChart" width="400" height="200"></canvas> <!-- Canvas para el gráfico -->
                 </div>
                 <div class="card medium-card" draggable="true" aria-label="Últimos mensajes recibidos">
                     <h2>Últimos Mensajes</h2>
                     <p aria-label="No hay mensajes nuevos">No hay nuevos mensajes.</p>
                 </div>
-                <div class="card small-card" draggable="true" aria-label="Solicitudes recientes">
-                    <h3>Solicitudes Recientes</h3>
-                    <p aria-label="3 solicitudes pendientes">3 Solicitudes Pendientes</p>
+                <div class="card small-card" draggable="true" aria-label="Resumen de Habitaciones">
+                    <h2>Resumen de Habitaciones</h2>
+                    <p aria-label="Número de habitaciones disponibles:">Habitaciones Disponibles: <span id="habitacionesDisponibles"></span></p>
+                    <p aria-label="Número de habitaciones ocupadas: ">Habitaciones Ocupadas: <span id="habitacionesOcupadas"></span></p>
+                    <canvas id="habitacionesChart"></canvas>
+                </div>
+                <div class="card small-card" draggable="true" aria-label="Reservas recientes">
+                    <h3>Reservas Recientes</h3>
+                    <div id="reservasRecientes">
+                        <!-- Las reservas se agregarán aquí dinámicamente -->
+                    </div>
                 </div>
                 <div class="card small-card" draggable="true" aria-label="Tendencias de alquiler recientes">
                     <h4>Tendencias de Alquiler</h4>
                     <p aria-label="Aumento del 20 por ciento en reservas para este mes">Aumento del 20% en reservas este mes</p>
                 </div>
-                <div class="card medium-card" draggable="true" aria-label="Rendimiento mensual actual">
-                    <h5>Rendimiento Mensual</h5>
-                    <p aria-label="Promedio de ingresos de 500 dólares">Promedio de Ingresos: $500</p>
-                    <img src="https://juncotic.com/wp-content/uploads/2023/05/grafico-torta-basico-1.png" alt="Gráfico visual de rendimiento mensual">
-                </div>
-                <div class="card large-card" draggable="true" aria-label="Vista total del rendimiento">
-                    <h5>Vista Total</h5>
-                    <img src="Graf.jpg" alt="Gráfico de tendencias de rendimiento total" class="chart-image">
-                </div>
+               
             </div>
         </div>
 
-        
         <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
         
         <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-labelledby="accessibility-panel-title">

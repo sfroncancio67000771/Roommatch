@@ -1,10 +1,7 @@
 package com.example.ProyectoCs.presentation;
 
 import com.example.ProyectoCs.application.dto.AlojamientoDTO;
-import com.example.ProyectoCs.application.dto.FotoDTO;
 import com.example.ProyectoCs.application.dto.PropietarioDTO;
-import com.example.ProyectoCs.application.service.AlojamientoService;
-import com.example.ProyectoCs.domain.model.Alojamiento;
 import com.example.ProyectoCs.domain.model.EstadoPropietario;
 import com.example.ProyectoCs.domain.model.Propietario;
 import com.example.ProyectoCs.domain.repository.PropietarioRepository;
@@ -21,10 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -126,8 +121,50 @@ public class PropietarioController {
         }
     }
 
+    // Devuelve el conteo de habitaciones totales y reservadas
+    @CrossOrigin(origins = "http://127.0.0.1:5501")
+    @GetMapping("/habitaciones/conteo")
+    @ApiOperation("Obtiene el conteo de habitaciones totales y reservadas para el propietario")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Conteo de habitaciones obtenido exitosamente"),
+            @ApiResponse(code = 500, message = "Error interno del servidor")
+    })
+    public ResponseEntity<Map<String, Integer>> obtenerConteoHabitaciones(@RequestParam Integer idPropietario) {
+        try {
+            int totalHabitaciones = alojamientoGateway.contarHabitaciones(idPropietario);
+            int habitacionesReservadas = alojamientoGateway.contarHabitacionesReservadas(idPropietario);
 
+            Map<String, Integer> conteo = new HashMap<>();
+            conteo.put("totalHabitaciones", totalHabitaciones);
+            conteo.put("habitacionesReservadas", habitacionesReservadas);
 
+            return ResponseEntity.ok(conteo);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 
+    // Devuelve los precios de cada habitación del propietario
+    @CrossOrigin(origins = "http://127.0.0.1:5501")
+    @GetMapping("/habitaciones/precios")
+    @ApiOperation("Obtiene los precios de cada habitación para el propietario")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Precios obtenidos exitosamente"),
+            @ApiResponse(code = 500, message = "Error interno del servidor")
+    })
+    public ResponseEntity<List<Object[]>> obtenerPreciosHabitaciones(@RequestParam Integer idPropietario) {
+        try {
+            List<Object[]> precios = alojamientoGateway.obtenerPreciosHabitaciones(idPropietario);
+            return ResponseEntity.ok(precios);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 
 }
+
+
+
+
+
+

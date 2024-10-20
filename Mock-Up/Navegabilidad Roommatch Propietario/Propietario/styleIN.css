@@ -1,146 +1,220 @@
-/* Estilos generales aplicables a todas las páginas */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f4ede3, #005f5f);
-    color: #333;
-  }
-  
-  header {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: sticky;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 50;
-  }
-  
-  .logo img {
-    max-width: 150px;
-  }
-  
-  .user-options {
-    display: flex; /* Alinea los elementos hijos en fila */
-    align-items: center; /* Alinea verticalmente al centro */
-  }
-  
-  .user-icon-container {
-    position: relative; /* Necesario para la posición del menú */
-    margin-right: 20px; /* Espacio entre el ícono y el formulario */
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f4ede3, #005f5f);
+  color: #333;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+.logo img {
+  max-width: 150px;
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.user-icon-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.logout-option {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  z-index: 100;
+}
+
+/* Estilos generales para la sección de usuario */
+.user-options {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.user-icon-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-icon-container:hover {
+  transform: scale(1.1); /* Efecto de hover para aumentar el tamaño del ícono */
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #4CAF50; /* Borde verde */
+  transition: border 0.3s ease;
+}
+
+.user-icon-container:hover .user-icon {
+  border-color: #30a7a7; /* Cambiar color del borde al hacer hover */
+}
+
+/*Boton usuario*/
+.logout-option {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 160px;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+}
+
+.logout-option a {
+  display: block;
+  padding: 8px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-option a:hover {
+  background-color: #f4f4f4;
+  color: #30a7a7;
+}
+
+/* Mostrar las opciones de logout cuando el usuario hace hover sobre el icono */
+.user-icon-container:hover .logout-option {
+  display: block;
+  opacity: 1; /* Mostrar el menú */
+}
+
+/* Mejoras para pantallas pequeñas */
+@media (max-width: 768px) {
   .user-icon {
-    width: 30px; /* Ajusta el tamaño según sea necesario */
-    height: 30px;
-    cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+    width: 35px;
+    height: 35px;
   }
-  
   .logout-option {
-    display: none; /* Oculta la opción de cerrar sesión por defecto */
-    position: absolute; /* Posiciona el menú en relación a su contenedor */
-    top: 100%; /* Coloca el menú justo debajo del ícono */
-    left: 0;
-    background-color: white; /* Color de fondo para la opción */
-    border: 1px solid #ccc; /* Añade un borde */
-    padding: 5px; /* Espaciado interno */
-    z-index: 100; /* Asegura que el menú aparezca sobre otros elementos */
+    width: 140px; /* Ajustar tamaño en pantallas pequeñas */
   }
-  
-  .user-icon-container:hover .logout-option {
-    display: block; /* Muestra la opción de cerrar sesión al pasar el mouse */
-  }
-  
-  /* Estilos para botones */
-  #change-language-button, #login-button {
-    background-color: #4e7a78;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-  
-  #change-language-button:hover, #login-button:hover {
-    background-color: #3e6d69;
-  }
-  
-  header .logo img {
-    max-width: 150px;
-  }
-  
-  header nav ul {
-    list-style-type: none;
-    display: flex;
-    gap: 40px;
-  }
-  
-  header nav ul li {
-    font-size: 18px;
-    font-weight: 600;
-    color: #005a5a;
-    cursor: pointer;
-  }
-  
-  header nav ul li a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  header nav ul li a.active {
-    color: #527575;
-    border-bottom: 2px solid #527575;
-  }
-  
-  header .user-options {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  header .user-icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  
-  header .language-dropdown select {
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #629898;
-    background-color: #f8f8f8;
-    color: #629898;
-    cursor: pointer;
-  }
-  
-  .language-dropdown {
-    display: flex;
-    flex-direction: row; /* Configuración por defecto en pantallas grandes */
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .language-dropdown select {
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #005f5f;
-    background-color: #f8f8f8;
-    color: #005f5f;
-    cursor: pointer;
-  }
-  
-  .language-dropdown select:focus {
-    outline: 2px solid #005f5f;
-  }
+}
+
+/* Estilos para botones */
+#change-language-button, #login-button {
+  background-color: #4e7a78;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+#change-language-button:hover, #login-button:hover {
+  background-color: #3e6d69;
+}
+
+header .logo img {
+  max-width: 150px;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 40px;
+}
+
+header nav ul li {
+  font-size: 18px;
+  font-weight: 600;
+  color: #005a5a;
+  cursor: pointer;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav ul li a.active {
+  color: #527575;
+  border-bottom: 2px solid #527575;
+}
+
+header .user-options {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+header .user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+header .language-dropdown select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #629898;
+  background-color: #f8f8f8;
+  color: #629898;
+  cursor: pointer;
+}
+
+.language-dropdown {
+  display: flex;
+  flex-direction: row; /* Configuración por defecto en pantallas grandes */
+  align-items: center;
+  gap: 10px;
+}
+
+.language-dropdown select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #005f5f;
+  background-color: #f8f8f8;
+  color: #005f5f;
+  cursor: pointer;
+}
+
+.language-dropdown select:focus {
+  outline: 2px solid #005f5f;
+}
+
 /* Contenedor Principal */
 main .container {
     max-width: 1200px; /* Ajusta el tamaño según lo requerido */
@@ -177,6 +251,21 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación para el movimiento y sombra */
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Estilo cuando el card está siendo arrastrado */
+.card.dragging {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño del card para dar la sensación de que se está levantando */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra más grande para darle énfasis */
+}
+
+/* Estilo al soltar el card, para darle un pequeño rebote */
+.card.moved {
+  animation: bounce 0.3s ease-out;
 }
 
 .large-card {
@@ -222,37 +311,87 @@ main {
     border-radius: 10px;
 }
 
-/* Formulario de Asignar Valor */
-.form-asignar-valor {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+
+/* Animación de rebote al soltar el card */
+@keyframes bounce {
+  0% {
+      transform: scale(1.05);
+  }
+  50% {
+      transform: scale(0.98);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+
+#habitacionesChart {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 400px; /* Ajusta esta altura según tus necesidades */
+}
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #005f5f;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .form-group label {
-    font-size: 16px;
-    color: #629898;
+  color: #005f5f;
+  flex: 1;
 }
 
-.form-group input, .form-group textarea, .form-group select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #86BDBD;
-    font-size: 16px;
-    color: #333;
-    background-color: #f8f8f8;
-    outline: none;
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+  flex: 2;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  width: 100%; /* Ajuste para que los input no se salgan del contenedor */
 }
 
-.form-group textarea {
-    resize: vertical;
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-left: 10px;
 }
 
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-    border-color: #44E2E2;
+.form-group.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
 
+/* Alinear checkbox a la derecha del texto */
+.form-group.flex-row input[type="checkbox"] {
+  order: 2; /* Mover el checkbox a la derecha */
+  margin-left: 20px;
+}
+
+
+#language-select{
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 .btn-submit {
     padding: 12px 20px;
     background-color: #44E2E2;
@@ -530,4 +669,131 @@ body.high-contrast .accessibility-panel {
   color: #4a90e2;
   text-decoration: none;
   font-size: 12px;
+}
+
+.reserva-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.reserva-item p {
+  margin: 5px 0;
+}
+
+/* Ajustes para tablet */
+@media (max-width: 1024px) {
+  header, footer {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  header nav ul {
+      gap: 20px;
+  }
+  
+  .overview-cards {
+      grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablet */
+  }
+
+  main .container {
+      padding: 30px 20px;
+  }
+
+  .chart-image, #habitacionesChart {
+      max-height: 350px; /* Ajustar la altura de los gráficos para tablets */
+  }
+}
+
+/* Media query para Samsung A71 (máximo ancho de 600px) */
+@media (max-width: 600px) {
+    /* Ajustes generales */
+    body {
+        padding: 0 10px;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    .logo img {
+        max-width: 120px;
+    }
+
+    .user-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Nav en una columna para ahorrar espacio */
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* Ajuste de la sección principal */
+    main .container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .overview-cards {
+        grid-template-columns: 1fr; /* Una sola columna en móviles */
+        gap: 15px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    /* Gráficos */
+    .chart-section {
+        margin-top: 30px;
+    }
+
+    #habitacionesChart {
+        max-height: 250px; /* Reducir altura en móviles */
+    }
+
+    /* Formulario */
+    form {
+        padding: 15px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-group label {
+        margin-bottom: 5px;
+    }
+
+    .btn-submit {
+        width: 100%; /* Botón de envío ocupa todo el ancho */
+    }
+
+    /* Footer */
+    footer {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+
+    footer .contact-info, footer .policies {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+}
+
+/* Media query para alto contraste */
+body.high-contrast {
+    background: linear-gradient(135deg, #ffffff, #2d6400) !important;
+    color: #fff;
+}
+
+body.high-contrast .change-language-label {
+    color: #000 !important;
 }

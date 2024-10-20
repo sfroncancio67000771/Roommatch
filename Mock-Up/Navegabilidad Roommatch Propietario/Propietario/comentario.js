@@ -178,6 +178,7 @@ const API_URL_ALOJAMIENTOS = 'http://localhost:8081/api/v1/alojamiento/filtrar';
             }
         }
         
+
         // Llama a esta función cuando cargue la página
         document.addEventListener('DOMContentLoaded', applyPreferredLanguage);
         

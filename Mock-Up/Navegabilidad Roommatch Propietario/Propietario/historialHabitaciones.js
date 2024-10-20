@@ -92,6 +92,7 @@ function applyPreferredLanguage() {
     }
 }
 
+
 // Llama a esta función cuando cargue la página
 document.addEventListener('DOMContentLoaded', applyPreferredLanguage);
 

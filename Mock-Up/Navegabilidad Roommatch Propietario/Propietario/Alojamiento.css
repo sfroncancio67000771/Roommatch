@@ -255,7 +255,57 @@ tr:hover {
   font-weight: bold;
 }
 
+/* Área de carga de archivos */
+.upload-area {
+  border: 2px dashed #008080;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin: 20px auto; /* Centrar el área de carga */
+  width: 80%; /* Ajustar el ancho según sea necesario */
+}
 
+.upload-area:hover {
+  background-color: #e0f7f7;
+  border-color: #007373;
+}
+
+.upload-area input[type="file"] {
+  display: none;
+}
+
+.upload-area .upload-icon {
+  font-size: 40px;
+  color: #008080;
+  margin-bottom: 10px;
+}
+
+.upload-area .upload-text {
+  font-size: 16px;
+  color: #555;
+}
+
+.upload-area:hover .upload-icon {
+  animation: bounce 0.5s;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#language-select{
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 /* Estilo del formulario */
 form {
   max-width: 600px;
@@ -335,7 +385,9 @@ input:focus, select:focus {
 }
 
 .error {
-  border: 1px solid red; /* Cambia el borde a rojo para indicar error */
+  color: red;
+  font-size: 14px;
+  text-align: center;
 }
 
 .highlight {

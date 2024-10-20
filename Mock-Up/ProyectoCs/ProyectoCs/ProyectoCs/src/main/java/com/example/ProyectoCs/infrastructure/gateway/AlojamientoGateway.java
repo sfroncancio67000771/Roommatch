@@ -31,4 +31,13 @@ public interface AlojamientoGateway {
 
     void actualizarAlojamiento(Alojamiento alojamiento);
     boolean eliminarAlojamiento(Long id);
+
+    // Nuevo método para contar habitaciones totales de un propietario
+    int contarHabitaciones(int idPropietario);
+
+    // Nuevo método para contar habitaciones reservadas de un propietario
+    int contarHabitacionesReservadas(int idPropietario);
+
+    List<Object[]> obtenerPreciosHabitaciones(long idPropietario);
+
 }

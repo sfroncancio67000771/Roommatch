@@ -222,4 +222,20 @@ public class AlojamientoGatewayImpl implements AlojamientoGateway {
         return false;
     }
 
+    @Override
+    public int contarHabitaciones(int idPropietario) {
+        // Retorna el número total de habitaciones para un propietario específico
+        return alojamientoRepository.contarHabitacionesPorPropietario(idPropietario);
+    }
+
+    @Override
+    public int contarHabitacionesReservadas(int idPropietario) {
+        // Retorna el número de habitaciones reservadas para un propietario específico
+        return alojamientoRepository.contarHabitacionesReservadas(idPropietario, 2); // Suponiendo que el estado '2' representa "reservada"
+    }
+
+    @Override
+    public List<Object[]> obtenerPreciosHabitaciones(long idPropietario) {
+        return alojamientoRepository.obtenerNombresYPreciosHabitaciones(idPropietario);
+    }
 }

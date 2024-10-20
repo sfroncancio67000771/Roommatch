@@ -842,6 +842,13 @@ body.high-contrast .accessibility-panel {
   margin: 0 5px;
 }
 
+#language-select{
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 .reset-btn, .hide-btn {
   width: 100%;
   background-color: #1a1a1a;

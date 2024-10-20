@@ -11,7 +11,6 @@ public class SecurityConfig {
 
     private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    // Inyectar el CustomAuthenticationSuccessHandler
     public SecurityConfig(CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
         this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
     }
@@ -19,22 +18,32 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/oauth2/**",
-                                "/api/v1/estudiantes/**",  // Estudiantes
-                                "/api/v1/estudiantes/reservas/**",  // Reservas de estudiantes
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/login", "/logout", "/oauth2/",
+                                "/api/v1/estudiantes/**",
+                                "/api/v1/propietarios/**",
+                                "/api/v1/estudiantes/reservas/**",
                                 "/api/v1/propietarios/registrar",
                                 "/error", "/api/v1/alojamiento/**",
-                                "/api/v1/fotos/**", "/public").permitAll()
+                                "/api/v1/fotos/**", "/public",
+                                "/api/v1/propietarios/habitaciones/conteo",
+                                "/api/v1/propietarios/habitaciones/precios").permitAll()  // Agrega esta ruta
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")
-                        .failureUrl("/loginFailure")
-                        .successHandler(customAuthenticationSuccessHandler)  // Configurar el handler
+                        .failureUrl("http://127.0.0.1:5501/Errores/504.html")
+                        .successHandler(customAuthenticationSuccessHandler)
                 )
-                .csrf().disable();  // Deshabilitar CSRF si no es necesario
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("http://127.0.0.1:5501/Navegabilidad%20Roommatch/Pagina%20principal/Espa%C3%B1ol.html")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .clearAuthentication(true)
+                )
+                .csrf().disable();
 
         return http.build();
-    }
+}
 }

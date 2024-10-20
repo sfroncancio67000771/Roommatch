@@ -261,3 +261,40 @@ function showNotification(message) {
         notification.style.display = 'none';
     }, 3000);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Obtener datos de la API para el resumen de habitaciones
+    fetch(`http://localhost:8081/api/v1/propietarios/habitaciones/conteo?idPropietario=1027150257`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("habitacionesDisponibles").textContent = data.totalHabitaciones - data.habitacionesReservadas;
+            document.getElementById("habitacionesOcupadas").textContent = data.habitacionesReservadas;
+
+            // Renderizar gráfico de habitaciones
+            renderHabitacionesChart(data.totalHabitaciones, data.habitacionesReservadas);
+        })
+        .catch(error => console.error("Error al obtener el conteo de habitaciones:", error));
+});
+
+// Función para el gráfico de habitaciones
+function renderHabitacionesChart(total, reservadas) {
+    const ctx = document.getElementById("habitacionesChart").getContext("2d");
+    new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["Disponibles", "Ocupadas"],
+            datasets: [{
+                data: [total - reservadas, reservadas],
+                backgroundColor: ["#4CAF50", "#FF5722"]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        }
+    });
+}
