@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtros Principal - Roommatch</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+
+
+
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+		
+        <div class="user-options">
+            <div class="user-icon-container">
+            
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon">
+                </a>
+                <div class="logout-option">
+                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+            <form id="language-form" aria-label="language-form">
+                <label class="change-language-label" for="language-select">Change language:</label>
+                <select id="language-select" aria-label="Select a language">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+    <main role="main" aria-label="Contenido principal">
+        <h1 class="visually-hidden">Encuentra tu alojamiento</h1>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar" role="search" aria-label="Barra de búsqueda">
+            <input type="search" id="search-input" label="Buscar alojamiento" placeholder="Busca tu alojamiento" aria-label="Buscar alojamiento">
+            <button aria-label="Botón de búsqueda">
+                <img src="https://images.emojiterra.com/google/android-12l/512px/1f50e.png" alt="Buscar icono">
+            </button>
+        </div>
+
+        <!-- Barra de filtros -->
+        <div class="filter-bar" aria-label="Barra de filtros">
+            <label for="filter-place" id="filter-place-label" class="visually-hidden">Filtrar por Lugar:</label>
+            <select id="filter-place" aria-labelledby="filter-place-label">
+                <option value="" selected>Filtrar por Lugar</option>
+                <option value="teusaquillo">Teusaquillo</option>
+                <option value="chapinero">Chapinero</option>
+                <option value="galerias">Galerías</option>
+            </select>
+
+            <label for="filter-home" id="filter-home-label" class="visually-hidden">Filtrar por Inmueble:</label>
+            <select id="filter-home" aria-labelledby="filter-home-label">
+                <option value="" selected>Filtrar por Inmueble</option>
+                <option value="Habitación">Habitación</option>
+                <option value="Apartaestudio">Apartaestudio</option>
+                <option value="Apartamento">Apartamento</option>
+            </select>
+
+            <label for="filter-location" id="filter-location-label" class="visually-hidden">Filtrar por Ubicación:</label>
+            <select id="filter-location" aria-labelledby="filter-location-label">
+                <option value="" selected>Filtrar por Ubicación</option>
+                <option value="cerca-universidad">Cerca a la Universidad</option>
+                <option value="cerca-estadio">Cerca al estadio Campín</option>
+                <option value="cerca-parque">Cerca al parque Nacional</option>
+            </select>
+
+            <label for="filter-price" class="visually-hidden">Filtrar por Precio</label>
+            <input type="number" id="filter-price" placeholder="Filtrar por Precio" min="0" aria-label="Filtrar por precio">
+        </div>
+
+        <!-- Inmuebles destacados -->
+        <section class="featured-section" aria-label="Inmuebles destacados">
+            <article class="featured-item" data-place="galerias" data-price="450000" data-location="cerca-estadio" data-home="Habitación">
+                <img src="image1.jpeg" alt="Vista de una habitación en Galerías">
+                <h2>Habitación en Galerías</h2>
+                <p>Precio: $450.000</p>
+                <p>Ubicación: Cerca del estadio Nemesio Camacho El Campín</p>
+                <p>Descripción: Habitación cómoda amoblada para estudiante, preferiblemente horario nocturno</p>
+                <div class="contact">
+                    <button aria-label="Ver detalles de la habitación en Galerías">Visualizar</button>
+                </div>
+            </article>
+
+            <article class="featured-item" data-place="teusaquillo" data-price="550000" data-location="cerca-parque" data-home="Apartamento">
+                <img src="image4.webp" alt="Vista de un apartamento en Teusaquillo">
+                <h2>Apartamento en Teusaquillo</h2>
+                <p>Precio: $550.000</p>
+                <p>Ubicación: Cerca del Parque Nacional</p>
+                <p>Descripción: Apartamento amoblado, con posibilidad de guardar un vehículo</p>
+                <div class="contact">
+                    <button aria-label="Ver detalles del apartamento en Teusaquillo">Visualizar</button>
+                </div>
+            </article>
+
+            <article class="featured-item" data-place="chapinero" data-price="300000" data-location="cerca-universidad" data-home="Apartaestudio">
+                <img src="image5.png" alt="Vista de un apartaestudio en Chapinero">
+                <h2>Apartaestudio en Chapinero</h2>
+                <p>Precio: $300.000</p>
+                <p>Ubicación: Cerca a la sede Carrera 13</p>
+                <p>Descripción: Apartaestudio cómodo amoblado para estudiante sin mascotas</p>
+                <div class="contact">
+                    <a href="Calendario Estudiante.html"><button aria-label="Ver detalles del apartaestudio en Chapinero">Visualizar</button></a>
+                </div>
+            </article>
+
+            <article class="featured-item" data-place="chapinero" data-price="300000" data-location="cerca-universidad" data-home="Habitación">
+                <img src="image6.jpg" alt="Habitación en Chapinero">
+                <h2>Habitación en Chapinero</h2>
+                <p>Precio: $300.000</p>
+                <p>Ubicación: Cerca a la sede el Claustro</p>
+                <p>Descripción: Habitación cómoda amoblada para estudiante sin mascotas</p>
+                <div class="contact">
+                    <button>Visualizar</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer" role="contentinfo" aria-label="Pie de página">
+        <div class="contact-info">
+            <p>Contáctanos</p>
+            <p>Email: Roommatch@getyourhome.com<br>Tel: 3232353608</p>
+        </div>
+        <div class="policies">
+            <p>Políticas</p>
+            <p><a href="#" aria-label="Enlace al tratamiento de datos">Tratamiento de datos</a><br><a href="#" aria-label="Enlace a la política de privacidad">Política de privacidad</a></p>
+        </div>
+    </footer>
+
+    <script src="Pagfiltrojs.js"></script>
+</body>
+
+</html>

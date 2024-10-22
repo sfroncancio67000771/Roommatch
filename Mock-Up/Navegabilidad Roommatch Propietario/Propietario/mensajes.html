@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Alojamiento.css">
+</head>
+<body>
+
+    <header>
+
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+	
+		<nav>
+            <ul>
+                <li><a href="Propietario.html" class="active">Inicio</a></li>
+                <li><a href="admininmuebles.html">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html">Mensajes</a></li>
+                <li><a href="Alojamiento.html">Publicar Inmuebles</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <div class="user-icon-container">
+            
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon">
+                </a>
+                <div class="logout-option">
+                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+            <form id="language-form" aria-label="language-form">
+                <label class="change-language-label" for="language-select">Change language:</label>
+                <select id="language-select" aria-label="Select a language">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+
+    <h1>Mensajes</h1>
+    <p>Aquí puedes ver tus mensajes.</p>
+
+    <footer class="footer">
+        <div class="contact-info">
+            <p tabindex="0">Contáctanos</p>
+            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0">Políticas</p>
+            <p tabindex="0">Tratamiento de datos</p>
+            <p tabindex="0">Política de privacidad</p>
+        </div>
+    </footer>
+
+    <script src="Alojamiento.js" defer></script> 
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roommatch - Encuentra tu alojamiento ideal</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <div class="user-options">
+            <div class="user-icon-container">
+            
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon">
+                </a>
+                <div class="logout-option">
+                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+            <form id="language-form" aria-label="language-form">
+                <label class="change-language-label" for="language-select">Change language:</label>
+                <select id="language-select" aria-label="Select a language">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+    
+    
+
+    <main>
+        <h1 class="main-title">Encuentra tu Alojamiento Ideal</h1>
+
+        <div class="search-bar">
+            <input type="search" id="search-input" placeholder="Busca tu alojamiento" aria-label="Campo de búsqueda de alojamiento">
+            <button aria-label="Buscar">
+                <img src="https://images.emojiterra.com/google/android-12l/512px/1f50e.png" alt="Buscar">
+            </button>
+        </div>
+
+        <h2>Propiedades Destacadas</h2>
+        <div class="featured-section">
+            <div class="featured-item" id="habitacion" tabindex="0">
+                <img src="image1.jpg" alt="Hermoso apartamento en Chapinero">
+                <p>Hermoso apartamento en Chapinero<br>Propietario: Luis Jiménez</p>
+            </div>
+            <div class="featured-item" id="apartaestudio" tabindex="0">
+                <img src="image2.webp" alt="Amplia habitación en Chapinero">
+                <p>Amplia habitación en Chapinero<br>Propietaria: María Jiménez</p>
+            </div>
+            <div class="featured-item" id="apartamentos" tabindex="0">
+                <img src="image3.jpg" alt="Apartaestudio en Chapinero">
+                <p>Apartaestudio en Chapinero<br>Propietaria: Isabella Ballesteros</p>
+            </div>
+        </div>
+
+        <h2>Encuentra tu próximo hogar</h2>
+        
+        <div class="services">
+            <div class="services-item" id="1">
+                <a href="http://127.0.0.1:5501/Errores/404L.html" style="text-decoration: none; color: inherit;">
+                    <img src="https://as2.ftcdn.net/v2/jpg/03/04/18/75/1000_F_304187597_pVews638w9c8YYDsdldH5mIry8mMfv1K.jpg" alt="personas hablando">
+                    <p>Conectamos a estudiantes foráneos con arrendatarios locales para facilitar tu búsqueda de vivienda.</p>
+                </a>
+            </div>
+            <div class="services-item" id="2">
+                <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Estudiante/Filtros/Pagina%20Estudiante.html" style="text-decoration: none; color: inherit;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVxzzXf_a6ZcjUyYINA1GYmhijSDG0ttXSzA&s" alt="Busqueda">
+                    <p>Filtra opciones, verifica propiedades y lee reseñas de otros estudiantes. ¡Todo en un solo lugar!</p>
+                </a>
+            </div>
+            <div class="services-item" id="3">
+                <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Propietario/Propietario/Propietario.html" style="text-decoration: none; color: inherit;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFEfmnk36TgyyfrmBNzR1P8S0QIUPramKkA&s" alt="sin costo">
+                    <p>Si eres arrendatario, publica tu inmueble sin costo alguno.</p>
+                </a>
+            </div>
+        </div>        
+
+        <button id="accessibility-button" class="accessibility-button" aria-label="Opciones de accesibilidad">⚙️</button>
+
+        <!-- Panel de Accesibilidad Unificado -->
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;">
+            <button class="close-btn" onclick="closePanel()">✖</button>
+            <h2>Accesibilidad</h2>
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia<br><small>Atenúa el color y elimina los parpadeos</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual<br><small>Mejora las imágenes de los sitios web</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="cognitive-disability-mode">
+                <label for="cognitive-disability-mode">Modo de discapacidad cognitiva<br><small>Ayuda a concentrarse en contenido específico</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="adhd-mode">
+                <label for="adhd-mode">Modo compatible con TDAH<br><small>Reduce las distracciones y mejora la concentración</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode">
+                <label for="blindness-mode">Modo de ceguera<br><small>Permite usar el sitio con tu lector de pantalla</small></label>
+            </div>
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()">+</button>
+            </div>
+            <button class="reset-btn" onclick="resetSettings()">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()">Ocultar para siempre</button>
+            <div class="declaration-link">
+                <a href="#">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="contact-info">
+            <p tabindex="0">Contáctanos</p>
+            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0">Políticas</p>
+            <p tabindex="0">Tratamiento de datos</p>
+            <p tabindex="0">Política de privacidad</p>
+        </div>
+    </footer>
+</body>
+</html>
