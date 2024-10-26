@@ -1,0 +1,419 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f4ede3, #30a7a7); /* Modo normal: degradado de blanco a azul */
+  color: #333;
+  min-height: 100vh; /* Asegura que el cuerpo cubra toda la pantalla */
+}
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+.featured-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  background: linear-gradient(135deg, #f4ede3, #30a7a7); /* Fondo de la sección de destacados */
+}
+
+.logo img {
+  max-width: 150px; 
+}
+
+.user-options {
+  display: flex; /* Alinea los elementos hijos en fila */
+  align-items: center; /* Alinea verticalmente al centro */
+}
+
+.user-icon-container {
+  position: relative; /* Necesario para la posición del menú */
+  margin-right: 20px; /* Espacio entre el ícono y el formulario */
+}
+
+.user-icon {
+  width: 30px; /* Ajusta el tamaño según sea necesario */
+  height: 30px;
+  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+}
+
+.logout-option {
+  display: none; /* Oculta la opción de cerrar sesión por defecto */
+  position: absolute; /* Posiciona el menú en relación a su contenedor */
+  top: 100%; /* Coloca el menú justo debajo del ícono */
+  left: 0;
+  background-color: white; /* Color de fondo para la opción */
+  border: 1px solid #ccc; /* Añade un borde */
+  padding: 5px; /* Espaciado interno */
+  z-index: 100; /* Asegura que el menú aparezca sobre otros elementos */
+}
+
+.user-icon-container:hover .logout-option {
+  display: block; /* Muestra la opción de cerrar sesión al pasar el mouse */
+}
+
+nav ul.opciones {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+  display: flex; 
+  gap: 50px; 
+}
+
+nav ul.opciones li {
+  font-size: 18px;
+  font-weight: 600; 
+  display: flex;
+  align-items: center;
+  color: #005f5f;
+}
+
+nav ul.opciones li img {
+  margin-right: 8px; 
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 30px; 
+}
+
+.user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+}
+
+.language-dropdown {
+  position: relative;
+}
+
+.language-dropdown button {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #005f5f;
+  background-color: #f8f8f8;
+  color: #005f5f;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.calendar {
+  max-width: 600px;
+  margin: auto;
+}
+
+body {
+  background: linear-gradient(135deg, #f4ede3, #30a7a7);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px; /* Espacio entre los botones */
+  margin-top: 20px;
+}
+
+.buttons .contact button, 
+.buttons .Return button {
+  background: #0a5f63;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttons a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.description, .calendar {
+  flex: 1;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.roomset {
+  text-align: left;
+  width: 651px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.roomset img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  color: #005f5f;
+}
+
+.footer p, .footer a {
+  color: #005f5f;
+  text-decoration: none;
+}
+
+.footer a:hover, .footer a:focus {
+  text-decoration: underline;
+  outline: 2px solid #005f5f;
+}
+
+/* Estilos responsivos para pantallas móviles */
+@media (max-width: 768px) {
+  .featured-section {
+      flex-direction: column; 
+      align-items: center;
+  }
+  
+  .description, .calendar {
+      width: 100%; 
+      margin-bottom: 20px;
+  }
+}
+
+
+/* boton accesibilidad */
+/* Modo normal: Cambia el color del texto "Change language" a negro */
+.change-language-label {
+  color: #000 !important;  /* Texto negro en modo normal */
+}
+
+/* Modo de alto contraste */
+body.high-contrast {
+  background: linear-gradient(135deg, #ffffff, #2d6400) !important; /* Fondo en modo alto contraste: degradado blanco a amarillo */
+  color: #fff;  /* Texto en blanco */
+  min-height: 100vh;  /* Asegura que el fondo cubra toda la pantalla */
+}
+
+body.high-contrast .change-language-label {
+  color: #ffff00 !important; /* Texto en amarillo en modo alto contraste */
+}
+
+body.high-contrast a {
+  color: #ffff00;  /* Enlaces en amarillo */
+}
+
+body.high-contrast .logo img {
+  filter: invert(1);  /* Invertir colores de la imagen */
+}
+
+body.high-contrast .search-bar input[type="search"] {
+  border: 2px solid #ffff00;  /* Borde amarillo */
+  background-color: #333;  /* Fondo gris oscuro */
+  color: #fff;  /* Texto blanco */
+}
+
+body.high-contrast .search-bar button {
+  background-color: #ffff00;  /* Botón de búsqueda amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+body.high-contrast header {
+  background-color: #333; /* Fondo oscuro en el encabezado */
+  color: #fff; /* Texto en blanco */
+}
+
+body.high-contrast .featured-item {
+  background-color: #333;  /* Fondo de los elementos destacados en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+  border: 2px solid #ffff00;  /* Borde amarillo */
+}
+
+body.high-contrast .services-item {
+  background-color: #333; /* Fondo negro para las tarjetas de servicios */
+  color: #ffff00; /* Texto en amarillo */
+  border: 2px solid #ffff00; /* Borde amarillo */
+}
+
+body.high-contrast h1, 
+body.high-contrast h2, 
+body.high-contrast h3, 
+body.high-contrast h4, 
+body.high-contrast h5, 
+body.high-contrast h6 {
+  color: #ffff00; /* Títulos en amarillo */
+}
+
+body.high-contrast .footer {
+  background-color: #333;  /* Fondo del pie de página en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+}
+
+body.high-contrast p, 
+body.high-contrast .featured-item p, 
+body.high-contrast .services-item p, 
+body.high-contrast .services-item h2 {
+  color: #ffff00;  /* Texto general en amarillo */
+}
+
+/* Asegura que el texto de los botones también sea amarillo */
+body.high-contrast button {
+  color: #ffff00; /* Texto en amarillo para los botones */
+}
+
+body.high-contrast label {
+  color: #ffff00;  /* Texto de las etiquetas en amarillo */
+}
+
+body.high-contrast .roomset {
+  background-color: #1a1a1a; /* Cambia el fondo de .roomsetp cuando esté en modo alto contraste */
+}
+
+body.high-contrast .roomset label {
+  color: #ffff00; /* Cambia el color de las etiquetas */
+}
+
+body.high-contrast .calendar{
+  background-color:#1a1a1a ;
+}
+
+/* Estilo del botón de accesibilidad */
+.accessibility-button {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  background-color: #004f4f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+  z-index: 9999;
+}
+
+body.high-contrast .accessibility-button {
+  background-color: #ffff00;  /* Botón de accesibilidad en amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+/* Ajustes para el panel de accesibilidad */
+.accessibility-panel {
+  width: 300px;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  top: 50px;
+  right: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+body.high-contrast .accessibility-panel {
+  background-color: #333;
+}
+
+.accessibility-panel h2 {
+  margin-top: 0;
+}
+
+.accessibility-panel .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.accessibility-option input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.accessibility-option label {
+  font-size: 14px;
+}
+
+.content-size {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.content-size span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.content-size button {
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.reset-btn, .hide-btn {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: none;
+  color: #4a90e2;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.declaration-link {
+  text-align: center;
+}
+
+.declaration-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 12px;
+}
