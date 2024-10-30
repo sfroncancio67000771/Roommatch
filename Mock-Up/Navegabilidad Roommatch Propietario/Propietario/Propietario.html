@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleIN.css">
+    <link rel="icon" href="Mini-Logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -19,7 +20,6 @@
                 <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace al inicio del sitio" tabindex="0">
             </div>
         </a>
-        
 	
 		<nav aria-label="Menú de navegación principal">
             <ul>
@@ -55,16 +55,16 @@
             <h1 id="dashboard-title">¡Bienvenido!</h1>
             <div class="overview-cards" role="region" aria-label="Tarjetas de resumen del panel">
                 <div class="card large-card" draggable="true" aria-label="Habitaciones Disponibles">
-                    <h2>Listado de Habitaciones</h2>
+                    <h3>Listado de Habitaciones</h3>
                     <div id="habitaciones-list"></div> <!-- Contenedor para los posters de habitaciones -->
                     <canvas id="precioHabitacionesChart" width="400" height="200"></canvas> <!-- Canvas para el gráfico -->
                 </div>
                 <div class="card medium-card" draggable="true" aria-label="Últimos mensajes recibidos">
-                    <h2>Últimos Mensajes</h2>
+                    <h3>Últimos Mensajes</h3>
                     <p aria-label="No hay mensajes nuevos">No hay nuevos mensajes.</p>
                 </div>
                 <div class="card small-card" draggable="true" aria-label="Resumen de Habitaciones">
-                    <h2>Resumen de Habitaciones</h2>
+                    <h3>Resumen de Habitaciones</h3>
                     <p aria-label="Número de habitaciones disponibles:">Habitaciones Disponibles: <span id="habitacionesDisponibles"></span></p>
                     <p aria-label="Número de habitaciones ocupadas: ">Habitaciones Ocupadas: <span id="habitacionesOcupadas"></span></p>
                     <canvas id="habitacionesChart"></canvas>
@@ -92,19 +92,16 @@
             <div class="accessibility-option">
                 <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
                 <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
-                <small class="sr-only">Atenúa el color y elimina los parpadeos</small>
             </div>
             
             <div class="accessibility-option">
                 <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
                 <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
-                <small class="sr-only">Mejora las imágenes de los sitios web</small>
             </div>
             
             <div class="accessibility-option">
                 <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
                 <label for="blindness-mode">Modo para personas con ceguera</label>
-                <small class="sr-only">Permite usar el sitio con tu lector de pantalla</small>
             </div>
             
             <div class="content-size">

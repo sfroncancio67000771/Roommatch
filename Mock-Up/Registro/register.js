@@ -152,7 +152,8 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
             email: email,
             telefono: telefono,
             codigo: codigo,
-            contraseña: contraseña
+            contraseña: contraseña,
+            role: role
         };
     } else if (role === "propietario") {
         // Obtener los valores del formulario para propietario
@@ -168,7 +169,8 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
             nombre: nombre,
             email: email,
             contraseña: contraseña,
-            telefono: telefono
+            telefono: telefono,
+            role: role
         };
     }
 
@@ -192,10 +194,15 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
     .then(text => {
         try {
             const data = JSON.parse(text);
-            document.getElementById('miFormulario').reset();
-            document.getElementById('respuesta').textContent = role === 'estudiante' 
-                ? '¡Estudiante Registrado Exitosamente!' 
-                : '¡Propietario Registrado Exitosamente!';
+            document.getElementById('miFormulario').reset(); // Limpiar el formulario
+            // Ocultar el formulario
+            document.getElementById('miFormulario').style.display = 'none';
+
+            // Mostrar mensaje de éxito y el botón
+            document.getElementById('registroExitoso').style.display = 'block';
+            document.getElementById('mensajeExito').textContent = role === 'estudiante' 
+                ? '¡Estudiante Registrado Exitosamente!, Cierra la pestaña para Iniciar Sesión' 
+                : '¡Propietario Registrado Exitosamente!, Cierra la pestaña para Iniciar Sesión';
             console.log('Success:', data);
         } catch (e) {
             document.getElementById('respuesta').textContent = 'Error al enviar el formulario: Respuesta del servidor no es JSON';

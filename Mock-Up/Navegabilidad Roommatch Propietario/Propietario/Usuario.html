@@ -13,9 +13,13 @@
 <body>
 
     <header aria-label="Encabezado principal con logo y menú de navegación">
-        <div class="logo">
-            <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace a la página de inicio">
-        </div>
+
+        <a href="Propietario.html">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace al inicio del sitio" tabindex="0">
+            </div>
+        </a>
+        
         <nav aria-label="Menú de navegación principal">
             <ul>
                 <li><a href="Propietario.html" aria-label="Enlace a la página de inicio del propietario">Inicio</a></li>
@@ -54,19 +58,19 @@
             <div class="accessibility-option">
                 <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
                 <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
-                <small class="sr-only">Atenúa el color y elimina los parpadeos</small>
+              
             </div>
             
             <div class="accessibility-option">
                 <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
                 <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
-                <small class="sr-only">Mejora las imágenes de los sitios web</small>
+               
             </div>
             
             <div class="accessibility-option">
                 <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
                 <label for="blindness-mode">Modo para personas con ceguera</label>
-                <small class="sr-only">Permite usar el sitio con tu lector de pantalla</small>
+                
             </div>
             
             <div class="content-size">

@@ -10,45 +10,81 @@
 </head>
 
 <body>
-    <header>
+    <header aria-label="Encabezado principal con logo y opciones de usuario">
         <div class="logo">
-            <img src="logo.jpg" alt="Logo de Roommatch">
+            <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace a la página de inicio">
         </div>
-        <div class="user-options">
-            <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Estudiante/Filtros/Pagina%20Estudiante.html" id="login-button" class="volver-btn">Volver</a>
-            <form id="language-form">
-                <label for="language-select">Change language:</label>
-                <select id="language-select" aria-label="Seleccione el idioma">
-                    <option value="español">Español</option>
-                    <option value="english">English</option>
+        <div class="user-options" aria-label="Opciones de usuario y cambio de idioma">
+            <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Estudiante/Filtros/Pagina%20Estudiante.html" 
+               id="login-button" 
+               class="volver-btn" 
+               aria-label="Botón para volver a la página de filtros de Roommatch para estudiantes">Volver</a>
+            
+            <form id="language-form" aria-label="Formulario para seleccionar el idioma de la página">
+                <label for="language-select" aria-label="Selecciona el idioma del contenido de la página">Change language:</label>
+                <select id="language-select" aria-label="Selector de idioma">
+                    <option value="español" aria-label="Seleccionar Español">Español</option>
+                    <option value="english" aria-label="Seleccionar Inglés">English</option>
                 </select>
-                <button type="button" id="change-language-button" aria-label="Cambiar idioma">Change</button>
+                <button type="button" id="change-language-button" aria-label="Botón para cambiar el idioma">Change</button>
             </form>
         </div>
     </header>
-
+    
     <main>
-        <h1>Mis reservas</h1> <!-- Título principal -->
-
-        <div id="errorMessage" class="error" style="display: none;" aria-live="assertive">Hubo un error al cargar las reservas. Por favor, inténtalo más tarde.</div>
-
-        <table>
+        <h1 aria-label="Sección de reservas del usuario">Mis reservas</h1>
+    
+        <!-- Mensaje de error accesible -->
+        <div id="errorMessage" class="error" style="display: none;" aria-live="assertive" role="alert">
+            Hubo un error al cargar las reservas. Por favor, inténtalo más tarde.
+        </div>
+    
+        <table aria-label="Tabla de reservas del usuario" aria-describedby="Tabla con información detallada sobre las reservas activas del usuario">
             <thead>
                 <tr>
-                    <th scope="col">ID de Reserva</th>
-                    <th scope="col">Correo del Estudiante</th>
-                    <th scope="col">Alojamiento</th>
-                    <th scope="col">Fecha de Inicio</th>
-                    <th scope="col">Fecha de Fin</th>
-                    <th scope="col">Estado de la Reserva</th>
-                    <th scope="col">Acción</th> <!-- Nueva columna para el botón de cancelar -->
-                    
+                    <th scope="col" aria-label="ID único de cada reserva">ID de Reserva</th>
+                    <th scope="col" aria-label="Correo electrónico del estudiante que hizo la reserva">Correo del Estudiante</th>
+                    <th scope="col" aria-label="Nombre del alojamiento reservado">Alojamiento</th>
+                    <th scope="col" aria-label="Fecha de inicio de la reserva">Fecha de Inicio</th>
+                    <th scope="col" aria-label="Fecha de finalización de la reserva">Fecha de Fin</th>
+                    <th scope="col" aria-label="Estado actual de la reserva">Estado de la Reserva</th>
+                    <th scope="col" aria-label="Columna de acción para cancelar la reserva">Acción</th>
                 </tr>
             </thead>
-            <tbody id="reservasTable">
-                <!-- Las filas se agregarán dinámicamente aquí -->
+            <tbody id="reservasTable" aria-live="polite">
+                <!-- Las filas de la tabla se agregarán dinámicamente aquí -->
             </tbody>
         </table>
+        <button id="accessibility-button" class="accessibility-button" aria-label="Opciones de accesibilidad">⚙️</button>
+
+        <!-- Panel de Accesibilidad Unificado -->
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;">
+            <button class="close-btn" onclick="closePanel()">✖</button>
+            <h2>Accesibilidad</h2>
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia<br><small>Atenúa el color y elimina los parpadeos</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual<br><small>Mejora las imágenes de los sitios web</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="cognitive-disability-mode">
+                <label for="cognitive-disability-mode">Modo de discapacidad cognitiva<br><small>Ayuda a concentrarse en contenido específico</small></label>
+            </div>
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()">+</button>
+            </div>
+            <button class="reset-btn" onclick="resetSettings()">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()">Ocultar para siempre</button>
+            <div class="declaration-link">
+                <a href="#">Declaración de Accesibilidad</a>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">

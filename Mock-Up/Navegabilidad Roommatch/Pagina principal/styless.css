@@ -66,7 +66,7 @@ body.high-contrast h3,
 body.high-contrast h4, 
 body.high-contrast h5, 
 body.high-contrast h6 {
-  color: #ffff00; /* Títulos en amarillo */
+  color: #000; /* Títulos en amarillo */
 }
 
 body.high-contrast .footer {
@@ -151,6 +151,12 @@ header {
   display: flex;
   align-items: center;
   position: relative;
+}
+
+form {
+  display: block;
+  margin-top: 0em;
+  unicode-bidi: isolate;
 }
 
 .user-icon-container {

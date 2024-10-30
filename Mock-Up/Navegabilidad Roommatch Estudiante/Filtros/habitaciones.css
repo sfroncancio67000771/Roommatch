@@ -521,3 +521,278 @@ nav ul.opciones li img {
     grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
   }
 }
+
+
+/* boton accesibilidad */
+/* Modo normal: Cambia el color del texto "Change language" a negro */
+.change-language-label {
+  color: #000 !important;  /* Texto negro en modo normal */
+}
+
+/* Modo de alto contraste */
+body.high-contrast {
+  background: linear-gradient(135deg, #ffffff, #2d6400) !important; /* Fondo en modo alto contraste: degradado blanco a amarillo */
+  color: #fff;  /* Texto en blanco */
+  min-height: 100vh;  /* Asegura que el fondo cubra toda la pantalla */
+}
+
+body.high-contrast .change-language-label {
+  color: #ffff00 !important; /* Texto en amarillo en modo alto contraste */
+}
+
+body.high-contrast a {
+  color: #ffff00;  /* Enlaces en amarillo */
+}
+
+body.high-contrast .logo img {
+  filter: invert(1);  /* Invertir colores de la imagen */
+}
+
+body.high-contrast .search-bar input[type="search"] {
+  border: 2px solid #ffff00;  /* Borde amarillo */
+  background-color: #333;  /* Fondo gris oscuro */
+  color: #fff;  /* Texto blanco */
+}
+
+body.high-contrast .search-bar button {
+  background-color: #ffff00;  /* Botón de búsqueda amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+body.high-contrast header {
+  background-color: #333; /* Fondo oscuro en el encabezado */
+  color: #fff; /* Texto en blanco */
+}
+
+body.high-contrast .featured-item {
+  background-color: #333;  /* Fondo de los elementos destacados en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+  border: 2px solid #ffff00;  /* Borde amarillo */
+}
+
+body.high-contrast .services-item {
+  background-color: #333; /* Fondo negro para las tarjetas de servicios */
+  color: #ffff00; /* Texto en amarillo */
+  border: 2px solid #ffff00; /* Borde amarillo */
+}
+
+body.high-contrast h1, 
+body.high-contrast h3, 
+body.high-contrast h4, 
+body.high-contrast h5, 
+body.high-contrast h6 {
+  color: #333; /* Títulos en amarillo */
+}
+
+body.high-contrast h2{
+  color: #ffff00; /* Títulos en amarillo */
+}
+
+body.high-contrast #errorMessage {
+  color: #be1313; /* Títulos en amarillo */
+}
+
+
+body.high-contrast .footer {
+  background-color: #333;  /* Fondo del pie de página en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+}
+
+body.high-contrast p, 
+body.high-contrast .featured-item p, 
+body.high-contrast .services-item p, 
+body.high-contrast .services-item h2 {
+  color: #ffff00;  /* Texto general en amarillo */
+}
+
+/* Asegura que el texto de los botones también sea amarillo */
+body.high-contrast button {
+  color: #ffff00; /* Texto en amarillo para los botones */
+}
+
+body.high-contrast label {
+  color: #ffff00;  /* Texto de las etiquetas en amarillo */
+}
+body.high-contrast .filter-bar{
+  background-color: #333;
+  color: #ffff00;
+
+}
+
+body.high-contrast .filter-bar select{
+  border: 2px solid #ffff00 ;
+  color: #0c0c03;
+}
+
+body.high-contrast .filter-bar input{
+  border: 2px solid #ffff00 ;
+  color: #0c0c03;
+}
+
+body.high-contrast .featured-section{
+  background: linear-gradient(135deg, #ffffff, #2d6400);
+}
+
+/* Modo alto contraste */
+body.high-contrast {
+  background: linear-gradient(135deg, #ffffff, #2d6400) !important; /* Fondo en modo alto contraste */
+  color: #fff;
+  min-height: 100vh;
+}
+
+body.high-contrast .change-language-label {
+  color: #ffff00 !important; /* Texto en amarillo en modo alto contraste */
+}
+
+body.high-contrast table {
+  background-color: #000000; /* Fondo de la tabla en negro para alto contraste */
+  border: 2px solid #ffff00; /* Borde de la tabla en amarillo */
+}
+
+body.high-contrast th {
+  background-color: #000000; /* Fondo de encabezados en negro */
+  color: #ffff00; /* Texto de encabezados en amarillo */
+}
+
+body.high-contrast td {
+  background-color: #1a1a1a; /* Fondo de celdas en gris oscuro */
+  color: #ffffff; /* Texto de celdas en blanco */
+  border-bottom: 1px solid #ffff00; /* Borde de celdas en amarillo */
+}
+
+body.high-contrast tr:nth-child(even) {
+  background-color: #333333; /* Alterna filas en gris más claro */
+}
+
+body.high-contrast tr:hover {
+  background-color: #444444; /* Fondo de fila al pasar el cursor */
+}
+
+
+
+/* Estilo del botón de accesibilidad */
+.accessibility-button {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  background-color: #004f4f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+  z-index: 9999;
+}
+
+body.high-contrast .accessibility-button {
+  background-color: #ffff00;  /* Botón de accesibilidad en amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+
+/* Ajustes para el panel de accesibilidad */
+.accessibility-panel {
+  width: 300px;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  top: 50px;
+  right: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+body.high-contrast .accessibility-panel {
+  background-color: #333;
+}
+
+.accessibility-panel h2 {
+  margin-top: 0;
+}
+
+.accessibility-panel .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.accessibility-option input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.accessibility-option label {
+  font-size: 14px;
+}
+
+.content-size {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.content-size span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.content-size button {
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.reset-btn, .hide-btn {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: none;
+  color: #4a90e2;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.declaration-link {
+  text-align: center;
+}
+
+.declaration-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.reserva-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.reserva-item p {
+  margin: 5px 0;
+}

@@ -8,13 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="Mini-Logo.png" type="image/x-icon">
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <img src="logo.jpg" alt="Logo de Roommatch">
-        </div>
+        <a href="Propietario.html">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace al inicio del sitio" tabindex="0">
+            </div>
+        </a>
 
         <nav>
             <ul>
@@ -49,7 +52,7 @@
 
     <main>
         <div class="form-container">
-            <h2>Subir Imagen de Alojamiento</h2>
+            <h1>Subir Imagen de Alojamiento</h1>
             <form id="uploadForm" aria-labelledby="uploadForm-description">
                 <p id="uploadForm-description">Formulario para subir una imagen de un alojamiento específico</p>
                 
@@ -76,24 +79,21 @@
         
             <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-labelledby="accessibility-panel-title">
                 <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
-                <h2 id="accessibility-panel-title">Opciones de Accesibilidad</h2>
+                <h2 id="accessibility-panel-title">Accesibilidad</h2>
                 
                 <div class="accessibility-option">
                     <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
                     <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
-                    <small class="sr-only">Atenúa el color y elimina los parpadeos</small>
                 </div>
                 
                 <div class="accessibility-option">
                     <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
                     <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
-                    <small class="sr-only">Mejora las imágenes de los sitios web</small>
                 </div>
                 
                 <div class="accessibility-option">
                     <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
                     <label for="blindness-mode">Modo para personas con ceguera</label>
-                    <small class="sr-only">Permite usar el sitio con tu lector de pantalla</small>
                 </div>
                 
                 <div class="content-size">

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Nueva Habitación</title>
-    <link rel="stylesheet" href="styless.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
@@ -14,91 +13,122 @@
 
     <header>
         <div class="logo">
-            <img src="logo.jpg" alt="Logo de Roommatch">
+            <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logotipo de Roommatch, plataforma de búsqueda de alojamiento">
         </div>
         <div class="user-options">
             <div class="user-icon">
-                <img src="usericon.png" alt="Ícono de Usuario">
+                <img src="usericon.png" alt="Ícono de Usuario" aria-label="Ícono de perfil de usuario">
             </div>
             <form id="language-form">
-                <label for="language-select">Change language:</label>
-                <select id="language-select">
+                <label for="language-select">Cambiar idioma:</label>
+                <select id="language-select" aria-label="Selector de idioma">
                     <option value="español">Español</option>
                     <option value="english">English</option>
                 </select>
-                <button type="button" id="change-language-button">Change</button>
+                <button type="button" id="change-language-button" aria-label="Botón para cambiar el idioma seleccionado">Cambiar</button>
             </form>
         </div>
     </header>
 
+<main> 
     <h1>Registrar Nueva Habitación</h1>
-    <form id="alojamientoForm">
+    <form id="alojamientoForm" aria-label="Formulario para registrar una nueva habitación">
         <div class="form-group">
             <label for="nombre">Nombre del Alojamiento:</label>
-            <input type="text" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" name="nombre" required aria-label="Campo para ingresar el nombre del alojamiento">
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción:</label>
-            <input type="text" id="descripcion" name="descripcion" required>
+            <input type="text" id="descripcion" name="descripcion" required aria-label="Campo para ingresar una descripción del alojamiento">
         </div>
         <div class="form-group">
             <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion" required>
+            <input type="text" id="direccion" name="direccion" required aria-label="Campo para ingresar la dirección del alojamiento">
         </div>
         <div class="form-group">
-
             <label for="ciudad">Ciudad:</label>
-            <select id="ciudad" name="ciudad" required>
+            <select id="ciudad" name="ciudad" required aria-label="Selector de ciudad">
                 <option value="">Elige</option>
                 <option value="Bogotá">Bogotá</option>
             </select>
         </div>
         <div class="form-group">
             <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" required>
+            <input type="number" id="precio" name="precio" required aria-label="Campo para ingresar el precio de la habitación en moneda local">
         </div>
         <div class="form-group">
             <label for="idPropietario">ID del Propietario:</label>
-            <input type="text" id="idPropietario" label="idPropietario" name="idPropietario" pattern="\d*" required>
+            <input type="text" id="idPropietario" name="idPropietario" pattern="\d*" required aria-label="Campo para ingresar el número de identificación del propietario">
         </div>
         <div class="form-group">
             <label for="tipoAlojamiento">Tipo de Alojamiento:</label>
-            <select id="tipoAlojamiento" name="tipoAlojamiento" required>
+            <select id="tipoAlojamiento" name="tipoAlojamiento" required aria-label="Selector del tipo de alojamiento">
                 <option value="">Elige</option>
                 <option value="1">Habitación</option>
-                <option value="2">Apartamentos</option>
+                <option value="2">Apartamento</option>
                 <option value="3">Apartaestudio</option>
             </select>
         </div>
         <div class="form-group flex-row"> 
             <label for="tieneLavanderia">¿Tiene Lavandería?</label>
-            <input type="checkbox" id="tieneLavanderia" name="tieneLavanderia">
+            <input type="checkbox" id="tieneLavanderia" name="tieneLavanderia" aria-label="Marcar si el alojamiento cuenta con servicio de lavandería">
         </div>
         <div class="form-group flex-row">
             <label for="tieneRoomie">¿Tiene Roomie?</label>
-            <input type="checkbox" id="tieneRoomie" name="tieneRoomie">
+            <input type="checkbox" id="tieneRoomie" name="tieneRoomie" aria-label="Marcar si el alojamiento permite compartir con un compañero de habitación">
         </div>
         <div class="form-group flex-row">
             <label for="tieneParqueaderoBicicleta">¿Tiene Parqueadero para Bicicleta?</label>
-            <input type="checkbox" id="tieneParqueaderoBicicleta" name="tieneParqueaderoBicicleta">
+            <input type="checkbox" id="tieneParqueaderoBicicleta" name="tieneParqueaderoBicicleta" aria-label="Marcar si el alojamiento cuenta con parqueadero para bicicletas">
         </div>
-     <button type="submit">Enviar</button>   
-
+        <button type="submit" aria-label="Enviar el formulario para registrar una nueva habitación">Enviar</button>   
     </form>    
+
+    <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
     
-    <footer class="footer">
-        <div class="contact-info">
-            <p tabindex="0">Contáctanos</p>
-            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+    <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-label="Panel de opciones de accesibilidad">
+        <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
+        <h2>Accesibilidad</h2>
+        <div class="accessibility-option">
+            <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
+            <label for="epilepsy-mode">Modo seguro para la epilepsia<br><small>Atenúa el color y elimina los parpadeos</small></label>
         </div>
-        <div class="policies">
-            <p tabindex="0">Políticas</p>
-            <p tabindex="0">Tratamiento de datos</p>
-            <p tabindex="0">Política de privacidad</p>
+        <div class="accessibility-option">
+            <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
+            <label for="visual-disability-mode">Modo para personas con discapacidad visual<br><small>Mejora las imágenes de los sitios web</small></label>
         </div>
-    </footer>
+        <div class="accessibility-option">
+            <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
+            <label for="blindness-mode">Modo de ceguera<br><small>Permite usar el sitio con tu lector de pantalla</small></label>
+        </div>
+        <div class="content-size">
+            <span>Tamaño del contenido</span>
+            <button onclick="decreaseFontSize()" aria-label="Disminuir el tamaño de la fuente">-</button>
+            <span id="font-size-label">Predeterminado</span>
+            <button onclick="increaseFontSize()" aria-label="Aumentar el tamaño de la fuente">+</button>
+        </div>
+        <button class="reset-btn" onclick="resetSettings()" aria-label="Restablecer configuración de accesibilidad">Restablecer configuración</button>
+        <button class="hide-btn" onclick="hidePanel()" aria-label="Ocultar panel de accesibilidad para siempre">Ocultar para siempre</button>
+        <div class="declaration-link">
+            <a href="#" aria-label="Enlace a la declaración de accesibilidad">Declaración de Accesibilidad</a>
+        </div>
+    </div>
+</main> 
     
-    <script src="Alojamiento.js" defer></script> 
+<footer class="footer">
+    <div class="contact-info">
+        <p tabindex="0" aria-label="Información de contacto">Contáctanos</p>
+        <p tabindex="0" aria-label="Correo de contacto de Roommatch">Roommatch@getyourhome.com</p>
+        <p tabindex="0" aria-label="Número de contacto de Roommatch">3232353608</p>
+    </div>
+    <div class="policies">
+        <p tabindex="0" aria-label="Enlace a políticas">Políticas</p>
+        <p tabindex="0" aria-label="Enlace al tratamiento de datos">Tratamiento de datos</p>
+        <p tabindex="0" aria-label="Enlace a política de privacidad">Política de privacidad</p>
+    </div>
+</footer>
+    
+<script src="Alojamiento.js" defer></script> 
 
 </body>
 </html>

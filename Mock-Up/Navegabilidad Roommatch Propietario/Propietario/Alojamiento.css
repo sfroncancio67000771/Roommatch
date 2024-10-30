@@ -118,16 +118,6 @@ header {
   opacity: 1; /* Mostrar el menú */
 }
 
-/* Mejoras para pantallas pequeñas */
-@media (max-width: 768px) {
-  .user-icon {
-    width: 35px;
-    height: 35px;
-  }
-  .logout-option {
-    width: 140px; /* Ajustar tamaño en pantallas pequeñas */
-  }
-}
 
 /* Estilos para botones */
 #change-language-button, #login-button {
@@ -221,25 +211,30 @@ h1, h2 {
   color: #005f5f;
 }
 
-/*Para las tablas*/
+/* Estilos para la tabla */
 table {
-  width: 90%; /* Cambia el ancho a un porcentaje menor para dar espacio a los lados */
-  max-width: 1200px; /* Opcional: establece un ancho máximo */
-  margin: 20px auto 40px auto; /* Centra la tabla y añade espacio arriba y abajo */
-  border-collapse: collapse;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+  margin: 20px auto auto auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 2px solid #0a5f63;
+  border-radius: 10px;
 }
 
-th, td {
-  padding: 10px;
+th,
+td {
+  padding: 12px;
   text-align: left;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #346466;
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #0a5f63;
   color: white;
+  font-weight: bold;
 }
 
 tr:nth-child(even) {
@@ -247,13 +242,9 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-  background-color: #f1f1f1;
+  background-color: #e1f7e1;
 }
 
-.error {
-  color: red;
-  font-weight: bold;
-}
 
 /* Área de carga de archivos */
 .upload-area {
@@ -426,8 +417,6 @@ footer p {
 }
 
 
-
-
 /* Estilos generales para pantallas pequeñas (celulares) */
 @media (max-width: 480px) {
   body {
@@ -536,75 +525,73 @@ footer p {
    }
 }
 
-
-
 /* Estilos para pantallas de tamaño tablet (entre 481px y 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   header {
-    padding: 15px; /* Ajustar padding en el header */
+    padding: 15px;
   }
   
   .language-dropdown {
-    padding: 15px; /* Agregar padding */
-    margin: 5px; /* Agregar margen */
-    display: flex; /* Asegurar que sea un flex container */
-    flex-direction: column; /* Orientación vertical */
-    align-items: flex-start; /* Alinear elementos al inicio */
-    gap: 5px; /* Espaciado entre los elementos */
-    width: 100%; /* Asegurar que ocupe todo el ancho disponible */
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
   }
 
   .language-dropdown select {
-    width: 100%; /* Asegurar que el select ocupe todo el ancho */
-    font-size: 16px; /* Mantener el tamaño de fuente */
-    padding: 5px 10px; /* Padding en el select */
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid #005f5f; /* Bordes de color */
-    background-color: #f8f8f8; /* Fondo del select */
-    color: #005f5f; /* Color del texto */
-    cursor: pointer; /* Cursor de puntero al pasar sobre el select */
+    width: 100%;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #005f5f;
+    background-color: #f8f8f8;
+    color: #005f5f;
+    cursor: pointer;
   }
 
   .language-dropdown select:focus {
-    outline: 2px solid #005f5f; /* Resaltar el select al estar enfocado */
+    outline: 2px solid #005f5f;
   }
 
   .user-options {
-    gap: 20px; /* Espacio intermedio entre opciones de usuario */
+    gap: 20px;
   }
 
   .logo img {
-    max-width: 140px; /* Tamaño del logo para tablet */
+    max-width: 140px;
   }
 
   form {
-    margin: 30px auto; /* Margen en el formulario */
-    padding: 20px; /* Padding en el formulario */
+    margin: 30px auto;
+    padding: 20px;
   }
 
   .form-group {
-    flex-direction: row; /* Mantener fila para el grupo de formularios */
+    flex-direction: row;
   }
   .form-group {
-    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    flex-direction: column;
   }
   .error-message {
-    width: 100%; /* Asegura que el mensaje ocupe todo el ancho del contenedor */
+    width: 100%;
   }
 
   button[type="submit"] {
-    font-size: 18px; /* Tamaño de la fuente del botón */
-    padding: 12px; /* Ajustar padding del botón */
+    font-size: 18px;
+    padding: 12px;
   }
 
   h1, h2 {
-    font-size: 28px; /* Tamaño de títulos para tablet */
+    font-size: 28px;
   }
 
-  .footer{
+  .footer {
     display: flex;
     flex-direction: column;
-   }
+  }
 }
 
 /* Estilos para pantallas grandes (16 pulgadas o más) */
@@ -645,8 +632,9 @@ footer p {
    }
 }
 
+
 /* boton accesibilidad */
-/* Modo normal: Cambia el color del texto "Change language" a negro */
+
 .change-language-label {
   color: #000 !important;  /* Texto negro en modo normal */
 }
@@ -698,8 +686,7 @@ body.high-contrast .services-item {
   border: 2px solid #ffff00; /* Borde amarillo */
 }
 
-body.high-contrast h1, 
-body.high-contrast h2, 
+body.high-contrast h1,  
 body.high-contrast h3, 
 body.high-contrast h4, 
 body.high-contrast h5, 
@@ -709,14 +696,13 @@ body.high-contrast h6 {
 
 body.high-contrast .footer {
   background-color: #333;  /* Fondo del pie de página en gris oscuro */
-  color: #ffff00;  /* Texto en amarillo */
 }
 
 body.high-contrast p, 
 body.high-contrast .featured-item p, 
 body.high-contrast .services-item p, 
-body.high-contrast .services-item h2 {
-  color: #333;  /* Texto general en amarillo */
+body.high-contrast h2 {
+  color: #ffff00;  /* Texto general en amarillo */
 }
 
 /* Asegura que el texto de los botones también sea amarillo */
@@ -751,6 +737,40 @@ body.high-contrast .featured-section{
   background: linear-gradient(135deg, #ffffff, #2d6400);
 }
 
+
+body.high-contrast table {
+  background-color: #000000; /* Fondo de la tabla en negro para alto contraste */
+  border: 2px solid #ffff00; /* Borde de la tabla en amarillo */
+}
+
+body.high-contrast th {
+  background-color: #000000; /* Fondo de encabezados en negro */
+  color: #ffff00; /* Texto de encabezados en amarillo */
+}
+
+body.high-contrast td {
+  background-color: #1a1a1a; /* Fondo de celdas en gris oscuro */
+  color: #ffffff; /* Texto de celdas en blanco */
+  border-bottom: 1px solid #ffff00; /* Borde de celdas en amarillo */
+}
+
+body.high-contrast tr:nth-child(even) {
+  background-color: #333333; /* Alterna filas en gris más claro */
+}
+
+body.high-contrast tr:hover {
+  background-color: #444444; /* Fondo de fila al pasar el cursor */
+}
+
+/* Modo alto contraste */
+body.high-contrast header nav ul li a {
+  color: #ffff00; /* Texto en amarillo para alto contraste */
+}
+
+body.high-contrast header nav ul li a:hover {
+  color: #000000; /* Texto negro al hacer hover */
+  background-color: #ffff00; /* Fondo amarillo al hacer hover */
+}
 
 /* Estilo del botón de accesibilidad */
 .accessibility-button {

@@ -179,6 +179,11 @@ img {
     margin-bottom: 20px;
 }
 
+#mensajeExito {
+    color: green; /* Color verde */
+    text-align: center; /* Centrado de texto */
+}
+
 /* Media Queries for laptops */
 @media (max-width: 1024px) {
     .container {
