@@ -16,23 +16,23 @@
         <div class="container">
             <!-- Primera columna: Logo e imagen -->
             <div class="logo-container">
-                <h1><img src="logo.jpg" alt="Logo de la empresa"></h1>
-                <h2>Registro De Usuario</h2>
+                <img src="logo.jpg" alt="Logo de la empresa" role="img" aria-label="Logo de Roommatch">
+                <h1>Registro de Usuario</h1>
             </div>
 
             <!-- Segunda columna: Formulario -->
             <div class="form-container">
-                <form id="miFormulario">
+                <form id="miFormulario" aria-labelledby="Registro de Usuario">
                     <!-- Contenedor de las dos columnas -->
                     <div class="row">
                         <!-- Primera columna -->
                         <div class="column">
                             <div class="input-container">
-                                <input type="text" id="nombre" required>
+                                <input type="text" id="nombre" required aria-required="true">
                                 <label for="nombre">Nombre Completo</label>
                             </div>
                             <div class="input-container">
-                                <input type="password" id="contraseña" required>
+                                <input type="password" id="contraseña" required aria-required="true">
                                 <label for="contraseña">Contraseña</label>
                             </div>
                         </div>
@@ -40,11 +40,11 @@
                         <!-- Segunda columna -->
                         <div class="column">
                             <div class="input-container">
-                                <input type="text" id="telefono" onkeypress="validarNumero(event)" required>
+                                <input type="tel" id="telefono" onkeypress="validarNumero(event)" required aria-required="true">
                                 <label for="telefono">Teléfono</label>
                             </div>
                             <div class="input-container">
-                                <input type="password" id="confirmarContraseña" required>
+                                <input type="password" id="confirmarContraseña" required aria-required="true">
                                 <label for="confirmarContraseña">Confirmar Contraseña</label>
                             </div>
                         </div>
@@ -52,31 +52,79 @@
 
                     <!-- Fila de selección de rol (ambas columnas) -->
                     <div class="input-container full-width">
-                            <select id="role" onchange="updateFields()" required>
-                                <option value="" disabled selected>...</option>
-                                <option value="estudiante">Estudiante</option>
-                                <option value="propietario">Propietario</option>
-                            </select>
-                            <label for="role">Selecciona una opción</label>
-                        
+                        <label for="role">Selecciona tu rol:</label>
+                        <select id="role" onchange="updateFields()" required aria-required="true">
+                            <option value="" disabled selected>Selecciona un rol</option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="propietario">Propietario</option>
+                        </select>
                     </div>
 
                     <!-- Campos dinámicos -->
-                    <div id="dynamic-fields" class="full-width"></div>
+                    <div id="dynamic-fields" class="full-width" aria-live="polite"></div>
 
                     <!-- Botón de envío -->
                     <div class="full-width">
                         <button type="submit">Registrarse</button>
                     </div>
 
-                    <div id="respuesta"></div>
+                    <div id="respuesta" aria-live="assertive" role="alert"></div>
                 </form>
             </div>
         </div>
+
+
+        <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
+
+<!-- Panel de Accesibilidad Unificado -->
+<div class="accessibility-panel" id="accessibility-panel" style="display:none;" role="dialog" aria-labelledby="accessibility-panel-title">
+    <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
+    <h2 id="accessibility-panel-title">Opciones de Accesibilidad</h2>
+    
+    <div class="accessibility-option">
+        <input type="checkbox" id="epilepsy-mode" aria-describedby="epilepsy-mode-desc">
+        <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
+        <small id="epilepsy-mode-desc"></small>
+    </div>
+    <div class="accessibility-option">
+        <input type="checkbox" id="visual-disability-mode" aria-describedby="visual-disability-desc">
+        <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
+        <small id="visual-disability-desc"></small>
+    </div>
+    <div class="accessibility-option">
+        <input type="checkbox" id="blindness-mode" aria-describedby="blindness-mode-desc">
+        <label for="blindness-mode">Modo para ceguera</label>
+        <small id="blindness-mode-desc"></small>
+    </div>
+    
+    <div class="content-size">
+        <span>Tamaño del contenido</span>
+        <button onclick="decreaseFontSize()" aria-label="Disminuir tamaño de fuente">-</button>
+        <span id="font-size-label">Predeterminado</span>
+        <button onclick="increaseFontSize()" aria-label="Aumentar tamaño de fuente">+</button>
+    </div>
+    
+    <button class="reset-btn" onclick="resetSettings()" aria-label="Restablecer configuración de accesibilidad">Restablecer configuración</button>
+    <button class="hide-btn" onclick="hidePanel()" aria-label="Ocultar panel de accesibilidad permanentemente">Ocultar para siempre</button>
+    
+    <div class="declaration-link">
+        <a href="#" aria-label="Leer declaración de accesibilidad">Declaración de Accesibilidad</a>
+    </div>
+
+    <!-- Formulario para cambiar el idioma -->
+    <form id="language-form" aria-label="Formulario para cambiar el idioma">
+        <label class="change-language-label" for="language-select">Cambiar idioma:</label>
+        <select id="language-select" aria-label="Selecciona un idioma">
+            <option value="español">Español</option>
+            <option value="english">English</option>
+        </select>
+        <button type="button" id="change-language-button" aria-label="Cambiar idioma seleccionado">Cambiar</button>
+    </form>
+</div>
+
     </main>
 
-    <footer>
-    </footer>
+    <footer> </footer>
 
     <script src="register.js" defer></script>
 </body>

@@ -13,57 +13,89 @@
 <body>
 
     <header>
-
         <div class="logo">
-            <img src="logo.jpg" alt="Logo de Roommatch">
+            <img src="logo.jpg" alt="Logo de Roommatch, servicio para conectar propietarios e inquilinos de habitaciones" aria-label="Logo de Roommatch">
         </div>
-	
-		<nav>
+        
+        <nav role="navigation" aria-label="Menú principal de navegación">
             <ul>
-                <li><a href="Propietario.html" class="active">Inicio</a></li>
-                <li><a href="admininmuebles.html">Administrar Inmuebles</a></li>
-                <li><a href="historialhabitaciones.html">Historial de Habitaciones</a></li>
-                <li><a href="mensajes.html">Mensajes</a></li>
-                <li><a href="Alojamiento.html">Publicar Inmuebles</a></li>
+                <li><a href="Propietario.html" class="active" aria-label="Ir a la página de inicio">Inicio</a></li>
+                <li><a href="admininmuebles.html" aria-label="Ir a la página para administrar inmuebles">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html" aria-label="Ver el historial de habitaciones gestionadas">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html" aria-label="Ir a la página de mensajes">Mensajes</a></li>
+                <li><a href="Alojamiento.html" aria-label="Ir a la página para publicar inmuebles">Publicar Inmuebles</a></li>
             </ul>
         </nav>
+
         <div class="user-options">
             <div class="user-icon-container">
-            
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon">
-                </a>
-                <div class="logout-option">
-                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html">Cerrar Sesión</a>
-                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Icono de usuario" class="user-icon" aria-label="Icono de perfil de usuario">
             </div>
-            
-            <form id="language-form" aria-label="language-form">
-                <label class="change-language-label" for="language-select">Change language:</label>
-                <select id="language-select" aria-label="Select a language">
+
+            <div class="logout-option">
+                <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html" aria-label="Cerrar sesión y salir de la cuenta">Cerrar Sesión</a>
+            </div>
+
+            <form id="language-form" aria-label="Formulario para cambiar el idioma del sitio web">
+                <label class="change-language-label" for="language-select">Cambiar idioma:</label>
+                <select id="language-select" aria-label="Seleccionar idioma">
                     <option value="español">Español</option>
                     <option value="english">English</option>
                 </select>
-                <button type="button" id="change-language-button">Change</button>
+                <button type="button" id="change-language-button" aria-label="Aplicar cambio de idioma">Cambiar</button>
             </form>
         </div>
     </header>
 
-    <h1>Historial de Habitaciones</h1>
-    <p>Aquí puedes ver el historial de las habitaciones gestionadas.</p>
+    <main>
+        <h1 tabindex="0" aria-label="Título de la página, historial de habitaciones">Historial de Habitaciones</h1>
+        <p tabindex="0" aria-label="Descripción, aquí puedes ver el historial de habitaciones que has gestionado">Aquí puedes ver el historial de las habitaciones gestionadas.</p>
+        <button id="accessibility-button" class="accessibility-button" aria-label="Opciones de accesibilidad">⚙️</button>
 
-    <footer class="footer">
+        <!-- Panel de Accesibilidad Unificado -->
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;">
+            <button class="close-btn" onclick="closePanel()">✖</button>
+            <h2>Accesibilidad</h2>
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia<br><small>Atenúa el color y elimina los parpadeos</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual<br><small>Mejora las imágenes de los sitios web</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode">
+                <label for="blindness-mode">Modo de ceguera<br><small>Permite usar el sitio con tu lector de pantalla</small></label>
+            </div>
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()">+</button>
+            </div>
+            <button class="reset-btn" onclick="resetSettings()">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()">Ocultar para siempre</button>
+            <div class="declaration-link">
+                <a href="#">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+   
+    </main>
+
+    <footer class="footer" role="contentinfo" aria-label="Información de contacto y políticas de Roommatch">
         <div class="contact-info">
-            <p tabindex="0">Contáctanos</p>
-            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+            <p tabindex="0" aria-label="Sección de contacto">Contáctanos</p>
+            <p tabindex="0" aria-label="Correo electrónico y número de contacto">Roommatch@getyourhome.com<br>3232353608</p>
         </div>
         <div class="policies">
-            <p tabindex="0">Políticas</p>
-            <p tabindex="0">Tratamiento de datos</p>
-            <p tabindex="0">Política de privacidad</p>
+            <p tabindex="0" aria-label="Enlaces a políticas del sitio">Políticas</p>
+            <p tabindex="0" aria-label="Tratamiento de datos personales">Tratamiento de datos</p>
+            <p tabindex="0" aria-label="Política de privacidad de la información">Política de privacidad</p>
         </div>
     </footer>
 
-    <script src="Alojamiento.js" defer></script> 
+    <script src="script.js" defer></script> 
 
 </body>
 </html>

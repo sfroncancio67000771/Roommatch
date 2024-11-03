@@ -283,6 +283,7 @@ input:focus, select:focus {
   .form-group {
     margin-bottom: 15px; /* Aumentar margen inferior */
   }
+  
   .footer{
     display: flex;
     flex-direction: column;
