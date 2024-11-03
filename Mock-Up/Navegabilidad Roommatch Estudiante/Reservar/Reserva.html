@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nueva Habitación</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Reserva.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <div class="user-options">
+            <div class="user-icon">
+                <img src="usericon.png" alt="Ícono de Usuario">
+            </div>
+            <form id="language-form">
+                <label for="language-select">Change language:</label>
+                <select id="language-select">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+
+    <h1>Haz una reserva con nosotros</h1>
+    <form id="reservasForm">
+        <div class="form-group">
+            <label for="idreserva">Numero de tu reserva:</label>
+            <input type="number" id="idreserva" name="idreserva" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Tu correo electronico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="fechafin">Dirección:</label>
+            <input type="datetime-local" id="fechafin" name="fechafin" required>
+        </div>
+        <div class="form-group">
+            <label for="fechainicio">Dirección:</label>
+            <input type="datetime-local" id="fechainicio" name="fechainicio" required>
+        </div>
+        <div class="form-group">
+            <label for="idalojamiento">ID del Propietario:</label>
+            <input type="number" id="idalojamiento" label="idalojamiento" name="idalojamiento" required>
+        </div>
+        <div class="form-group">
+            <label for="idestado">ID del Propietario:</label>
+            <input type="number" id="idestado" label="idestado" name="idestado" required>
+        </div>
+        <div class="form-group">
+            <label for="idestudiante">ID del Propietario:</label>
+            <input type="number" id="idestudiante" label="idestudiante" name="idestudiante" required>
+        </div>
+        
+     <button type="submit">Enviar</button>   
+
+    </form>    
+    
+    <button id="accessibility-button" class="accessibility-button" aria-label="Opciones de accesibilidad">⚙️</button>
+
+        <!-- Panel de Accesibilidad Unificado -->
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;">
+            <button class="close-btn" onclick="closePanel()">✖</button>
+            <h2>Accesibilidad</h2>
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia<br><small>Atenúa el color y elimina los parpadeos</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual<br><small>Mejora las imágenes de los sitios web</small></label>
+            </div>
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode">
+                <label for="blindness-mode">Modo de ceguera<br><small>Permite usar el sitio con tu lector de pantalla</small></label>
+            </div>
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()">+</button>
+            </div>
+            <button class="reset-btn" onclick="resetSettings()">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()">Ocultar para siempre</button>
+            <div class="declaration-link">
+                <a href="#">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+
+    <footer class="footer">
+        <div class="contact-info">
+            <p tabindex="0">Contáctanos</p>
+            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0">Políticas</p>
+            <p tabindex="0">Tratamiento de datos</p>
+            <p tabindex="0">Política de privacidad</p>
+        </div>
+    </footer>
+    
+    <script src="Reserva.js" defer></script> 
+
+</body>
+</html>
