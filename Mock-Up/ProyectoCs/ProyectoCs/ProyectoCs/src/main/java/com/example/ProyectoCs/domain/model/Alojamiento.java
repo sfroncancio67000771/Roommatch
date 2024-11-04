@@ -61,4 +61,7 @@ public class Alojamiento {
         } else {
         }
     }
+
+    public void setImagenUrl(String path) {
+    }
 }

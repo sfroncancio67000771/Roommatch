@@ -31,4 +31,5 @@ public class AlojamientoDTO {
         this.tieneRoomie = tieneRoomie;
         this.tieneParqueaderoBicicleta = tieneParqueaderoBicicleta;
     }
+
 }

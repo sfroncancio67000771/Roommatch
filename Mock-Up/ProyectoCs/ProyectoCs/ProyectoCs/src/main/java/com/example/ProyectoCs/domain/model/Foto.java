@@ -9,6 +9,7 @@ import lombok.Data;
 public class Foto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Generar automáticamente el ID de foto
     @Column(name = "id_foto")
     private int idFoto;
 

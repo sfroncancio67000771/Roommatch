@@ -7,6 +7,7 @@ import com.example.ProyectoCs.domain.model.Alojamiento;
 import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface AlojamientoGateway {
     List<AlojamientoDTO> filtrarAlojamientos(double precioMin, double precioMax, String ciudad, boolean tieneLavanderia, boolean tieneRoomie, boolean tieneParqueaderoBicicleta);
@@ -20,4 +21,13 @@ public interface AlojamientoGateway {
     List<AlojamientoDTO> obtenerTodasLasHabitaciones();
 
     Alojamiento obtenerHabitacionPorTipo(int tipoAlojamientoId);
+    boolean existeAlojamiento(int idAlojamiento);
+
+    Optional<Alojamiento> obtenerUltimoAlojamiento();
+    List<Alojamiento> obtenerTodosLosAlojamientos();
+    Optional<Alojamiento> obtenerAlojamientoPorId(int idAlojamiento);
+
+    Optional<Alojamiento> obtenerAlojamientoPorId(Long id);
+
+    void actualizarAlojamiento(Alojamiento alojamiento);
 }

@@ -175,4 +175,34 @@ public class AlojamientoGatewayImpl implements AlojamientoGateway {
         return null;
     }
 
+    @Override
+    public boolean existeAlojamiento(int idAlojamiento) {
+        return alojamientoRepository.existsById(idAlojamiento); // Asumiendo que usas un repositorio JPA
+    }
+
+    @Override
+    public Optional<Alojamiento> obtenerUltimoAlojamiento() {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Alojamiento> obtenerTodosLosAlojamientos() {
+        return alojamientoRepository.findAll(); // Asegúrate de que esta línea funcione correctamente
+    }
+
+    @Override
+    public Optional<Alojamiento> obtenerAlojamientoPorId(int idAlojamiento) {
+        return alojamientoRepository.findByIdAlojamiento(idAlojamiento); // Usa el método correcto
+    }
+
+    @Override
+    public Optional<Alojamiento> obtenerAlojamientoPorId(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void actualizarAlojamiento(Alojamiento alojamiento) {
+
+    }
+
 }

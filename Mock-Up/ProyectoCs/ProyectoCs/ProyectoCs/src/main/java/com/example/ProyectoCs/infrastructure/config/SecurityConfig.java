@@ -16,9 +16,15 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/oauth2/**", "/api/v1/estudiantes/registrar",
-                                "/api/v1/propietarios/registrar", "/api/v1/propietarios/crearhab",
-                                "/api/v1/estudiantes/crear", "/api/v1/alojamiento/filtrar", "/error") // Permitir acceso a /error
+                        .requestMatchers("/", "/login", "/oauth2/**",
+                                "/api/v1/estudiantes/registrar",
+                                "/api/v1/propietarios/registrar",
+                                "/api/v1/propietarios/crearhab",
+                                "/api/v1/estudiantes/crear",
+                                "/api/v1/alojamiento/**", // Permitir todas las rutas bajo alojamiento
+                                "/api/v1/alojamiento/filtrar/**", // Permitir la ruta específica para filtrar alojamientos
+                                "/api/v1/fotos/**",
+                                "/error", "/public") // Aquí agrega la ruta que deseas que sea pública
                         .permitAll()
                         .anyRequest().authenticated() // Las demás rutas requieren autenticación
                 )

@@ -29,15 +29,14 @@ async function obtenerAlojamientos() {
         mostrarAlojamientos(alojamientos);
     } catch (error) {
         console.error('Error al obtener alojamientos:', error);
-        // Comentar la alerta para no mostrar un mensaje al usuario
-        // alert('No se pudieron cargar los alojamientos. Inténtalo de nuevo más tarde.');
+        // No mostrar una alerta al usuario
     }
 }
 
 // Función para mostrar alojamientos
 async function mostrarAlojamientos(alojamientos) {
     const container = document.getElementById('alojamientos-container');
-    container.innerHTML = '';
+    container.innerHTML = ''; // Limpiar el contenedor
 
     try {
         for (const alojamiento of alojamientos) {
@@ -66,7 +65,7 @@ async function mostrarAlojamientos(alojamientos) {
                 <h2>${alojamiento.nombreAlojamiento}</h2>
                 <p><strong>Descripción:</strong> ${alojamiento.descripcion}</p>
                 <p><strong>Ciudad:</strong> ${alojamiento.ciudad}</p>
-                <p><strong>Precio:</strong> <span class="precio">$${alojamiento.precio}</span></p>
+                <p><strong>Precio:</strong> <span class="precio">$${alojamiento.precio.toLocaleString()}</span></p>
                 <p><strong>Dirección:</strong> ${alojamiento.direccion}</p>
                 <div class="contact">
                     <button onclick="contactar('${alojamiento.idAlojamiento}')">Visualizar</button>
@@ -86,7 +85,7 @@ async function mostrarAlojamientos(alojamientos) {
 // Función para obtener detalles de la habitación
 async function obtenerDetallesHabitacion(idAlojamiento) {
     try {
-        const response = await fetch(BASE_URL + idAlojamiento);
+        const response = await fetch(`${BASE_URL}${idAlojamiento}`);
         if (!response.ok) {
             const errorDetails = await response.text();
             throw new Error(`Error ${response.status}: ${errorDetails}`);
@@ -134,20 +133,12 @@ async function mostrarDetalles(alojamiento) {
 
         // Configurar el evento para el botón de retorno
         document.getElementById('return-button').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Estudiante/Filtros/Pagina%20Principal.html';
+            window.location.href = 'http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Estudiante/Filtros/Pagina%20Estudiante.html';
         });
 
-        // Configurar el evento para el botón de contacto
-        const contactButton = document.getElementById('contact-button');
-        contactButton.addEventListener('click', function() {
-            // Crear el efecto de fade
-            const fadeElement = document.createElement('div');
-            fadeElement.classList.add('fade');
-            document.body.appendChild(fadeElement);
-            fadeElement.classList.add('show');
-
-            // Mostrar mensaje de alerta indicando que debe iniciar sesión
-            alert('Por favor, inicie sesión primero para poder contactar con el propietario.');
+        // Manejar el botón de contacto
+        document.getElementById('contact-button').addEventListener('click', function() {
+            window.open('http://127.0.0.1:5501/Reservar/Reserva.html', 'Reservar', 'width=600,height=400');
         });
 
     } catch (error) {
@@ -176,6 +167,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Cargar alojamientos al cargar la página
 window.onload = obtenerAlojamientos;
 
+
+
+
+
+document.head.appendChild(style);
 
 let originalContent = '';
 const subscriptionKey = 'be794794b3d24c829dada77ca1b831bf'; // Your subscription key
@@ -212,7 +208,7 @@ async function changeLanguage() {
       }
     }
   }
-
+  
 async function translateText(text, fromLanguage, toLanguage, subscriptionKey, endpoint, region) {
     const url = `${endpoint}/translate?api-version=3.0&from=${fromLanguage}&to=${toLanguage}`;
     const body = JSON.stringify([{ 'Text': text }]);
@@ -254,3 +250,5 @@ async function translateText(text, fromLanguage, toLanguage, subscriptionKey, en
     languageSelect.addEventListener('change', changeLanguage);
   }
   
+
+

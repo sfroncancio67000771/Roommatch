@@ -9,5 +9,4 @@ public class FotoDTO {
     private int idAlojamiento;
     private String url;
     private MultipartFile archivo;
-    }
-
+}

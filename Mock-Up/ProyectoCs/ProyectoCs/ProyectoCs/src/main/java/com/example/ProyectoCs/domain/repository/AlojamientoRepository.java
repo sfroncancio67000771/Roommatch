@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AlojamientoRepository extends JpaRepository<Alojamiento, Integer> {
     @Modifying
@@ -14,5 +15,5 @@ public interface AlojamientoRepository extends JpaRepository<Alojamiento, Intege
     @Query(value = "ALTER TABLE alojamiento DROP FOREIGN KEY FKcmv5pg5sr9sdyjpsxch9lv0vd", nativeQuery = true)
     void dropForeignKey();
     List<Alojamiento> findAll(); // Este método ya está disponible por herencia
-
+    Optional<Alojamiento> findByIdAlojamiento(int idAlojamiento);
 }
