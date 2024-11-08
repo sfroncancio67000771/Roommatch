@@ -87,16 +87,18 @@ async function changeLanguage() {
     const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Tu endpoint
     const region = 'southcentralus'; // Región
     
-    if (confirm('Do you want to change the language?')) { // Confirmación
+    if (confirm('Do you want to change the language?')) {
         if (selectedLanguage === 'english') {
             // Traduce el contenido de español a inglés
             const translatedText = await translateText(originalContent, 'es', 'en', subscriptionKey, endpoint, region);
             document.documentElement.innerHTML = translatedText; // Reemplaza el contenido con la traducción
+            localStorage.setItem('preferredLanguage', 'english'); // Guarda la preferencia en localStorage
             updateLanguageSelector('english');
             assignEventListeners(); // Reasignar event listeners después de la traducción
         } else if (selectedLanguage === 'español') {
             // Restaura el contenido original en español
             document.documentElement.innerHTML = originalContent;
+            localStorage.setItem('preferredLanguage', 'español'); // Guarda la preferencia en localStorage
             updateLanguageSelector('español');
             assignEventListeners(); // Reasignar event listeners después de restaurar el contenido
         }
@@ -171,6 +173,115 @@ inputs.forEach(input => {
 
 // Validar al enviar el formulario
 const form = document.getElementById("alojamientoForm");
+form.addEventListener("submit", function(event) {
+    let valid = true;
+    inputs.forEach(input => {
+        if (!input.value) {
+            valid = false;
+            input.classList.add("error");
+            input.classList.add("highlight"); // Agrega clase de iluminación
+            const message = input.parentElement.querySelector(".error-message");
+            message.textContent = "Este campo es obligatorio.";
+        } else {
+            input.classList.remove("highlight"); // Elimina clase de iluminación si hay valor
+        }
+    });
+    if (!valid) {
+        event.preventDefault(); // Evita el envío del formulario si hay errores
+    }
+});
+
+async function changeLanguage() {
+    const languageSelect = document.getElementById('language-select'); // Correcto elemento select
+    const selectedLanguage = languageSelect.value;
+    const subscriptionKey = '9yx7VrxVz43ZJOtegDLFrZtPFVplyExTIbao2LCzKDSeim2Y9yWrJQQJ99AJACLArgHXJ3w3AAAbACOG8B8A'; // Tu clave de suscripción
+    const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Tu endpoint
+    const region = 'southcentralus'; // Región
+    
+    if (confirm('Do you want to change the language?')) { // Confirmación
+        if (selectedLanguage === 'english') {
+            // Traduce el contenido de español a inglés
+            const translatedText = await translateText(originalContent, 'es', 'en', subscriptionKey, endpoint, region);
+            document.documentElement.innerHTML = translatedText; // Reemplaza el contenido con la traducción
+            updateLanguageSelector('english');
+            assignEventListeners(); // Reasignar event listeners después de la traducción
+        } else if (selectedLanguage === 'español') {
+            // Restaura el contenido original en español
+            document.documentElement.innerHTML = originalContent;
+            updateLanguageSelector('español');
+            assignEventListeners(); // Reasignar event listeners después de restaurar el contenido
+        }
+    }
+}
+
+async function translateText(text, fromLang, toLang, subscriptionKey, endpoint, region) {
+    const url = `${endpoint}/translate?api-version=3.0&from=${fromLang}&to=${toLang}`;
+    const body = JSON.stringify([{ 'Text': text }]);
+
+    const headers = {
+        'Ocp-Apim-Subscription-Key': subscriptionKey,
+        'Ocp-Apim-Subscription-Region': region,
+        'Content-Type': 'application/json'
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: body
+        });
+
+        const data = await response.json();
+
+        // Comprobando y extrayendo la traducción correcta
+        if (data && data[0] && data[0].translations && data[0].translations[0]) {
+            return data[0].translations[0].text; // Devuelve el texto traducido
+        } else {
+            console.error('Error en la respuesta de traducción:', data);
+            return text; // Si falla la traducción, devuelve el texto original
+        }
+    } catch (error) {
+        console.error('Error al traducir:', error);
+        return text; // Si falla la traducción, devuelve el texto original
+    }
+}
+
+function updateLanguageSelector(currentLanguage) {
+    const languageSelect = document.getElementById('language-select'); // Asegúrate de que este ID coincida
+
+    languageSelect.innerHTML = `
+        <option value="english">English</option>
+        <option value="español">Español</option>
+    `;
+    
+    languageSelect.value = currentLanguage;
+
+    // Agregar el event listener nuevamente ya que el DOM fue reemplazado
+    languageSelect.addEventListener('change', changeLanguage);
+}
+
+const input = document.querySelectorAll("input[required], select[required]");
+inputs.forEach(input => {
+    const message = document.createElement("span");
+    message.classList.add("error-message");
+    message.style.color = "red"; // Estilo para el mensaje de error
+    input.parentElement.appendChild(message);
+
+    input.addEventListener("blur", function() {
+        if (!this.value) {
+            this.classList.add("error");
+            this.classList.add("highlight"); // Agrega clase de iluminación
+            message.textContent = "Este campo es obligatorio.";
+        } else {
+            this.classList.remove("error");
+            this.classList.remove("highlight"); // Elimina clase de iluminación
+            message.textContent = ""; 
+        }
+    });
+});
+
+// Validar al enviar el formulario
+const Form = document.getElementById("alojamientoForm");
 form.addEventListener("submit", function(event) {
     let valid = true;
     inputs.forEach(input => {
