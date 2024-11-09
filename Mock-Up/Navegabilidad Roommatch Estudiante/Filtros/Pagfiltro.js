@@ -116,9 +116,9 @@ window.onunload = limpiarURLs;
 
 // Configuración de traducción
 let originalContent = '';
-const subscriptionKey = 'be794794b3d24c829dada77ca1b831bf'; // Tu clave de suscripción
+const subscriptionKey = '9yx7VrxVz43ZJOtegDLFrZtPFVplyExTIbao2LCzKDSeim2Y9yWrJQQJ99AJACLArgHXJ3w3AAAbACOG8B8A'; // Tu clave de suscripción
 const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Tu endpoint
-const region = 'eastus'; // Región
+const region = 'southcentralus'; // Región
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('change-language-button').addEventListener('click', changeLanguage);

@@ -178,9 +178,9 @@ window.onload = obtenerAlojamientos;
 
 
 let originalContent = '';
-const subscriptionKey = 'be794794b3d24c829dada77ca1b831bf'; // Your subscription key
+const subscriptionKey = '9yx7VrxVz43ZJOtegDLFrZtPFVplyExTIbao2LCzKDSeim2Y9yWrJQQJ99AJACLArgHXJ3w3AAAbACOG8B8A'; // Your subscription key
 const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Your endpoint
-const region = 'eastus'; // Region
+const region = 'southcentralus'; // Region
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('change-language-button').addEventListener('click', changeLanguage);

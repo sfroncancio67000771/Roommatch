@@ -2,17 +2,24 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f4ede3, #005f5f);
+  background: linear-gradient(135deg, #f4ede3, #30a7a7); /* Modo normal: degradado de blanco a azul */
   color: #333;
+  min-height: 100vh; /* Asegura que el cuerpo cubra toda la pantalla */
+}
+
+.logo img {
+  max-width: 150px;
 }
 
 header {
-  display: flex;
+  display: flex; /* Usa flexbox para alinear elementos horizontalmente */
+  justify-content: space-between; /* Espacia los elementos entre ellos */
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+  padding: 10px; /* Espaciado interno del encabezado */
+  background-color: #f8f8f8; /* Fondo del encabezado */
   flex-direction: row;
   flex-wrap: nowrap;
   position: sticky;
-  justify-content: space-between;
-  align-items: center;
   gap: 10px;
   padding: 20px 40px;
   background-color: #ffffff;
@@ -20,21 +27,20 @@ header {
   z-index: 50;
 }
 
-.logo img {
-  max-width: 150px;
-}
-
 .user-options {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+  display: flex; /* Alinea los elementos hijos en fila */
+  align-items: center; /* Alinea verticalmente al centro */
 }
 
-.user-icon img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.user-icon-container {
+  position: relative; /* Necesario para la posición del menú */
+  margin-right: 20px; /* Espacio entre el ícono y el formulario */
+}
+
+.user-icon {
+  width: 30px; /* Ajusta el tamaño según sea necesario */
+  height: 30px;
+  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
 }
 
 .language-dropdown {
@@ -58,6 +64,20 @@ header {
   outline: 2px solid #005f5f;
 }
 
+#change-language-button, #login-button {
+  background-color: #4e7a78;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+#change-language-button:hover, #login-button:hover {
+  background-color: #3e6d69;
+}
 
 h1, h2 {
   text-align: center;
@@ -65,7 +85,7 @@ h1, h2 {
 }
 
 /* Estilo del formulario */
-form {
+#alojamientoForm {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
@@ -360,43 +380,44 @@ input:focus, select:focus {
    }
 }
 
-/* Estilos para pantallas grandes (16 pulgadas o más) */
+/* Estilos para pantallas grandes (16 pulgadas o más) 
 @media (min-width: 769px) {
   header {
-    padding: 30px; /* Aumentar padding en el header */
+    padding: 30px; /* Aumentar padding en el header 
   }
 
   .user-options {
-    gap: 40px; /* Espacio intermedio entre opciones de usuario */
+    gap: 40px; /* Espacio intermedio entre opciones de usuario 
   }
 
   .logo img {
-    max-width: 150px; /* Tamaño del logo para pantallas grandes */
+    max-width: 150px; /* Tamaño del logo para pantallas grandes 
   }
 
   form {
-    margin: 50px auto; /* Margen en el formulario */
-    padding: 30px; /* Padding en el formulario */
+    margin: 50px auto; /* Margen en el formulario 
+    padding: 30px; /* Padding en el formulario 
   }
 
   .form-group {
-    flex-direction: row; /* Mantener fila para el grupo de formularios */
+    flex-direction: row; /* Mantener fila para el grupo de formularios
   }
 
   button[type="submit"] {
-    font-size: 20px; /* Tamaño de la fuente del botón */
-    padding: 15px; /* Ajustar padding del botón */
+    font-size: 20px; /* Tamaño de la fuente del botón 
+    padding: 15px; /* Ajustar padding del botón 
   }
 
   h1, h2 {
-    font-size: 32px; /* Tamaño de títulos para pantallas grandes */
+    font-size: 32px; /* Tamaño de títulos para pantallas grandes 
   }
 
   .footer{
     display: flex;
     flex-direction: column;
    }
-}
+} 
+*/
 
  /* boton accesibilidad */
 /* Modo normal: Cambia el color del texto "Change language" a negro */
