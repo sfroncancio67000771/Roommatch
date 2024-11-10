@@ -8,6 +8,8 @@ import com.example.ProyectoCs.domain.model.*;
 import com.example.ProyectoCs.domain.repository.AlojamientoRepository;
 import com.example.ProyectoCs.domain.repository.EstudianteRepository;
 import com.example.ProyectoCs.domain.repository.PropietarioRepository;
+import com.example.ProyectoCs.domain.repository.FotoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,16 +28,19 @@ public class AlojamientoGatewayImpl implements AlojamientoGateway {
     private final EstudianteRepository estudianteRepository;
     private final NotificationService notificationService;
     private final PropietarioRepository propietarioRepository;
+    private final FotoRepository fotoRepository;
 
     @Autowired
     public AlojamientoGatewayImpl(AlojamientoRepository alojamientoRepository,
                                   EstudianteRepository estudianteRepository,
                                   NotificationService notificationService,
-                                  PropietarioRepository propietarioRepository) {
+                                  PropietarioRepository propietarioRepository,
+                                  FotoRepository fotoRepository) {
         this.alojamientoRepository = alojamientoRepository;
         this.estudianteRepository = estudianteRepository;
         this.notificationService = notificationService;
         this.propietarioRepository = propietarioRepository;
+        this.fotoRepository = fotoRepository;
 
     }
 
@@ -203,6 +208,18 @@ public class AlojamientoGatewayImpl implements AlojamientoGateway {
     @Override
     public void actualizarAlojamiento(Alojamiento alojamiento) {
 
+    }
+
+    @Transactional
+    public boolean eliminarAlojamiento(Long id) {
+        Optional<Alojamiento> alojamientoOptional = alojamientoRepository.findById(Math.toIntExact(id));
+        if (alojamientoOptional.isPresent()) {
+            Alojamiento alojamiento = alojamientoOptional.get();
+            fotoRepository.deleteByAlojamiento(alojamiento);
+            alojamientoRepository.delete(alojamiento);
+            return true;
+        }
+        return false;
     }
 
 }

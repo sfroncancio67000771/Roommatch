@@ -30,4 +30,5 @@ public interface AlojamientoGateway {
     Optional<Alojamiento> obtenerAlojamientoPorId(Long id);
 
     void actualizarAlojamiento(Alojamiento alojamiento);
+    boolean eliminarAlojamiento(Long id);
 }

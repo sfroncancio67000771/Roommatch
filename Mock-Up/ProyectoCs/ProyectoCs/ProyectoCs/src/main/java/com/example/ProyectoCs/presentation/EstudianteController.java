@@ -2,6 +2,7 @@ package com.example.ProyectoCs.presentation;
 
 import com.example.ProyectoCs.application.dto.EstudianteDTO;
 import com.example.ProyectoCs.application.dto.ReservaDTO;
+import com.example.ProyectoCs.domain.model.Reserva;
 import com.example.ProyectoCs.infrastructure.gateway.EstudianteGateway;
 import com.example.ProyectoCs.infrastructure.gateway.ReservaGateway;
 import io.swagger.annotations.Api;
@@ -13,7 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -41,6 +44,12 @@ public class EstudianteController {
     public ResponseEntity<Map<String, String>> registrarEstudiante(@RequestBody EstudianteDTO estudianteDTO) {
         Map<String, String> response = new HashMap<>();
         try {
+            // Verificar que los datos estén completos (por ejemplo, correo y nombre)
+            if (estudianteDTO.getEmail() == null || estudianteDTO.getNombre() == null) {
+                response.put("error", "Faltan datos del estudiante");
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            }
+
             estudianteGateway.registrarEstudiante(estudianteDTO);
             response.put("mensaje", "Estudiante registrado exitosamente");
             return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -63,19 +72,22 @@ public class EstudianteController {
     public ResponseEntity<Map<String, String>> eliminarEstudiante(@PathVariable String email) {
         Map<String, String> response = new HashMap<>();
         try {
+            // Verificar si el estudiante existe antes de intentar eliminar
+            if (!estudianteGateway.estudianteExistente(email)) {
+                response.put("error", "Estudiante no encontrado");
+                return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+            }
             estudianteGateway.eliminarEstudiante(email);
             response.put("mensaje", "Estudiante eliminado exitosamente");
             return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (IllegalStateException e) {
-            response.put("error", e.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         } catch (MessagingException | jakarta.mail.MessagingException e) {
             response.put("error", "Error al enviar la notificación");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (IllegalStateException e) {
+            response.put("error", "No se pudo eliminar el estudiante: " + e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
-
-
 
     @ApiOperation(value = "Crear una reserva")
     @ApiResponses(value = {
@@ -89,7 +101,7 @@ public class EstudianteController {
         Map<String, String> response = new HashMap<>();
         try {
             // Validar si el correo electrónico del estudiante existe en la base de datos antes de crear la reserva
-            if (!estudianteGateway.estudianteExistente(reservaDTO.getEmailEstudiante())) {
+            if (reservaDTO.getEmailEstudiante() == null || !estudianteGateway.estudianteExistente(reservaDTO.getEmailEstudiante())) {
                 response.put("error", "El estudiante no está registrado");
                 return ResponseEntity.badRequest().body(response);
             }
@@ -104,9 +116,7 @@ public class EstudianteController {
             return ResponseEntity.badRequest().body(response);
         }
     }
-}
 
-/*
     @ApiOperation(value = "Cancelar una reserva por ID")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Reserva cancelada correctamente"),
@@ -124,4 +134,28 @@ public class EstudianteController {
             return ResponseEntity.badRequest().body(response);
         }
     }
-*/
+
+    @ApiOperation(value = "Obtener todas las reservas")
+    @GetMapping("/reservas")
+    public ResponseEntity<List<Reserva>> obtenerTodasLasReservas() {
+        List<Reserva> reservas = reservaGateway.obtenerTodasLasReservas();
+        if (reservas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(reservas);
+        }
+        return ResponseEntity.ok(reservas);
+    }
+
+    @ApiOperation(value = "Obtener reservas por alojamiento")
+    @GetMapping("/alojamiento/{idAlojamiento}")
+    public ResponseEntity<List<Reserva>> obtenerReservasPorHabitacion(@PathVariable Long idAlojamiento) {
+        try {
+            List<Reserva> reservas = reservaGateway.obtenerReservasPorHabitacion(idAlojamiento);
+            if (reservas.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+            }
+            return ResponseEntity.ok(reservas);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
+        }
+    }
+}

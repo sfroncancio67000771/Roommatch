@@ -10,7 +10,7 @@ public class EstadoHabitacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado_habitacion")
-    private int idEstadoHabitacion;
+    private Integer idEstadoHabitacion;
 
     @Column(name = "estado_habitacion")
     private String estadoHabitacion;

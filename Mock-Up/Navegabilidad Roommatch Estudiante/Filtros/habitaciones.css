@@ -134,31 +134,92 @@ nav ul.opciones li img {
 /* Contenedor principal de los alojamientos */
 .container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  grid-template-columns: repeat(5, 1fr); /* Ajustable para diferentes tamaños de pantalla */
   gap: 52px;
   padding: 20px;
 }
 
+.page {
+  aspect-ratio: 1/1; /* Relación de aspecto 1:1 (cuadrado) */
+  position: relative;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.page .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.alojamiento-item {
+  width: 100%;
+  max-width: 250px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.alojamiento-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.alojamiento-item .content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Estilo de cada tarjeta de alojamiento */
+/* Ajustar la tarjeta para evitar que toque el header y footer */
 .card {
   background: white;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s;
   height: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto; /* Añadir margen superior e inferior para evitar que toque el header y footer */
+  padding: 10px; /* Espaciado adicional dentro de la tarjeta */
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para la imagen */
+/* Ajustar la imagen dentro de la tarjeta */
 .card img {
   width: 100%;
   height: 200px;
@@ -167,15 +228,16 @@ nav ul.opciones li img {
   border-top-right-radius: 10px;
 }
 
-/* Contenido de la tarjeta */
+/* Ajustar el contenido de la tarjeta para que el texto no esté pegado a los bordes */
 .card-content {
   padding: 1.5rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  padding-left: 1rem; /* Añadir espaciado para que el texto no esté pegado a los bordes */
+  padding-right: 1rem; /* Añadir espaciado para que el texto no esté pegado a los bordes */
 }
 
-/* Título de la tarjeta */
 .card h2 {
   margin: 0 0 1rem 0;
   color: #333;
@@ -183,7 +245,6 @@ nav ul.opciones li img {
   font-weight: 600;
 }
 
-/* Párrafos dentro de la tarjeta */
 .card p {
   margin: 0.5rem 0;
   color: #666;
@@ -191,14 +252,13 @@ nav ul.opciones li img {
   line-height: 1.4;
 }
 
-/* Precio */
 .card .precio {
   color: #008080;
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-/* Botón de visualizar */
+/* Ajustar los botones dentro de la tarjeta */
 .card button {
   background-color: #008080;
   color: white;
@@ -215,23 +275,11 @@ nav ul.opciones li img {
   background-color: #006666;
 }
 
-/* Contenedor de contacto */
+/* Ajustar el contenido de contacto dentro de la tarjeta */
 .contact {
   margin-top: auto;
   padding: 1rem;
   text-align: center;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  #alojamientos-container {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      padding: 1rem;
-  }
-  
-  .card {
-      max-width: 100%;
-  }
 }
 
 .contact button {
@@ -248,7 +296,22 @@ nav ul.opciones li img {
   background-color: #0056b3;
 }
 
-/* Contenedor de la sección de destacados */
+
+.contact button {
+  background: #0a5f63;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact button:hover {
+  background-color: #0056b3;
+}
+
+/* Sección de destacados */
 .featured-section {
   display: flex;
   justify-content: center;
@@ -285,7 +348,7 @@ nav ul.opciones li img {
   color: #333;
 }
 
-/* Contenedor de la barra de filtros */
+/* Barra de filtros */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -330,16 +393,14 @@ nav ul.opciones li img {
   border-radius: 5px;
   background-color: #ffffff;
   color: #272a2a;
-  margin-right: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .filter-bar select:focus,
 .filter-bar input:focus {
-  border-color: #507b77;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-color: #4e7a78;
+  box-shadow: 0 0 6px rgba(78, 122, 120, 0.3);
 }
 
 /* Footer */

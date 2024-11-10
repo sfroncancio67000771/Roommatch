@@ -1,48 +1,6 @@
 assignEventListeners();
 checkVisualDisabilityMode();
 
-// Selecciona todos los elementos que se pueden arrastrar
-const draggables = document.querySelectorAll('.card');
-const container = document.querySelector('.overview-cards');
-
-// Añadir eventos de arrastrar a los elementos
-draggables.forEach(draggable => {
-    draggable.addEventListener('dragstart', () => {
-        draggable.classList.add('dragging');
-    });
-
-    draggable.addEventListener('dragend', () => {
-        draggable.classList.remove('dragging');
-    });
-});
-
-// Añadir eventos al contenedor para soltar los elementos
-container.addEventListener('dragover', e => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(container, e.clientY);
-    const dragging = document.querySelector('.dragging');
-    if (afterElement == null) {
-        container.appendChild(dragging);
-    } else {
-        container.insertBefore(dragging, afterElement);
-    }
-});
-
-// Función para determinar la posición en la que se debe soltar el elemento
-function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.card:not(.dragging)')];
-
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
-        }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
-
 // Aqui empieza lo que hizo Ally, lo tocan y los castro *corazoncito* 
 
 let originalContent = document.documentElement.innerHTML;
@@ -316,3 +274,46 @@ function assignEventListeners() {
     }
   }
   
+  // Parte de script Sergio
+  const apiUrl = 'http://localhost:8081/api/v1/estudiantes/reservas';
+
+        // Función para cargar las reservas desde la API
+        function cargarReservas() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById("reservasTable");
+                    tableBody.innerHTML = ''; // Limpiar cualquier fila anterior
+
+                    if (data.length > 0) {
+                        data.forEach(reserva => {
+                            // Validar que los datos están presentes
+                            const correoEstudiante = reserva.correoEstudiante || 'No disponible';
+                            const alojamiento = reserva.alojamiento ? reserva.alojamiento.nombreAlojamiento : 'No disponible';
+                            const fechaInicio = new Date(reserva.fechaInicio).toLocaleDateString();
+                            const fechaFin = new Date(reserva.fechaFin).toLocaleDateString();
+                            const estadoReserva = reserva.estadoReserva ? reserva.estadoReserva.estadoReserva : 'No disponible';
+
+                            const row = tableBody.insertRow();
+                            row.innerHTML = `
+                            
+                                <td>${correoEstudiante}</td>
+                                <td>${alojamiento}</td>
+                                <td>${fechaInicio}</td>
+                                <td>${fechaFin}</td>
+                                <td>${estadoReserva}</td>
+                            `;
+                        });
+                    } else {
+                        const row = tableBody.insertRow();
+                        row.innerHTML = `<td colspan="5">No hay reservas disponibles.</td>`;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al cargar las reservas:", error);
+                    document.getElementById("errorMessage").style.display = "block";
+                });
+        }
+
+        // Llamar a la función para cargar las reservas cuando se cargue la página
+        cargarReservas();

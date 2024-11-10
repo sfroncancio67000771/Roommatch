@@ -11,4 +11,6 @@ import java.util.List;
 public interface FotoRepository extends JpaRepository<Foto, Integer> {
     List<Foto> findByAlojamiento(Alojamiento alojamiento);
     Foto findFirstByAlojamientoIdAlojamiento(int idAlojamiento);
+    void deleteByAlojamiento(Alojamiento alojamiento);
+
 }

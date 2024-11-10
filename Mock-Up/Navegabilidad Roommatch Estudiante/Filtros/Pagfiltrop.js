@@ -119,9 +119,9 @@ window.onunload = limpiarURLs;
 
 
 let originalContent = '';
-const subscriptionKey = 'be794794b3d24c829dada77ca1b831bf'; // Your subscription key
+const subscriptionKey = '9yx7VrxVz43ZJOtegDLFrZtPFVplyExTIbao2LCzKDSeim2Y9yWrJQQJ99AJACLArgHXJ3w3AAAbACOG8B8A'; // Your subscription key
 const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Your endpoint
-const region = 'eastus'; // Region
+const region = 'southcentralus'; // Region
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('change-language-button').addEventListener('click', changeLanguage);
@@ -246,3 +246,18 @@ function assignEventListeners() {
     filter.addEventListener('change', applyFilters);
   });
 }
+
+// Función para filtrar alojamientos en tiempo real
+document.getElementById('search-input').addEventListener('input', function() {
+  const searchTerm = this.value.toLowerCase(); // Obtener el término de búsqueda
+  const alojamientos = document.querySelectorAll('#alojamientos-container .card'); // Obtener todas las tarjetas de alojamiento
+
+  alojamientos.forEach(alojamiento => {
+      // Obtener el texto de la tarjeta de alojamiento
+      const alojamientoText = alojamiento.textContent.toLowerCase();
+
+      // Filtrar las tarjetas según si el texto contiene el término de búsqueda
+      alojamiento.style.display = alojamientoText.includes(searchTerm) ? '' : 'none';
+  });
+});
+

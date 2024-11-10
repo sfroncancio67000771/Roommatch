@@ -45,56 +45,50 @@ public class ReservaGatewayImpl implements ReservaGateway {
     @Override
     @Transactional
     public void saveReserva(ReservaDTO reservaDTO) throws MessagingException, jakarta.mail.MessagingException {
+        // Verificar si el estudiante está activo
+        if (!estudianteActivo(reservaDTO.getEmailEstudiante())) {
+            throw new IllegalStateException("El estudiante no está activo. No se puede realizar la reserva.");
+        }
+
+        // Obtener el alojamiento
         Alojamiento alojamiento = alojamientoRepository.findById(reservaDTO.getIdAlojamiento())
                 .orElseThrow(() -> new IllegalArgumentException("Alojamiento no encontrado"));
 
-        if (alojamiento.getEstadoHabitacion().getIdEstadoHabitacion() != 1) {
-            throw new IllegalStateException("No se puede reservar un alojamiento ocupado.");
+        // Validar que la fecha de inicio no sea en el pasado
+        if (reservaDTO.getFechaInicio().before(new Date())) {
+            throw new IllegalStateException("No se pueden realizar reservas en el pasado.");
         }
 
+        // Verificar si el alojamiento está disponible en el rango de fechas
         if (tieneConflictosDeReserva(reservaDTO)) {
-            throw new IllegalStateException("La reserva tiene conflictos con otras reservas existentes.");
+            throw new IllegalStateException("El alojamiento no está disponible en las fechas seleccionadas.");
         }
 
-        if (!estudianteActivo(reservaDTO.getEmailEstudiante())) {
-            throw new IllegalStateException("El estudiante no está activo o no existe.");
+        // Verificar si el estudiante ya tiene una reserva activa en las mismas fechas
+        if (tieneReservaActiva(reservaDTO.getEmailEstudiante(), reservaDTO.getFechaInicio(), reservaDTO.getFechaFin())) {
+            throw new IllegalStateException("El estudiante ya tiene una reserva activa en las mismas fechas.");
         }
 
+        // Validar la duración de la reserva
         long diffInMillies = Math.abs(reservaDTO.getFechaFin().getTime() - reservaDTO.getFechaInicio().getTime());
         long diffInDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-
         if (diffInDays < 15 || diffInDays > 7 * 30) { // Aproximadamente 7 meses
             throw new IllegalStateException("La reserva debe ser mínima de 15 días y máxima de 7 meses.");
         }
 
-        if (tieneReservaActiva(reservaDTO.getEmailEstudiante())) {
-            throw new IllegalStateException("El estudiante ya tiene una reserva activa.");
-        }
-
+        // Crear la reserva y asignar estado
         Reserva reserva = convertToEntity(reservaDTO);
         EstadoReserva estadoReserva = estadoReservaRepository.findById(1L)
                 .orElseThrow(() -> new IllegalArgumentException("Estado de reserva no encontrado"));
         reserva.setEstadoReserva(estadoReserva);
         reservaRepository.save(reserva);
-        // Actualizar el estado del alojamiento a ocupado (2)
-        alojamiento.cambiarEstado();
+
+        // Actualizar el estado del alojamiento a ocupado para las fechas de la reserva
+        alojamiento.cambiarEstado(reservaDTO.getFechaInicio(), reservaDTO.getFechaFin());
         alojamientoRepository.save(alojamiento);
+
+        // Enviar notificación
         notificationService.sendNewReserve(reservaDTO);
-    }
-
-
-    private boolean tieneConflictosDeReserva(ReservaDTO nuevaReserva) {
-        // Obtener todas las reservas existentes
-        List<Reserva> reservasExistentes = reservaRepository.findAll();
-        Date nuevaInicio = nuevaReserva.getFechaInicio();
-        Date nuevaFin = nuevaReserva.getFechaFin();
-
-        // Verificar si hay conflictos de fecha con otras reservas
-        return reservasExistentes.stream()
-                .anyMatch(reservaExistente ->
-                        reservaExistente.getAlojamiento().getIdAlojamiento() == nuevaReserva.getIdAlojamiento() &&
-                                !reservaExistente.getFechaFin().before(nuevaInicio) &&
-                                !reservaExistente.getFechaInicio().after(nuevaFin));
     }
 
     private boolean estudianteActivo(String emailEstudiante) {
@@ -102,15 +96,38 @@ public class ReservaGatewayImpl implements ReservaGateway {
         return estudiante != null && estudiante.isActivo();
     }
 
-    private boolean tieneReservaActiva(String emailEstudiante) {
-        // Obtener todas las reservas del estudiante
-        List<Reserva> reservasExistentes = reservaRepository.findByEstudianteEmail(emailEstudiante);
-        Date ahora = new Date();
+    private boolean tieneConflictosDeReserva(ReservaDTO nuevaReserva) {
+        // Obtener todas las reservas existentes para el alojamiento en el rango de fechas solicitado
+        List<Reserva> reservasExistentes = reservaRepository.findAll();
+        Date nuevaInicio = nuevaReserva.getFechaInicio();
+        Date nuevaFin = nuevaReserva.getFechaFin();
 
-        // Verificar si el estudiante tiene alguna reserva activa en este momento
+        // Verificar si hay conflictos de fecha con otras reservas para el mismo alojamiento
         return reservasExistentes.stream()
-                .anyMatch(reserva -> reserva.getFechaInicio().before(ahora) && reserva.getFechaFin().after(ahora));
+                .anyMatch(reservaExistente ->
+                        reservaExistente.getAlojamiento().getIdAlojamiento() == nuevaReserva.getIdAlojamiento() &&
+                                !(reservaExistente.getFechaFin().before(nuevaInicio) || reservaExistente.getFechaInicio().after(nuevaFin)));
     }
+
+    private boolean tieneReservaActiva(String emailEstudiante, Date fechaInicio, Date fechaFin) {
+        // Obtener todas las reservas activas del estudiante
+        List<Reserva> reservasExistentes = reservaRepository.findByEstudianteEmail(emailEstudiante);
+
+        // Verificar si alguna reserva existente se solapa con las fechas de la nueva reserva
+        for (Reserva reservaExistente : reservasExistentes) {
+            Date fechaInicioExistente = reservaExistente.getFechaInicio();
+            Date fechaFinExistente = reservaExistente.getFechaFin();
+
+            // Verificar si las fechas se solapan
+            if ((fechaInicio.before(fechaFinExistente) && fechaFin.after(fechaInicioExistente))) {
+                return true; // Si hay solapamiento, el estudiante ya tiene una reserva activa
+            }
+        }
+
+        return false; // No hay reservas que se solapen
+    }
+
+
 
     private Reserva convertToEntity(ReservaDTO reservaDTO) {
         Reserva reserva = new Reserva();
@@ -141,4 +158,17 @@ public class ReservaGatewayImpl implements ReservaGateway {
         }
         return "Reserva no encontrada.";
     }
+
+    @Override
+    public List<Reserva> obtenerTodasLasReservas() {
+        return reservaRepository.findAll();
+    }
+
+    @Override
+    public List<Reserva> obtenerReservasPorHabitacion(Long idAlojamiento) {
+        Alojamiento alojamiento = alojamientoRepository.findById(Math.toIntExact(idAlojamiento))
+                .orElseThrow(() -> new RuntimeException("Habitación no encontrada"));
+        return reservaRepository.findByAlojamiento(alojamiento);
+    }
+
 }

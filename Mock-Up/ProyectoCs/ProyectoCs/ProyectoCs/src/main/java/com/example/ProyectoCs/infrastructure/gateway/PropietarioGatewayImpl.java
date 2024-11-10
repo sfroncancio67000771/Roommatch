@@ -2,8 +2,10 @@ package com.example.ProyectoCs.infrastructure.gateway;
 
 import com.example.ProyectoCs.domain.model.EstadoPropietario;
 import com.example.ProyectoCs.domain.model.Propietario;
+import com.example.ProyectoCs.domain.model.Rol;
 import com.example.ProyectoCs.domain.repository.EstadoPropietarioRepository;
 import com.example.ProyectoCs.domain.repository.PropietarioRepository;
+import com.example.ProyectoCs.domain.repository.RolRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,11 +17,13 @@ public class PropietarioGatewayImpl implements PropietarioGateway {
 
     private final PropietarioRepository propietarioRepository;
     private final EstadoPropietarioRepository estadoPropietarioRepository;
+    private final RolRepository rolRepository;
 
     @Autowired
-    public PropietarioGatewayImpl(PropietarioRepository propietarioRepository, EstadoPropietarioRepository estadoPropietarioRepository) {
+    public PropietarioGatewayImpl(PropietarioRepository propietarioRepository, EstadoPropietarioRepository estadoPropietarioRepository, RolRepository rolRepository) {
         this.propietarioRepository = propietarioRepository;
         this.estadoPropietarioRepository = estadoPropietarioRepository;
+        this.rolRepository = rolRepository;
     }
 
     @Override
@@ -45,6 +49,11 @@ public class PropietarioGatewayImpl implements PropietarioGateway {
         }
         if (propietarioRepository.existsById(propietario.getIdPropietario())) {
             throw new IllegalArgumentException("Ya existe un propietario con este ID.");
+        }
+
+        Rol rolPropietario = rolRepository.findByNombre("Propietario");
+        if(rolPropietario == null) {
+            throw new IllegalArgumentException("Rol 'Propietario' no encontrado en la base de datos.");
         }
         propietarioRepository.save(propietario);
     }

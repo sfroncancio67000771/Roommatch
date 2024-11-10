@@ -4,9 +4,11 @@ import com.example.ProyectoCs.application.dto.EstudianteDTO;
 import com.example.ProyectoCs.application.service.NotificationService;
 import com.example.ProyectoCs.domain.model.EstadoEstudiante;
 import com.example.ProyectoCs.domain.model.Estudiante;
+import com.example.ProyectoCs.domain.model.Rol;
 import com.example.ProyectoCs.domain.model.Universidad;
 import com.example.ProyectoCs.domain.repository.EstadoEstudianteRepository;
 import com.example.ProyectoCs.domain.repository.EstudianteRepository;
+import com.example.ProyectoCs.domain.repository.RolRepository;
 import com.example.ProyectoCs.domain.repository.UniversidadRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,15 @@ public class EstudianteGatewayImpl implements EstudianteGateway {
     private final NotificationService notificationService;
     private final EstadoEstudianteRepository estadoEstudianteRepository;
     private final UniversidadRepository universidadRepository;
+    private final RolRepository rolRepository;
 
     @Autowired
-    public EstudianteGatewayImpl(EstudianteRepository estudianteRepository, NotificationService notificationService, UniversidadRepository universidadRepository, EstadoEstudianteRepository estadoEstudianteRepository) {
+    public EstudianteGatewayImpl(EstudianteRepository estudianteRepository, NotificationService notificationService, UniversidadRepository universidadRepository, EstadoEstudianteRepository estadoEstudianteRepository, RolRepository rolRepository) {
         this.estudianteRepository = estudianteRepository;
         this.notificationService = notificationService;
         this.universidadRepository = universidadRepository;
         this.estadoEstudianteRepository = estadoEstudianteRepository;
+        this.rolRepository = rolRepository;
     }
 
     @Override
@@ -47,6 +51,11 @@ public class EstudianteGatewayImpl implements EstudianteGateway {
         Universidad universidad = universidadRepository.findById(1L)
                 .orElseThrow(() -> new IllegalStateException("Universidad no encontrada"));
 
+        Rol rolEstudiante = rolRepository.findByNombre("ESTUDIANTE");
+        if (rolEstudiante == null) {
+            throw new IllegalStateException("Rol de estudiante no encontrado");
+        }
+
         String contraseñaCifrada = BCrypt.hashpw(estudianteDTO.getContraseña(), BCrypt.gensalt());
 
         Estudiante estudiante = convertirDTOaEntidad(estudianteDTO);
@@ -54,6 +63,7 @@ public class EstudianteGatewayImpl implements EstudianteGateway {
         estudiante.setEstadoEstudiante(estadoEstudiante);
         estudiante.setUniversidad(universidad);
         estudiante.setActivo(true);
+        estudiante.setRole(String.valueOf(rolEstudiante));
         estudianteRepository.save(estudiante);
         notificationService.sendWelcomeNotification(estudianteDTO);
     }
@@ -120,6 +130,4 @@ public class EstudianteGatewayImpl implements EstudianteGateway {
                 estudiante.getTelefono()
         );
     }
-
-
 }

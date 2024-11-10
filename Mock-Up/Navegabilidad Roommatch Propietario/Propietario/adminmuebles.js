@@ -1,3 +1,7 @@
+assignEventListeners();
+checkVisualDisabilityMode();
+
+
 const BASE_URL = 'http://localhost:8081/api/v1/fotos/';
 const API_URL = 'http://localhost:8081/api/v1/alojamiento/filtrar';
 
@@ -17,26 +21,19 @@ async function obtenerAlojamientos() {
 
 async function obtenerFoto(idAlojamiento) {
     try {
-        // Construir la URL completa para la imagen
         const imageUrl = `${BASE_URL}imagen/${idAlojamiento}`;
-        
-        // Realizar la solicitud con las opciones correctas
         const response = await fetch(imageUrl, {
             method: 'GET',
-            headers: {
-                'Accept': 'image/*'
-            },
-            cache: 'no-cache' // Evitar el caché del navegador
+            headers: { 'Accept': 'image/*' },
+            cache: 'no-cache'
         });
         
         if (!response.ok) {
             throw new Error('Error al obtener la foto');
         }
         
-        // Convertir la respuesta a blob y crear URL
         const blob = await response.blob();
         const objectUrl = URL.createObjectURL(blob);
-        console.log(`Imagen cargada para alojamiento ${idAlojamiento}:`, objectUrl);
         return objectUrl;
 
     } catch (error) {
@@ -54,26 +51,19 @@ async function mostrarAlojamientos(alojamientos) {
             const card = document.createElement('div');
             card.className = 'card';
 
-            // Intentar obtener la imagen
             const imagenUrl = await obtenerFoto(alojamiento.idAlojamiento);
-            console.log(`URL de imagen para alojamiento ${alojamiento.idAlojamiento}:`, imagenUrl);
 
-            // Crear la imagen con un manejador de error
             const imgElement = document.createElement('img');
             imgElement.alt = alojamiento.nombreAlojamiento;
             imgElement.style.width = '100%';
             imgElement.style.height = '200px';
             imgElement.style.objectFit = 'cover';
             
-            // Si tenemos una URL de imagen, usarla
             if (imagenUrl) {
                 imgElement.src = imagenUrl;
             }
-
-            // Manejador de error para la imagen
             imgElement.onerror = function() {
-                console.log(`Error al cargar imagen para alojamiento ${alojamiento.idAlojamiento}`);
-                this.src = 'ruta/a/imagen/por/defecto.jpg'; // Asegúrate de tener una imagen por defecto
+                this.src = 'ruta/a/imagen/por/defecto.jpg';
             };
 
             card.innerHTML = `
@@ -83,11 +73,10 @@ async function mostrarAlojamientos(alojamientos) {
                 <p><strong>Precio:</strong> <span class="precio">$${alojamiento.precio}</span></p>
                 <p><strong>Dirección:</strong> ${alojamiento.direccion}</p>
                 <div class="contact">
-                    <button onclick="elimibnar('${alojamiento.idAlojamiento}')">Eliminar</button>
+                    <button onclick="eliminarAlojamiento('${alojamiento.idAlojamiento}')">Eliminar</button>
                 </div>
             `;
 
-            // Insertar la imagen al principio de la card
             card.insertBefore(imgElement, card.firstChild);
             container.appendChild(card);
         }
@@ -97,11 +86,32 @@ async function mostrarAlojamientos(alojamientos) {
     }
 }
 
-function contactar(idAlojamiento) {
-    window.location.href = `detalle_habitacion.html?id=${idAlojamiento}`;
+async function eliminarAlojamiento(idAlojamiento) {
+    const url = `http://localhost:8081/api/v1/alojamiento/${idAlojamiento}`;
+    
+    if (confirm("¿Estás seguro de que deseas eliminar este alojamiento?")) {
+        try {
+            const response = await fetch(url, {
+                method: 'DELETE',
+            });
+            
+            if (!response.ok) {
+                throw new Error('Error al eliminar el alojamiento');
+            }
+            
+            alert('Alojamiento eliminado con éxito');
+            await obtenerAlojamientos(); // Actualizar la lista de alojamientos después de eliminar uno
+
+        } catch (error) {
+            console.error(`Error al eliminar el alojamiento ${idAlojamiento}:`, error);
+            alert('No se pudo eliminar el alojamiento. Inténtalo de nuevo.');
+        }
+    }
 }
 
-// Limpieza de URLs de objetos
+window.onload = obtenerAlojamientos;
+window.onunload = limpiarURLs;
+
 function limpiarURLs() {
     const images = document.querySelectorAll('.card img');
     images.forEach(img => {
@@ -111,17 +121,12 @@ function limpiarURLs() {
     });
 }
 
-window.onload = obtenerAlojamientos;
-window.onunload = limpiarURLs;
-// Script para el cambio de idioma 
-
-
+// Aqui empieza lo que hizo Ally, lo tocan y los castro *corazoncito* 
 
 let originalContent = document.documentElement.innerHTML;
 
 document.getElementById('change-language-button').addEventListener('click', changeLanguage);
 
-// Función para asignar los event listeners necesarios
 function assignEventListeners() {
     document.getElementById('accessibility-button').addEventListener('click', function(event) {
         const popup = document.getElementById('accessibility-popup');
@@ -144,20 +149,22 @@ function assignEventListeners() {
 async function changeLanguage() {
     const languageSelect = document.getElementById('language-select'); // Correcto elemento select
     const selectedLanguage = languageSelect.value;
-    const subscriptionKey = 'be794794b3d24c829dada77ca1b831bf'; // Tu clave de suscripción
+    const subscriptionKey = '9yx7VrxVz43ZJOtegDLFrZtPFVplyExTIbao2LCzKDSeim2Y9yWrJQQJ99AJACLArgHXJ3w3AAAbACOG8B8A'; // Tu clave de suscripción
     const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Tu endpoint
-    const region = 'eastus'; // Región
+    const region = 'southcentralus'; // Región
     
-    if (confirm('Do you want to change the language?')) { // Confirmación
+    if (confirm('Do you want to change the language?')) {
         if (selectedLanguage === 'english') {
             // Traduce el contenido de español a inglés
             const translatedText = await translateText(originalContent, 'es', 'en', subscriptionKey, endpoint, region);
             document.documentElement.innerHTML = translatedText; // Reemplaza el contenido con la traducción
+            localStorage.setItem('preferredLanguage', 'english'); // Guarda la preferencia en localStorage
             updateLanguageSelector('english');
             assignEventListeners(); // Reasignar event listeners después de la traducción
         } else if (selectedLanguage === 'español') {
             // Restaura el contenido original en español
             document.documentElement.innerHTML = originalContent;
+            localStorage.setItem('preferredLanguage', 'español'); // Guarda la preferencia en localStorage
             updateLanguageSelector('español');
             assignEventListeners(); // Reasignar event listeners después de restaurar el contenido
         }
@@ -196,6 +203,19 @@ async function translateText(text, fromLang, toLang, subscriptionKey, endpoint, 
     }
 }
 
+function applyPreferredLanguage() {
+    const savedLanguage = localStorage.getItem('preferredLanguage');
+    if (savedLanguage === 'english') {
+        changeLanguageToEnglish(); // Traduce automáticamente al inglés
+    } else if (savedLanguage === 'español') {
+        changeLanguageToSpanish(); // Restaura el contenido original en español
+    }
+}
+
+// Llama a esta función cuando cargue la página
+document.addEventListener('DOMContentLoaded', applyPreferredLanguage);
+
+
 function updateLanguageSelector(currentLanguage) {
     const languageSelect = document.getElementById('language-select'); // Asegúrate de que este ID coincida
 
@@ -210,43 +230,167 @@ function updateLanguageSelector(currentLanguage) {
     languageSelect.addEventListener('change', changeLanguage);
 }
 
-const inputs = document.querySelectorAll("input[required], select[required]");
-inputs.forEach(input => {
-    const message = document.createElement("span");
-    message.classList.add("error-message");
-    message.style.color = "red"; // Estilo para el mensaje de error
-    input.parentElement.appendChild(message);
 
-    input.addEventListener("blur", function() {
-        if (!this.value) {
-            this.classList.add("error");
-            this.classList.add("highlight"); // Agrega clase de iluminación
-            message.textContent = "Este campo es obligatorio.";
-        } else {
-            this.classList.remove("error");
-            this.classList.remove("highlight"); // Elimina clase de iluminación
-            message.textContent = ""; 
-        }
-    });
-});
-
-// Validar al enviar el formulario
-const form = document.getElementById("alojamientoForm");
-form.addEventListener("submit", function(event) {
-    let valid = true;
-    inputs.forEach(input => {
-        if (!input.value) {
-            valid = false;
-            input.classList.add("error");
-            input.classList.add("highlight"); // Agrega clase de iluminación
-            const message = input.parentElement.querySelector(".error-message");
-            message.textContent = "Este campo es obligatorio.";
-        } else {
-            input.classList.remove("highlight"); // Elimina clase de iluminación si hay valor
-        }
-    });
-    if (!valid) {
-        event.preventDefault(); // Evita el envío del formulario si hay errores
+function assignEventListeners() {
+    const accessibilityButton = document.getElementById('accessibility-button');
+    if (accessibilityButton) {
+        accessibilityButton.addEventListener('click', function() {
+            const panel = document.querySelector('.accessibility-panel');
+            if (panel) {
+                panel.style.display = (panel.style.display === 'none' || panel.style.display === '') ? 'block' : 'none';
+            }
+        });
     }
-});
-
+  
+    const closeBtn = document.querySelector('.close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closePanel);
+    }
+  
+    // Listeners para las opciones de accesibilidad
+    const epilepsyMode = document.getElementById('epilepsy-mode');
+    if (epilepsyMode) {
+        epilepsyMode.addEventListener('change', function() {
+            toggleEpilepsyMode(this.checked);
+        });
+    }
+  
+    const visualDisabilityMode = document.getElementById('visual-disability-mode');
+    if (visualDisabilityMode) {
+        visualDisabilityMode.addEventListener('change', function() {
+            toggleVisualDisabilityMode(this.checked);
+        });
+    }
+  
+    const blindnessMode = document.getElementById('blindness-mode');
+    if (blindnessMode) {
+        blindnessMode.addEventListener('change', function() {
+            toggleBlindnessMode(this.checked);
+        });
+    }
+  
+    // Listeners para cambiar el tamaño del contenido
+    const decreaseFontBtn = document.querySelector('.content-size button:nth-child(2)');
+    const increaseFontBtn = document.querySelector('.content-size button:nth-child(4)');
+    if (decreaseFontBtn) {
+        decreaseFontBtn.addEventListener('click', decreaseFontSize);
+    }
+    if (increaseFontBtn) {
+        increaseFontBtn.addEventListener('click', increaseFontSize);
+    }
+  
+    const resetBtn = document.querySelector('.reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetSettings);
+    }
+  
+    const hideBtn = document.querySelector('.hide-btn');
+    if (hideBtn) {
+        hideBtn.addEventListener('click', hidePanel);
+    }
+  }
+  
+  // Función para cerrar el panel de accesibilidad
+  function closePanel() {
+    const panel = document.querySelector('.accessibility-panel');
+    if (panel) {
+        panel.style.display = 'none';
+    }
+  }
+  
+  // Función para disminuir el tamaño de la fuente
+  function decreaseFontSize() {
+    document.body.style.fontSize = 'smaller';
+    const fontSizeLabel = document.getElementById('font-size-label');
+    if (fontSizeLabel) {
+        fontSizeLabel.textContent = 'Pequeño';
+    }
+  }
+  
+  // Función para aumentar el tamaño de la fuente
+  function increaseFontSize() {
+    document.body.style.fontSize = 'larger';
+    const fontSizeLabel = document.getElementById('font-size-label');
+    if (fontSizeLabel) {
+        fontSizeLabel.textContent = 'Grande';
+    }
+  }
+  
+  // Función para restablecer las configuraciones de accesibilidad
+  function resetSettings() {
+    const epilepsyMode = document.getElementById('epilepsy-mode');
+    const visualDisabilityMode = document.getElementById('visual-disability-mode');
+    const cognitiveDisabilityMode = document.getElementById('cognitive-disability-mode');
+    const adhdMode = document.getElementById('adhd-mode');
+    const blindnessMode = document.getElementById('blindness-mode');
+  
+    if (epilepsyMode) epilepsyMode.checked = false;
+    if (visualDisabilityMode) visualDisabilityMode.checked = false;
+    if (blindnessMode) blindnessMode.checked = false;
+  
+    document.body.style.filter = '';
+    document.body.style.fontSize = '';
+    document.body.classList.remove('high-contrast');
+  
+    const fontSizeLabel = document.getElementById('font-size-label');
+    if (fontSizeLabel) {
+        fontSizeLabel.textContent = 'Predeterminado';
+    }
+  
+    localStorage.setItem('visualDisabilityMode', false); // Guardamos el estado
+  }
+  
+  // Función para ocultar permanentemente el panel de accesibilidad
+  function hidePanel() {
+    const panel = document.querySelector('.accessibility-panel');
+    if (panel) {
+        panel.style.display = 'none';
+    }
+  }
+  
+  // Funciones para los modos de accesibilidad
+  
+  // Modo de epilepsia (Reduce el brillo y elimina parpadeos)
+  function toggleEpilepsyMode(isEnabled) {
+    if (isEnabled) {
+        document.body.style.filter = 'brightness(80%)';
+    } else {
+        document.body.style.filter = '';
+    }
+  }
+  
+  // Modo de discapacidad visual (Aplica los estilos de alto contraste en la misma página)
+  function toggleVisualDisabilityMode(isEnabled) {
+    if (isEnabled) {
+        document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
+    }
+    localStorage.setItem('visualDisabilityMode', isEnabled); // Guardamos el estado
+  }
+  
+  // Función para revisar si el modo de discapacidad visual está activado y aplicar los estilos si es necesario
+  function checkVisualDisabilityMode() {
+    const isVisualDisabilityMode = localStorage.getItem('visualDisabilityMode') === 'true';
+    const visualDisabilityModeCheckbox = document.getElementById('visual-disability-mode');
+  
+    if (visualDisabilityModeCheckbox) {
+        visualDisabilityModeCheckbox.checked = isVisualDisabilityMode;
+    }
+  
+    if (isVisualDisabilityMode) {
+        document.body.classList.add('high-contrast');
+    } else {
+        document.body.classList.remove('high-contrast');
+    }
+  }
+  
+  // Modo para ceguera (Integra mejor el sitio con lectores de pantalla)
+  function toggleBlindnessMode(isEnabled) {
+    if (isEnabled) {
+        document.body.setAttribute('aria-hidden', 'false');
+    } else {
+        document.body.setAttribute('aria-hidden', 'true');
+    }
+  }
+  

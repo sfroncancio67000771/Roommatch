@@ -30,4 +30,7 @@ public class Propietario {
     public boolean isActivo() {
         return true;
     }
+
+    @Column(name = "role")
+    private String role = "ROLE_PROPIETARIO";
 }

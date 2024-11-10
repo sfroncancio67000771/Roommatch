@@ -142,11 +142,6 @@ nav ul.opciones li img {
   border: 0;
 }
 
-.calendar {
-  max-width: 600px;
-  margin: auto;
-}
-
 .buttons {
   display: flex;
   gap: 20px; /* Espacio entre los botones */
@@ -183,14 +178,19 @@ nav ul.opciones li img {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 40px; /* Añade espacio por encima de la tarjeta */
+  margin-bottom: 40px; /* Añade espacio por debajo de la tarjeta */
 }
 
+
 .roomset img {
-  max-width: 100%;
-  height: auto;
+  max-width: 80%; /* Ocupará el 80% del ancho del contenedor */
+  height: auto; /* Mantiene la proporción */
   border-radius: 10px;
   margin-bottom: 15px;
 }
+
+
 
 .footer {
   display: flex;

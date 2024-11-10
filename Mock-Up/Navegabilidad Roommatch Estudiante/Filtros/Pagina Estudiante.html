@@ -23,6 +23,7 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon">
                 <div class="logout-option">
                     <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html">Cerrar Sesión</a>
+                    <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch%20Estudiante/Filtros/misreservas.html">Mis Reservas</a>
                 </div>
             </div>
             <form id="language-form" aria-label="language-form">
@@ -37,40 +38,14 @@
     </header>
     
     <main role="main" aria-label="Contenido principal">
-
         <!-- Barra de búsqueda -->
         <div class="search-bar" role="search" aria-label="Barra de búsqueda">
-            <input type="search" id="search-input" label="Buscar alojamiento" placeholder="Busca tu alojamiento" aria-label="Buscar alojamiento">
+            <input type="search" id="search-input" placeholder="Busca tu alojamiento" aria-label="Buscar alojamiento">
             <button aria-label="Botón de búsqueda">
                 <img src="https://images.emojiterra.com/google/android-12l/512px/1f50e.png" alt="Buscar icono">
             </button>
         </div>
-
-        <!-- Barra de filtros -->
-        <div class="filter-bar" aria-label="Barra de filtros">
-            <select id="filter-place" aria-labelledby="filter-place-label">
-                <option value="" selected>Filtrar por Lugar</option>
-                <option value="teusaquillo">Teusaquillo</option>
-                <option value="chapinero">Chapinero</option>
-                <option value="galerias">Galerías</option>
-            </select>
-
-            <select id="filter-home" aria-labelledby="filter-home-label">
-                <option value="" selected>Filtrar por Inmueble</option>
-                <option value="Habitación">Habitación</option>
-                <option value="Apartaestudio">Apartaestudio</option>
-                <option value="Apartamento">Apartamento</option>
-            </select>
-
-            <select id="filter-location" aria-labelledby="filter-location-label">
-                <option value="" selected>Filtrar por Ubicación</option>
-                <option value="cerca-universidad">Cerca a la Universidad</option>
-                <option value="cerca-estadio">Cerca al estadio Campín</option>
-                <option value="cerca-parque">Cerca al parque Nacional</option>
-            </select>
-
-            <input type="number" id="filter-price" placeholder="Filtrar por Precio" min="0" aria-label="Filtrar por precio">
-        </div>
+    
         <!-- Contenedor de alojamientos disponibles -->
         <section class="featured-section" aria-label="Inmuebles destacados">
             <div class="container" id="alojamientos-container">
@@ -78,6 +53,7 @@
             </div>
         </section>
     </main>
+    
 
     <footer class="footer" role="contentinfo" aria-label="Pie de página">
         <div class="contact-info">
@@ -89,8 +65,5 @@
             <p><a href="#" aria-label="Enlace al tratamiento de datos">Tratamiento de datos</a><br><a href="#" aria-label="Enlace a la política de privacidad">Política de privacidad</a></p>
         </div>
     </footer>
-
-    
-    
 </body>
 </html>

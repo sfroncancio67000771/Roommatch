@@ -6,26 +6,23 @@
     <title>¡Bienvenido!</title>
     <link rel="stylesheet" href="styleIN.css">
 </head>
-<header>
-
-    <div class="logo">
-        <img src="logo.jpg" alt="Logo de Roommatch">
-    </div>
-
-    <nav>
-        <ul>
-            <li><a class="active">Inicio</a></li>
-            <li><a class="protected-link">Administrar Inmuebles</a></li>
-            <li><a class="protected-link">Historial de Habitaciones</a></li>
-            <li><a class="protected-link">Mensajes</a></li>
-            <li><a class="protected-link">Publicar Inmuebles</a></li>
-        </ul>
-    </nav>
-    <div class="user-options">
-        
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <div class="user-options">
+        </div>
+        <nav aria-label="Menú principal de navegación">
+            <ul>
+                <li><a href="admininmuebles.html" class="protected-link" aria-label="Administrar tus inmuebles">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html" class="protected-link" aria-label="Historial de habitaciones">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html" class="protected-link" aria-label="Publicar imágenes en el sitio">Publicar Imágenes</a></li>
+                <li><a href="Alojamiento.html" class="protected-link" aria-label="Publicar inmuebles en alquiler">Publicar Inmuebles</a></li>
+            </ul>
+        </nav>
         <form id="language-form" aria-label="language-form">
             <a href="http://127.0.0.1:5501/Navegabilidad%20Roommatch/Pagina%20principal/Español.html" id="login-button">Inicio</a>
-            <a href="http://127.0.0.1:5501/Registro/Login.html" id="login-button">Iniciar Sesión</a>
             <!-- Asociar el label con el select usando el atributo 'for' -->
             <label class="change-language-label" for="language-select">Change language:</label>
             <select id="language-select" aria-label="Select a language">
@@ -35,56 +32,98 @@
             
             <button type="button" id="change-language-button">Change</button>
         </form>
-    </div>
-</header>
+        
+        
+    </header>
+
     
-    <main>
-        <div class="dashboard-overview">
-            <h1>¡Bienvenido!</h1>
-            <div class="overview-cards">
-                <div class="card large-card" draggable="true">
+    <main aria-label="Panel principal de la página">
+        <div class="dashboard-overview" aria-labelledby="dashboard-title">
+            <h1 id="dashboard-title">¡Bienvenido!</h1>
+            <div class="overview-cards" role="region" aria-label="Tarjetas de resumen del panel">
+                <div class="card large-card" draggable="true" aria-label="Resumen de Habitaciones">
                     <h2>Resumen de Habitaciones</h2>
-                    <p>Habitaciones Disponibles: 5</p>
-                    <p>Habitaciones Ocupadas: 10</p>
-                    <p>Ingresos Totales: $2,500</p>
-                    <img src="https://www.researchgate.net/publication/28121237/figure/fig1/AS:669569421160460@1536649198877/Figura-4-Grafico-de-avance-del-rendimiento.ppm" alt="Gráfico de Resumen">
+                    <p aria-label="Número de habitaciones disponibles: 5">Habitaciones Disponibles: 5</p>
+                    <p aria-label="Número de habitaciones ocupadas: 10">Habitaciones Ocupadas: 10</p>
+                    <p aria-label="Ingresos totales actuales de 2500 dólares">Ingresos Totales: $2,500</p>
+                    <img src="https://www.researchgate.net/publication/28121237/figure/fig1/AS:669569421160460@1536649198877/Figura-4-Grafico-de-avance-del-rendimiento.ppm" alt="Gráfico visual de resumen de habitaciones">
                 </div>
-                <div class="card medium-card" draggable="true">
+                <div class="card medium-card" draggable="true" aria-label="Últimos mensajes recibidos">
                     <h2>Últimos Mensajes</h2>
-                    <p>No hay nuevos mensajes.</p>
+                    <p aria-label="No hay mensajes nuevos">No hay nuevos mensajes.</p>
                 </div>
-                <div class="card small-card" draggable="true">
+                <div class="card small-card" draggable="true" aria-label="Solicitudes recientes">
                     <h3>Solicitudes Recientes</h3>
-                    <p>3 Solicitudes Pendientes</p>
+                    <p aria-label="3 solicitudes pendientes">3 Solicitudes Pendientes</p>
                 </div>
-                <div class="card small-card" draggable="true">
+                <div class="card small-card" draggable="true" aria-label="Tendencias de alquiler recientes">
                     <h4>Tendencias de Alquiler</h4>
-                    <p>Aumento del 20% en reservas este mes</p>
+                    <p aria-label="Aumento del 20 por ciento en reservas para este mes">Aumento del 20% en reservas este mes</p>
                 </div>
-                <div class="card medium-card" draggable="true">
+                <div class="card medium-card" draggable="true" aria-label="Rendimiento mensual actual">
                     <h5>Rendimiento Mensual</h5>
-                    <p>Promedio de Ingresos: $500</p>
-                    <img src="https://juncotic.com/wp-content/uploads/2023/05/grafico-torta-basico-1.png" alt="Gráfico de Rendimiento">
+                    <p aria-label="Promedio de ingresos de 500 dólares">Promedio de Ingresos: $500</p>
+                    <img src="https://juncotic.com/wp-content/uploads/2023/05/grafico-torta-basico-1.png" alt="Gráfico visual de rendimiento mensual">
                 </div>
-                <div class="card large-card" draggable="true">
+                <div class="card large-card" draggable="true" aria-label="Vista total del rendimiento">
                     <h5>Vista Total</h5>
-                    <img src="Graf.jpg" alt="Gráfico de Tendencias" class="chart-image">
+                    <img src="Graf.jpg" alt="Gráfico de tendencias de rendimiento total" class="chart-image">
                 </div>
             </div>
         </div>
+
+        <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
+        
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-labelledby="accessibility-panel-title">
+            <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
+            <h2 id="accessibility-panel-title">Opciones de Accesibilidad</h2>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
+                <small class="sr-only">Atenúa el color y elimina los parpadeos</small>
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
+                <small class="sr-only">Mejora las imágenes de los sitios web</small>
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
+                <label for="blindness-mode">Modo para personas con ceguera</label>
+                <small class="sr-only">Permite usar el sitio con tu lector de pantalla</small>
+            </div>
+            
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()" aria-label="Disminuir el tamaño de la fuente">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()" aria-label="Aumentar el tamaño de la fuente">+</button>
+            </div>
+            
+            <button class="reset-btn" onclick="resetSettings()" aria-label="Restablecer configuración de accesibilidad">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()" aria-label="Ocultar panel de accesibilidad para siempre">Ocultar para siempre</button>
+            
+            <div class="declaration-link">
+                <a href="#" aria-label="Enlace a la declaración de accesibilidad de este sitio">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo" aria-label="Pie de página con información de contacto y políticas">
         <div class="contact-info">
-            <p tabindex="0">Contáctanos</p>
-            <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+            <p tabindex="0" aria-label="Sección de contacto">Contáctanos</p>
+            <p tabindex="0" aria-label="Correo electrónico y número de contacto">Roommatch@getyourhome.com<br>3232353608</p>
         </div>
         <div class="policies">
-            <p tabindex="0">Políticas</p>
-            <p tabindex="0">Tratamiento de datos</p>
-            <p tabindex="0">Política de privacidad</p>
+            <p tabindex="0" aria-label="Políticas de privacidad y datos">Políticas</p>
+            <p tabindex="0" aria-label="Tratamiento de datos personales">Tratamiento de datos</p>
+            <p tabindex="0" aria-label="Política de privacidad">Política de privacidad</p>
         </div>
     </footer>
-    <script src="PropietarioPrincipal.js" defer></script>  
+    <script src="PropietarioPrincipal.js" defer></script>
 </body>
 </html>

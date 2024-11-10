@@ -35,48 +35,25 @@
         
         
     </header>
-    <main role="main" aria-label="Contenido principal">
+    <main aria-label="Contenido principal">
 
         <!-- Barra de búsqueda -->
-        <div class="search-bar" role="search" aria-label="Barra de búsqueda">
-            <input type="search" id="search-input" label="Buscar alojamiento" placeholder="Busca tu alojamiento" aria-label="Buscar alojamiento">
+        <div class="search-bar" role="search" aria-labelledby="search-input">
+            <input type="search" id="search-input" placeholder="Busca tu alojamiento" aria-label="Buscar alojamiento">
             <button aria-label="Botón de búsqueda">
                 <img src="https://images.emojiterra.com/google/android-12l/512px/1f50e.png" alt="Buscar icono">
             </button>
         </div>
-
-        <!-- Barra de filtros -->
-        <div class="filter-bar" aria-label="Barra de filtros">
-            <select id="filter-place" aria-labelledby="filter-place-label">
-                <option value="" selected>Filtrar por Lugar</option>
-                <option value="teusaquillo">Teusaquillo</option>
-                <option value="chapinero">Chapinero</option>
-                <option value="galerias">Galerías</option>
-            </select>
-
-            <select id="filter-home" aria-labelledby="filter-home-label">
-                <option value="" selected>Filtrar por Inmueble</option>
-                <option value="Habitación">Habitación</option>
-                <option value="Apartaestudio">Apartaestudio</option>
-                <option value="Apartamento">Apartamento</option>
-            </select>
-
-            <select id="filter-location" aria-labelledby="filter-location-label">
-                <option value="" selected>Filtrar por Ubicación</option>
-                <option value="cerca-universidad">Cerca a la Universidad</option>
-                <option value="cerca-estadio">Cerca al estadio Campín</option>
-                <option value="cerca-parque">Cerca al parque Nacional</option>
-            </select>
-
-            <input type="number" id="filter-price" placeholder="Filtrar por Precio" min="0" aria-label="Filtrar por precio">
-        </div>
+    
         <!-- Contenedor de alojamientos disponibles -->
         <section class="featured-section" aria-label="Inmuebles destacados">
             <div class="container" id="alojamientos-container">
                 <!-- Aquí se llenarán los alojamientos -->
             </div>
         </section>
+    
     </main>
+    
 
     <footer class="footer" role="contentinfo" aria-label="Pie de página">
         <div class="contact-info">

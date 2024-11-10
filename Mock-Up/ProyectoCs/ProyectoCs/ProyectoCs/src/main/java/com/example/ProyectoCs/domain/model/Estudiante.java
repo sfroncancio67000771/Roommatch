@@ -43,4 +43,6 @@ public class Estudiante {
     private boolean activo;
 
 
+    @Column(name = "role")
+    private String role = "ROLE_ESTUDIANTE";
 }

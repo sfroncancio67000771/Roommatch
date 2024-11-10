@@ -93,4 +93,12 @@ public class AlojamientoService {
     private boolean isImageFormat(String contentType) {
         return contentType != null && (contentType.startsWith("image/"));
     }
+
+    public boolean eliminarAlojamiento(Long id) {
+        return alojamientoGateway.eliminarAlojamiento(id);
+    }
+
+
 }
+
+

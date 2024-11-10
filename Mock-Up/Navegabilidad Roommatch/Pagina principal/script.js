@@ -19,9 +19,9 @@ async function changeLanguage() {
     if (!languageSelect) return; // Si no hay selector de idioma, termina la función
     
     const selectedLanguage = languageSelect.value;
-    const subscriptionKey = 'be794794b3d24c829dada77ca1b831bf'; // Tu clave de suscripción
+    const subscriptionKey = '9yx7VrxVz43ZJOtegDLFrZtPFVplyExTIbao2LCzKDSeim2Y9yWrJQQJ99AJACLArgHXJ3w3AAAbACOG8B8A'; // Tu clave de suscripción
     const endpoint = 'https://api.cognitive.microsofttranslator.com'; // Tu endpoint
-    const region = 'eastus'; // Región
+    const region = 'southcentralus'; // Región
     
     if (confirm('Do you want to change the language?')) { // Confirmación
         if (selectedLanguage === 'english') {

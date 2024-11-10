@@ -1,3 +1,4 @@
+// Función para validar que solo se ingresen números
 function validarNumero(event) {
     if (!/^\d+$/.test(event.key) && event.key !== 'Backspace') {
         event.preventDefault();
@@ -84,6 +85,7 @@ function updateFields() {
     agregarValidaciones();
 }
 
+// Función para validar contraseñas
 function validarContraseñas(contraseña, confirmarContraseña) {
     const inputContainer = confirmarContraseña.closest('.input-container');
     if (contraseña.value !== confirmarContraseña.value) {
@@ -95,37 +97,8 @@ function validarContraseñas(contraseña, confirmarContraseña) {
     }
 }
 
-// Asignar validaciones a los campos estáticos una vez que se carga la página
-document.addEventListener('DOMContentLoaded', function () {
-    agregarValidaciones(); // Esto se aplica a los campos estáticos iniciales
-});
-
-// Validar todos los campos al enviar el formulario
-document.getElementById('miFormulario').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const inputs = document.querySelectorAll('.input-container input');
-    inputs.forEach(input => {
-        if (input.type === 'email') {
-            validarEmail(input);
-        } else {
-            validarCampoVacio(input);
-        }
-    });
-    
-    if (document.querySelector('.input-container.invalid')) {
-        // Mostrar mensaje de error si hay campos inválidos
-        document.getElementById('respuesta').innerText = 'Por favor, corrige los errores en el formulario.';
-        document.getElementById('respuesta').style.color = 'red';
-    } else {
-        // Aquí iría el código para enviar el formulario
-        document.getElementById('respuesta').innerText = 'Formulario enviado correctamente';
-        document.getElementById('respuesta').style.color = 'green';
-    }
-});
-
-
-document.getElementById('miFormulario').addEventListener('submit', function (event) {
-    event.preventDefault();
+// Validar todos los campos antes de enviar el formulario
+function validarFormulario() {
     const inputs = document.querySelectorAll('.input-container input');
     let valid = true; // Variable para verificar la validez de los campos
 
@@ -145,17 +118,8 @@ document.getElementById('miFormulario').addEventListener('submit', function (eve
         valid = validarContraseñas(contraseña, confirmarContraseña) && valid;
     }
 
-    if (document.querySelector('.input-container.invalid') || !valid) {
-        // Mostrar mensaje de error si hay campos inválidos
-        document.getElementById('respuesta').innerText = 'Por favor, corrige los errores en el formulario.';
-        document.getElementById('respuesta').style.color = 'red';
-    } else {
-        // Aquí iría el código para enviar el formulario
-        document.getElementById('respuesta').innerText = 'Formulario enviado correctamente';
-        document.getElementById('respuesta').style.color = 'green';
-    }
-});
-
+    return !document.querySelector('.input-container.invalid') && valid;
+}
 
 // Manejar el envío de datos al servidor
 document.getElementById('miFormulario').addEventListener('submit', function(e) {
@@ -167,9 +131,9 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
 
     if (role === "estudiante") {
         // Obtener los valores del formulario para estudiante
-        const codigo = document.getElementById('codigo').value;
+        const codigo = parseInt(document.getElementById('codigo').value); // Asegurarse de que el código sea un número
         const nombre = document.getElementById('nombre').value;
-        const edad = document.getElementById('edad').value;
+        const edad = parseInt(document.getElementById('edad').value); // Asegurarse de que la edad sea un número
         const email = document.getElementById('email').value;
         const telefono = document.getElementById('telefono').value;
         const contraseña = document.getElementById('contraseña').value;
@@ -183,11 +147,11 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
 
         // Crear objeto de datos para estudiante
         datos = {
-            codigo: codigo,
             nombre: nombre,
             edad: edad,
             email: email,
             telefono: telefono,
+            codigo: codigo,
             contraseña: contraseña
         };
     } else if (role === "propietario") {
@@ -207,6 +171,9 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
             telefono: telefono
         };
     }
+
+    // Verificar los datos antes de enviarlos
+    console.log('Datos a enviar:', JSON.stringify(datos));
 
     // Enviar los datos al servidor
     fetch(`http://localhost:8081/api/v1/${role === 'estudiante' ? 'estudiantes' : 'propietarios'}/registrar`, {
@@ -236,7 +203,9 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
         }
     })
     .catch(error => {
-        document.getElementById('respuesta').textContent = 'Error al enviar el formulario: ' + error.message;
-        console.error('Error en el envio del formulario:', error);
+        error.text().then(errorMessage => {
+            document.getElementById('respuesta').textContent = 'Error al enviar el formulario: ' + errorMessage;
+            console.error('Error al enviar el formulario:', errorMessage);
+        });
     });
 });

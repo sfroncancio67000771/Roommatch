@@ -63,4 +63,15 @@ public class AlojamientoController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarAlojamiento(@PathVariable Long id) {
+        boolean eliminado = alojamientoService.eliminarAlojamiento(id);
+
+        if (eliminado) {
+            return ResponseEntity.ok("Alojamiento eliminado con éxito.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Alojamiento no encontrado.");
+        }
+    }
+
 }

@@ -11,6 +11,7 @@ header {
   padding: 20px 40px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Añadido para que los elementos se acomoden en pantallas pequeñas */
 }
 
 /* Estilos para botones */
@@ -31,38 +32,14 @@ header {
 
 .logo img {
   max-width: 150px;
+  flex: 1 1 150px; /* Ajuste para mejorar la visibilidad en pantallas pequeñas */
 }
 
 .user-options {
   display: flex;
   align-items: center;
   gap: 30px;
-}
-
-.user-icon-container {
-  position: relative;
-  margin-right: 20px;
-}
-
-.user-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.logout-option {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 5px;
-  z-index: 100;
-}
-
-.user-icon-container:hover .logout-option {
-  display: block;
+  flex-wrap: wrap;
 }
 
 nav ul.opciones {
@@ -71,6 +48,8 @@ nav ul.opciones {
   margin: 0;
   display: flex;
   gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center; /* Asegura que los elementos no se sobrepongan */
 }
 
 nav ul.opciones li {
@@ -79,10 +58,6 @@ nav ul.opciones li {
   display: flex;
   align-items: center;
   color: #005f5f;
-}
-
-nav ul.opciones li img {
-  margin-right: 8px;
 }
 
 .language-dropdown {
@@ -198,23 +173,19 @@ nav ul.opciones li img {
   justify-content: space-between;
 }
 
-/* Estilo de cada tarjeta de alojamiento */
+/* Ajustes en las tarjetas para pantallas más pequeñas */
 .card {
   background: white;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s;
   height: 100%;
   max-width: 400px;
-  margin: 0 auto;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin: 20px auto;
+  padding: 10px;
 }
 
 .card img {
@@ -230,6 +201,8 @@ nav ul.opciones li img {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card h2 {
@@ -320,73 +293,16 @@ nav ul.opciones li img {
 }
 
 .featured-item p {
-  font-size: 16px;
-  font-weight: 500;
   color: #333;
 }
 
-/* Barra de filtros */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  padding: 15px;
-  background-color: #ffffff;
-  border-color: #005f5f;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px 0;
-}
-
-.filter-bar button {
-  background-color: #005f5f;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.filter-bar button:hover {
-  background-color: #507b77;
-  transform: scale(1.05);
-}
-
-.filter-bar button:focus {
-  outline: 2px solid #507b77;
-  outline-offset: 2px;
-}
-
-.filter-bar select,
-.filter-bar input {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  padding: 10px;
-  border: 2px solid #005f5f;
-  border-radius: 5px;
-  background-color: #ffffff;
-  color: #272a2a;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.filter-bar select:focus,
-.filter-bar input:focus {
-  border-color: #4e7a78;
-  box-shadow: 0 0 6px rgba(78, 122, 120, 0.3);
-}
-
-/* Footer */
 .footer {
   display: flex;
   justify-content: space-around;
   padding: 20px 40px;
   background-color: #ffffff;
   color: #005f5f;
+  margin-top: auto; /* Asegura que el footer se empuje al fondo */
 }
 
 .footer p,
@@ -401,27 +317,49 @@ nav ul.opciones li img {
   outline: 2px solid #005f5f;
 }
 
-/* Estilos responsivos para pantallas móviles */
+
+/* Media queries para ajustarse a diferentes tamaños de pantalla */
 @media (max-width: 1200px) {
   .container {
     grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas medianas */
   }
+
+  .card {
+    max-width: 350px;
+  }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
   .container {
     grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas más pequeñas */
   }
-}
 
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en dispositivos móviles */
+  .card {
+    max-width: 300px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .container {
-    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .search-bar input[type="search"] {
+    width: 100%; /* Barra de búsqueda ocupa todo el ancho */
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-options {
+    gap: 20px;
   }
 }
