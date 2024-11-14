@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Filtros Principal</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <nav>
+            <ul class="opciones">
+                <li>Habitación</li>
+                <li>Apartaestudio</li>
+                <li>Apartamentos</li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <div class="user-icon">
+                <img src="usericon.png" alt="Ícono de Usuario">
+            </div>
+            <div class="language-dropdown">
+                <label for="language_choose">Es </label>
+                <select name="language_choose" id="language_choose">
+                    <option value="English">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+        <div class="filter-bar">
+        <select id="filter-place">
+            <option value="">Filtrar por Lugar</option>
+            <option value="teusaquillo">Teusaquillo</option>
+            <option value="chapinero">Chapinero</option>
+            <option value="galerias">Galerías</option>
+        </select>
+        <select id="filter-home">
+            <option value="">Filtrar por Inmueble</option>
+            <option value="Habitación">Habitación</option>
+            <option value="Apartaestudio">Apartaestudio</option>
+            <option value="Apartamento">Apartamento</option>
+        </select>
+        <select id="filter-location">
+            <option value="">Filtrar por Ubicación</option>
+            <option value="cerca-universidad">Cerca a la Universidad</option>
+            <option value="cerca-estadio">Cerca al estadio Campín</option>
+            <option value="cerca-parque">Cerca al parque Nacional</option>
+        </select>
+        <input type="number" id="filter-price" placeholder="Filtrar por Precio" min="0">
+    </div>
+
+
+    <main>
+
+        <div class="featured-section">
+            <div class="featured-item" data-place="galerias" data-price="450000" data-location="cerca-estadio" data-home="Habitación">
+                <img src="image1.jpeg" alt="Habitación en Galerías">
+                <h3>Habitación en Galerías</h3>
+                <p>Precio: $450000</p>
+                <p>Ubicación: Cerca del estadio Nemesio Camacho El Campin</p>
+                <p>Descripción: Habitación cómoda amoblada para estudiante, preferiblemente horario nocturno</p>
+                <div class="contact">
+                    <button>Visualizar</button>
+                </div>
+            </div>
+            <div class="featured-item" data-place="teusaquillo" data-price="550000" data-location="cerca-parque" data-home="Apartamento">
+                <img src="image4.webp" alt="Habitación en Teusaquillo">
+                <h3>Apartamento en Teusaquillo</h3>
+                <p>Precio: $550000</p>
+                <p>Ubicación: Cerca del Parque Nacional</p>
+                <p>Descripción: Habitación cómoda amoblada para estudiante, con posibilidad de guardar un vehículo</p>
+                <div class="contact">
+                    <button>Visualizar</button>
+                </div>
+            </div>
+            
+            <div class="featured-item" data-place="chapinero" data-price="300000" data-location="cerca-universidad" data-home="Apartaestudio">
+                <img src="image5.png" alt="Habitación en Chapinero">
+                <h3>Apartaestudio en Chapinero</h3>
+                <p>Precio: $300000</p>
+                <p>Ubicación: Cerca a la sede Carrera 13</p>
+                <p>Descripción: Apartaestudio cómodo amoblado para estudiante sin mascotas</p>
+                <div class="contact">
+                    <a href="Calendario Disponibilidad.html"><button>Visualizar</button></a>
+                </div>
+            </div>
+            <div class="featured-item" data-place="chapinero" data-price="350000" data-location="cerca-universidad" data-home="Habitación">
+                <img src="image6.jpg" alt="Habitación en Chapinero">
+                <h3>Habitación en Chapinero</h3>
+                <p>Precio: $300000</p>
+                <p>Ubicación: Cerca a la sede el Claustro</p>
+                <p>Descripción: Habitación cómoda amoblada para estudiante sin mascotas</p>
+                <div class="contact">
+                    <button>Visualizar</button>
+                </div>
+                </div>
+            </div>
+    </main>
+
+    <footer class="footer">
+        <div class="contact-info">
+            <p>Contáctanos</p>
+            <p>Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p>Políticas</p>
+            <p>Tratamiento de datos<br>Política de privacidad</p>
+        </div>
+    </footer>
+
+    <script>
+    
+    document.querySelectorAll('.filter-bar select, .filter-bar input').forEach(filter => {
+    filter.addEventListener('change', applyFilters);
+});
+
+function applyFilters() {
+    const placeFilter = document.getElementById('filter-place').value.toLowerCase();
+    const priceFilter = parseInt(document.getElementById('filter-price').value, 10);
+    const locationFilter = document.getElementById('filter-location').value.toLowerCase();
+    const homeFilter = document.getElementById('filter-home').value.toLowerCase();
+
+    console.log('Place Filter:', placeFilter);
+    console.log('Price Filter:', priceFilter);
+    console.log('Location Filter:', locationFilter);
+    console.log('Home Filter:', homeFilter);
+
+    document.querySelectorAll('.featured-item').forEach(item => {
+        const itemPlace = item.getAttribute('data-place').toLowerCase();
+        const itemPrice = parseInt(item.getAttribute('data-price'), 10);
+        const itemLocation = item.getAttribute('data-location').toLowerCase();
+        const itemHome = item.getAttribute('data-home').toLowerCase();
+
+        let isVisible = true;
+
+        console.log('Item Place:', itemPlace);
+        console.log('Item Price:', itemPrice);
+        console.log('Item Location:', itemLocation);
+        console.log('Item Home:', itemHome);
+
+        if (placeFilter && itemPlace !== placeFilter) {
+            isVisible = false;
+        }
+
+        if (!isNaN(priceFilter) && priceFilter >= 0 && (isNaN(itemPrice) || itemPrice > priceFilter)) {
+            isVisible = false;
+        }
+
+        if (locationFilter && itemLocation !== locationFilter) {
+            isVisible = false;
+        }
+
+        if (homeFilter && itemHome !== homeFilter) {
+            isVisible = false;
+        }
+
+        item.style.display = isVisible ? 'block' : 'none';
+    });
+}
+
+
+
+
+    </script>
+</body>
+</html>

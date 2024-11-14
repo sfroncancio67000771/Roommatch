@@ -1,0 +1,231 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #98D0D0;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: visible;
+}
+
+/* Main container for forms */
+.container {
+    max-width: 900px;
+    width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Primera columna (Logo e imagen) */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form container styles (formulario) */
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor de las columnas del formulario */
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+/* Columnas del formulario */
+.column {
+    flex: 1; /* Las columnas se distribuyen equitativamente */
+    min-width: 45%; /* Asegura que las columnas tengan un tamaño mínimo */
+}
+
+/* Campos que deben ocupar toda la fila */
+.full-width {
+    width: 100%;
+    margin-top: px;
+}
+
+/* Input container for floating labels */
+.input-container {
+    position: relative;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* Input styles */
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Label flotante */
+label {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-size: 16px;
+    color: #999;
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+/* Animación al hacer foco o cuando el input tiene texto */
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #005a5a;
+    background-color: white;
+    padding: 0 5px;
+}
+
+/* Clases para campos vacíos o inválidos después de interactuar */
+.input-container.invalid input {
+    border-color: red;
+}
+
+/* Button styles */
+button {
+    background-color: #005a5a;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+}
+
+button:hover {
+    background-color: #629898;
+}
+
+/* Estilo para el select */
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.input-container select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    appearance: none; /* Quitar el estilo por defecto del select */
+}
+
+/* Label flotante para el select */
+.input-container select:focus + label,
+.input-container select:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #005a5a;
+    background-color: white;
+    padding: 0 5px;
+}
+
+/* Clases para campos vacíos o inválidos después de interactuar */
+.input-container.invalid select {
+    border-color: red;
+}
+
+/* Estilo opcional para el contenedor del select para el icono */
+.input-container {
+    position: relative;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* Estilo para los elementos de opción (opcional) */
+select option {
+    padding: 12px; /* Espaciado interno en las opciones */
+}
+/* Campos dinámicos específicos */
+#dynamic-fields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Image styles */
+img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+#mensajeExito {
+    color: green; /* Color verde */
+    text-align: center; /* Centrado de texto */
+}
+
+/* Media Queries for laptops */
+@media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        margin: 0 10px;
+    }
+}
+
+/* Media Queries for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 20px;
+        margin: 0 20px;
+    }
+
+    input, select, button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+}
+
+/* Media Queries for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        margin: 0 10px;
+    }
+
+    input, select, button {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+}

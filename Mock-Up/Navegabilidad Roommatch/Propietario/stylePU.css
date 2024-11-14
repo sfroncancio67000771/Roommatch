@@ -1,0 +1,134 @@
+/* Estilos generales aplicables a todas las páginas */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado (Header) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    max-width: 150px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 50px;
+}
+
+header nav ul li {
+    font-size: 18px;
+    font-weight: 600;
+    color: #629898;
+    cursor: pointer;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header nav ul li a:hover {
+    color: #527575;
+}
+
+header .user-options {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+header .user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.language-dropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Contenido principal */
+main {
+    flex: 1;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.dashboard-overview {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.large-card {
+    grid-column: span 2;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+/* Pie de página (Footer) */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    color: #629898;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer .contact-info, footer .policies {
+    font-size: 14px;
+    color: #629898;
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    header, footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Bienvenido!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleIN.css">
+    <link rel="icon" href="Mini-Logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <header>
+
+        <a href="Propietario.html">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace al inicio del sitio" tabindex="0">
+            </div>
+        </a>
+	
+		<nav aria-label="Menú de navegación principal">
+            <ul>
+                <li><a href="Propietario.html" class="active" aria-current="page" aria-label="Ir a la página de inicio">Inicio</a></li>
+                <li><a href="admininmuebles.html" aria-label="Ir a la página para administrar inmuebles">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html" aria-label="Ver historial de habitaciones">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html" aria-label="Publicar imágenes de inmuebles">Publicar Imágenes</a></li>
+                <li><a href="Alojamiento.html" aria-label="Publicar nuevos inmuebles">Publicar Inmuebles</a></li>
+            </ul>
+        </nav>
+        
+        <div class="user-options" aria-label="Opciones de usuario">
+            <div class="user-icon-container" aria-label="Ícono de usuario y opción para cerrar sesión" tabindex="0">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon" aria-hidden="true">
+                <div class="logout-option">
+                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html" aria-label="Cerrar sesión en Roommatch">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+            <form id="language-form" aria-label="Formulario para cambiar el idioma de la página">
+                <label class="change-language-label" for="language-select">Cambiar idioma:</label>
+                <select id="language-select" aria-label="Selecciona un idioma para la página">
+                    <option value="español" aria-label="Idioma Español">Español</option>
+                    <option value="english" aria-label="Idioma Inglés">English</option>
+                </select>
+                <button type="button" id="change-language-button" aria-label="Botón para aplicar el cambio de idioma">Cambiar</button>
+            </form>
+        </div>
+    </header>
+    
+    <main aria-label="Panel principal de la página">
+        <div class="dashboard-overview" aria-labelledby="dashboard-title">
+            <h1 id="dashboard-title">¡Bienvenido!</h1>
+            <div class="overview-cards" role="region" aria-label="Tarjetas de resumen del panel">
+                <div class="card large-card" draggable="true" aria-label="Habitaciones Disponibles">
+                    <h3>Listado de Habitaciones</h3>
+                    <div id="habitaciones-list"></div> <!-- Contenedor para los posters de habitaciones -->
+                    <canvas id="precioHabitacionesChart" width="400" height="200"></canvas> <!-- Canvas para el gráfico -->
+                </div>
+                <div class="card medium-card" draggable="true" aria-label="Últimos mensajes recibidos">
+                    <h3>Últimos Mensajes</h3>
+                    <p aria-label="No hay mensajes nuevos">No hay nuevos mensajes.</p>
+                </div>
+                <div class="card small-card" draggable="true" aria-label="Resumen de Habitaciones">
+                    <h3>Resumen de Habitaciones</h3>
+                    <p aria-label="Número de habitaciones disponibles:">Habitaciones Disponibles: <span id="habitacionesDisponibles"></span></p>
+                    <p aria-label="Número de habitaciones ocupadas: ">Habitaciones Ocupadas: <span id="habitacionesOcupadas"></span></p>
+                    <canvas id="habitacionesChart"></canvas>
+                </div>
+                <div class="card small-card" draggable="true" aria-label="Reservas recientes">
+                    <h3>Reservas Recientes</h3>
+                    <div id="reservasRecientes">
+                        <!-- Las reservas se agregarán aquí dinámicamente -->
+                    </div>
+                </div>
+                <div class="card small-card" draggable="true" aria-label="Tendencias de alquiler recientes">
+                    <h4>Tendencias de Alquiler</h4>
+                    <p aria-label="Aumento del 20 por ciento en reservas para este mes">Aumento del 20% en reservas este mes</p>
+                </div>
+               
+            </div>
+        </div>
+
+        <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
+        
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-labelledby="accessibility-panel-title">
+            <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
+            <h2 id="accessibility-panel-title">Opciones de Accesibilidad</h2>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
+                <label for="blindness-mode">Modo para personas con ceguera</label>
+            </div>
+            
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()" aria-label="Disminuir el tamaño de la fuente">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()" aria-label="Aumentar el tamaño de la fuente">+</button>
+            </div>
+            
+            <button class="reset-btn" onclick="resetSettings()" aria-label="Restablecer configuración de accesibilidad">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()" aria-label="Ocultar panel de accesibilidad para siempre">Ocultar para siempre</button>
+            
+            <div class="declaration-link">
+                <a href="#" aria-label="Enlace a la declaración de accesibilidad de este sitio">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer" role="contentinfo" aria-label="Pie de página con información de contacto y políticas">
+        <div class="contact-info">
+            <p tabindex="0" aria-label="Sección de contacto">Contáctanos</p>
+            <p tabindex="0" aria-label="Correo electrónico y número de contacto">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0" aria-label="Políticas de privacidad y datos">Políticas</p>
+            <p tabindex="0" aria-label="Tratamiento de datos personales">Tratamiento de datos</p>
+            <p tabindex="0" aria-label="Política de privacidad">Política de privacidad</p>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

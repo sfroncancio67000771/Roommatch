@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="styless.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleIN.css">
+</head>
+<body>
+
+    <header aria-label="Encabezado principal con logo y menú de navegación">
+
+        <a href="Propietario.html">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo de Roommatch" aria-label="Logo de Roommatch, enlace al inicio del sitio" tabindex="0">
+            </div>
+        </a>
+        
+        <nav aria-label="Menú de navegación principal">
+            <ul>
+                <li><a href="Propietario.html" aria-label="Enlace a la página de inicio del propietario">Inicio</a></li>
+                <li><a href="admininmuebles.html" aria-label="Enlace para administrar inmuebles">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html" aria-label="Enlace al historial de habitaciones">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html" aria-label="Enlace a la sección de mensajes">Mensajes</a></li>
+                <li><a href="Alojamiento.html" aria-label="Enlace para publicar inmuebles">Publicar Inmuebles</a></li>
+            </ul>
+        </nav>
+        <div class="user-options" aria-label="Opciones del usuario">
+            <div class="user-icon" aria-hidden="true">
+                <img src="usericon.png" alt="Ícono de Usuario" aria-label="Ícono de usuario">
+            </div>
+            <form id="language-form" aria-label="Formulario para cambiar el idioma">
+                <label for="language-select" class="change-language-label" aria-label="Seleccione el idioma">Cambiar idioma:</label>
+                <select id="language-select" aria-label="Selector de idioma">
+                    <option value="español" aria-label="Seleccionar Español">Español</option>
+                    <option value="english" aria-label="Seleccionar Inglés">English</option>
+                </select>
+                <button type="button" id="change-language-button" aria-label="Botón para cambiar el idioma">Cambiar</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <h1 aria-label="Sección de gestión de usuarios">Usuarios</h1>
+        <p aria-label="Descripción de la sección de usuarios">Aquí puedes gestionar los usuarios.</p>
+
+        
+        <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
+        
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-labelledby="accessibility-panel-title">
+            <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
+            <h2 id="accessibility-panel-title">Opciones de Accesibilidad</h2>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
+              
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
+               
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
+                <label for="blindness-mode">Modo para personas con ceguera</label>
+                
+            </div>
+            
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()" aria-label="Disminuir el tamaño de la fuente">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()" aria-label="Aumentar el tamaño de la fuente">+</button>
+            </div>
+            
+            <button class="reset-btn" onclick="resetSettings()" aria-label="Restablecer configuración de accesibilidad">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()" aria-label="Ocultar panel de accesibilidad para siempre">Ocultar para siempre</button>
+            
+            <div class="declaration-link">
+                <a href="#" aria-label="Enlace a la declaración de accesibilidad de este sitio">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+  
+    </main>
+
+    <footer class="footer" aria-label="Pie de página con información de contacto y políticas">
+        <div class="contact-info" aria-label="Información de contacto">
+            <p tabindex="0" aria-label="Contáctanos">Contáctanos</p>
+            <p tabindex="0" aria-label="Correo y teléfono de contacto">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies" aria-label="Enlaces a políticas de datos y privacidad">
+            <p tabindex="0" aria-label="Políticas">Políticas</p>
+            <p tabindex="0" aria-label="Enlace a la política de tratamiento de datos">Tratamiento de datos</p>
+            <p tabindex="0" aria-label="Enlace a la política de privacidad">Política de privacidad</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script> 
+
+</body>
+</html>

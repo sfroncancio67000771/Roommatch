@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Bienvenido!</title>
+    <link rel="stylesheet" href="styleIN.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <nav aria-label="Menú principal de navegación">
+            <ul>
+                <li><a href="Propietario.html" class="active" aria-label="Página de inicio">Inicio</a></li>
+                <li><a href="admininmuebles.html" aria-label="Administrar tus inmuebles">Administrar Inmuebles</a></li>
+                <li><a href="historialhabitaciones.html" aria-label="Historial de habitaciones">Historial de Habitaciones</a></li>
+                <li><a href="mensajes.html" aria-label="Publicar imágenes en el sitio">Publicar Imágenes</a></li>
+                <li><a href="Alojamiento.html" aria-label="Publicar inmuebles en alquiler">Publicar Inmuebles</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <div class="user-icon-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ícono de usuario" class="user-icon" aria-hidden="true">
+                <div class="logout-option">
+                    <a href="http://127.0.0.1:5501/Cierre%20Sesi%C3%B3n/logout.html" aria-label="Cerrar tu sesión actual">Cerrar Sesión</a>
+                </div>
+            </div>
+            <form id="language-form" aria-label="Formulario para seleccionar idioma">
+                <label class="change-language-label" for="language-select">Cambiar idioma:</label>
+                <select id="language-select" aria-label="Seleccionar un idioma">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button" aria-label="Botón para cambiar el idioma seleccionado">Cambiar</button>
+            </form>
+        </div>
+    </header>
+    
+    <main aria-label="Panel principal de la página">
+        <div class="dashboard-overview" aria-labelledby="dashboard-title">
+            <h1 id="dashboard-title">¡Bienvenido!</h1>
+            <div class="overview-cards" role="region" aria-label="Tarjetas de resumen del panel">
+                <div class="card large-card" draggable="true" aria-label="Resumen de Habitaciones">
+                    <h2>Resumen de Habitaciones</h2>
+                    <p aria-label="Número de habitaciones disponibles: 5">Habitaciones Disponibles: 5</p>
+                    <p aria-label="Número de habitaciones ocupadas: 10">Habitaciones Ocupadas: 10</p>
+                    <p aria-label="Ingresos totales actuales de 2500 dólares">Ingresos Totales: $2,500</p>
+                    <img src="https://www.researchgate.net/publication/28121237/figure/fig1/AS:669569421160460@1536649198877/Figura-4-Grafico-de-avance-del-rendimiento.ppm" alt="Gráfico visual de resumen de habitaciones">
+                </div>
+                <div class="card medium-card" draggable="true" aria-label="Últimos mensajes recibidos">
+                    <h2>Últimos Mensajes</h2>
+                    <p aria-label="No hay mensajes nuevos">No hay nuevos mensajes.</p>
+                </div>
+                <div class="card small-card" draggable="true" aria-label="Solicitudes recientes">
+                    <h3>Solicitudes Recientes</h3>
+                    <p aria-label="3 solicitudes pendientes">3 Solicitudes Pendientes</p>
+                </div>
+                <div class="card small-card" draggable="true" aria-label="Tendencias de alquiler recientes">
+                    <h4>Tendencias de Alquiler</h4>
+                    <p aria-label="Aumento del 20 por ciento en reservas para este mes">Aumento del 20% en reservas este mes</p>
+                </div>
+                <div class="card medium-card" draggable="true" aria-label="Rendimiento mensual actual">
+                    <h5>Rendimiento Mensual</h5>
+                    <p aria-label="Promedio de ingresos de 500 dólares">Promedio de Ingresos: $500</p>
+                    <img src="https://juncotic.com/wp-content/uploads/2023/05/grafico-torta-basico-1.png" alt="Gráfico visual de rendimiento mensual">
+                </div>
+                <div class="card large-card" draggable="true" aria-label="Resumen de Habitaciones">
+                    <h2>Resumen de Habitaciones</h2>
+                    <p aria-label="Número de habitaciones disponibles: 5">Habitaciones Disponibles: <span id="habitacionesDisponibles"></span></p>
+                    <p aria-label="Número de habitaciones ocupadas: 10">Habitaciones Ocupadas: <span id="habitacionesOcupadas"></span></p>
+                    <p aria-label="Ingresos totales actuales de 2500 dólares">Ingresos Totales: <span id="ingresosTotales"></span></p>
+                    <canvas id="habitacionesChart"></canvas>
+                </div>
+                
+                <div class="card medium-card" draggable="true" aria-label="Rendimiento mensual actual">
+                    <h5>Rendimiento Mensual</h5>
+                    <p aria-label="Promedio de ingresos de 500 dólares">Promedio de Ingresos: <span id="promedioIngresos"></span></p>
+                    <canvas id="rendimientoChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <button id="accessibility-button" class="accessibility-button" aria-label="Abrir opciones de accesibilidad">⚙️</button>
+        
+        <div class="accessibility-panel" id="accessibility-panel" style="display:none;" aria-labelledby="accessibility-panel-title">
+            <button class="close-btn" onclick="closePanel()" aria-label="Cerrar panel de accesibilidad">✖</button>
+            <h2 id="accessibility-panel-title">Opciones de Accesibilidad</h2>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="epilepsy-mode" aria-label="Activar modo seguro para personas con epilepsia">
+                <label for="epilepsy-mode">Modo seguro para la epilepsia</label>
+                <small class="sr-only">Atenúa el color y elimina los parpadeos</small>
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="visual-disability-mode" aria-label="Activar modo para mejorar imágenes para personas con discapacidad visual">
+                <label for="visual-disability-mode">Modo para personas con discapacidad visual</label>
+                <small class="sr-only">Mejora las imágenes de los sitios web</small>
+            </div>
+            
+            <div class="accessibility-option">
+                <input type="checkbox" id="blindness-mode" aria-label="Activar modo para uso con lector de pantalla">
+                <label for="blindness-mode">Modo para personas con ceguera</label>
+                <small class="sr-only">Permite usar el sitio con tu lector de pantalla</small>
+            </div>
+            
+            <div class="content-size">
+                <span>Tamaño del contenido</span>
+                <button onclick="decreaseFontSize()" aria-label="Disminuir el tamaño de la fuente">-</button>
+                <span id="font-size-label">Predeterminado</span>
+                <button onclick="increaseFontSize()" aria-label="Aumentar el tamaño de la fuente">+</button>
+            </div>
+            
+            <button class="reset-btn" onclick="resetSettings()" aria-label="Restablecer configuración de accesibilidad">Restablecer configuración</button>
+            <button class="hide-btn" onclick="hidePanel()" aria-label="Ocultar panel de accesibilidad para siempre">Ocultar para siempre</button>
+            
+            <div class="declaration-link">
+                <a href="#" aria-label="Enlace a la declaración de accesibilidad de este sitio">Declaración de Accesibilidad</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer" role="contentinfo" aria-label="Pie de página con información de contacto y políticas">
+        <div class="contact-info">
+            <p tabindex="0" aria-label="Sección de contacto">Contáctanos</p>
+            <p tabindex="0" aria-label="Correo electrónico y número de contacto">Roommatch@getyourhome.com<br>3232353608</p>
+        </div>
+        <div class="policies">
+            <p tabindex="0" aria-label="Políticas de privacidad y datos">Políticas</p>
+            <p tabindex="0" aria-label="Tratamiento de datos personales">Tratamiento de datos</p>
+            <p tabindex="0" aria-label="Política de privacidad">Política de privacidad</p>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
