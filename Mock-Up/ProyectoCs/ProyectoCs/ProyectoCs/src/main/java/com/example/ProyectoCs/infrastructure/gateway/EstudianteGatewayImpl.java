@@ -12,7 +12,6 @@ import com.example.ProyectoCs.domain.repository.RolRepository;
 import com.example.ProyectoCs.domain.repository.UniversidadRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
@@ -88,15 +87,6 @@ public class EstudianteGatewayImpl implements EstudianteGateway {
     public boolean estudianteExistente(String emailEstudiante) {
         Estudiante estudiante = estudianteRepository.findByEmail(emailEstudiante);
         return estudiante != null;
-    }
-
-    @Override
-    public Estudiante buscarEstudiantePorEmail(String email) {
-        Estudiante estudiante = estudianteRepository.findByEmail(email);
-        if (estudiante == null) {
-            throw new UsernameNotFoundException("Usuario no encontrado con el email: " + email);
-        }
-        return estudiante;
     }
 
     private boolean esContrasenaValida(String contraseña) {
