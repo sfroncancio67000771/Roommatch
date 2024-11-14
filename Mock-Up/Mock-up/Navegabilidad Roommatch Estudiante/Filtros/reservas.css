@@ -1,0 +1,389 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f4ede3, #005f5f);
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Esto asegura que los elementos se apilen de arriba a abajo */
+  min-height: 100vh; /* Altura mínima del body al 100% de la ventana */
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+.logo img {
+  max-width: 150px;
+}
+
+.user-options {
+  display: flex; 
+  align-items: center; 
+}
+
+.user-icon-container {
+  position: relative; 
+  margin-right: 20px; 
+}
+
+.user-icon {
+  width: 30px; 
+  height: 30px;
+  cursor: pointer; 
+}
+
+.logout-option {
+  display: none; 
+  position: absolute; 
+  top: 100%; 
+  left: 0;
+  background-color: white; 
+  border: 1px solid #ccc; 
+  padding: 5px; 
+  z-index: 100; 
+}
+
+.user-icon-container:hover .logout-option {
+  display: block; 
+}
+
+#change-language-button, #login-button {
+  background-color: #4e7a78;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+#change-language-button:hover, #login-button:hover {
+  background-color: #3e6d69;
+}
+
+header .logo img {
+  max-width: 150px;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 40px;
+}
+
+header nav ul li {
+  font-size: 18px;
+  font-weight: 600;
+  color: #005a5a;
+  cursor: pointer;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav ul li a.active {
+  color: #527575;
+  border-bottom: 2px solid #527575;
+}
+
+header .user-options {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+header .user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+header .language-dropdown select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #629898;
+  background-color: #f8f8f8;
+  color: #629898;
+  cursor: pointer;
+}
+
+.language-dropdown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-dropdown select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #005f5f;
+  background-color: #f8f8f8;
+  color: #005f5f;
+  cursor: pointer;
+}
+
+.language-dropdown select:focus {
+  outline: 2px solid #005f5f;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #005f5f;
+}
+
+table {
+  width: 90%; 
+  max-width: 1200px; 
+  margin: 20px auto 40px auto; 
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+form {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #005f5f;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group label {
+  color: #005f5f;
+  flex: 1;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+  flex: 2;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  width: 100%; 
+}
+
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-left: 10px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #005f5f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #004040;
+}
+
+#respuesta {
+  margin-top: 20px;
+  color: #005f5f;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #005f5f;
+}
+
+.error {
+  border: 1px solid red; 
+}
+
+.highlight {
+  background-color: #ffe6e6; 
+}
+
+.error-message {
+  color: red; 
+  font-size: 12px;
+  margin-top: 5px; 
+  display: inline-block; 
+  max-width: 100%; 
+  overflow: hidden; 
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  color: #629898;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  flex-shrink: 0; /* Evita que el footer se contraiga */
+}
+
+footer .contact-info, footer .policies {
+  font-size: 14px;
+  color: #005a5a;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .user-options {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: -40px;
+  }
+
+  .user-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .language-dropdown {
+    flex-direction: column;
+    padding: 15px;
+    margin: 5px;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .language-dropdown select {
+    width: 100%;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .logo img {
+    max-width: 120px;
+  }
+
+  form {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  header .user-options {
+    display: flex;
+    gap: 15px;
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 30px;
+  }
+
+  .logo img {
+    max-width: 140px;
+  }
+
+  .language-dropdown {
+    flex-direction: row;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group select {
+    width: 100%;
+  }
+}

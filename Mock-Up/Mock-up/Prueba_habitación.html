@@ -1,0 +1,21 @@
+# Configuración para GitHub
+spring.security.oauth2.client.registration.github.client-id=Ov23li9DC12PDQuu94zB
+spring.security.oauth2.client.registration.github.client-secret=459426fd035ccdcbe43056a73df3ce9cfef97ad9
+spring.security.oauth2.client.registration.github.scope=read:user
+spring.security.oauth2.client.registration.github.redirect-uri={baseUrl}/login/oauth2/code/github
+spring.security.oauth2.client.registration.github.authorization-grant-type=authorization_code
+spring.security.oauth2.client.registration.github.client-name=GitHub
+
+# Configuración para Microsoft (Outlook)
+spring.security.oauth2.client.registration.microsoft.client-id=9293b746-0d5f-4799-a43a-36ae1c97aae8
+spring.security.oauth2.client.registration.microsoft.client-secret=576ac911-8712-4b6a-baeb-ce225547dfe3
+spring.security.oauth2.client.registration.microsoft.scope=openid,profile,email,offline_access,User.Read
+spring.security.oauth2.client.registration.microsoft.redirect-uri={baseUrl}/login/oauth2/code/microsoft
+spring.security.oauth2.client.registration.microsoft.authorization-grant-type=authorization_code
+spring.security.oauth2.client.registration.microsoft.client-name=Microsoft
+
+# Configuración adicional para Microsoft (Outlook)
+spring.security.oauth2.client.provider.microsoft.authorization-uri=https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+spring.security.oauth2.client.provider.microsoft.token-uri=https://login.microsoftonline.com/common/oauth2/v2.0/token
+spring.security.oauth2.client.provider.microsoft.user-info-uri=https://graph.microsoft.com/oidc/userinfo
+spring.security.oauth2.client.provider.microsoft.user-name-attribute=sub

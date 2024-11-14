@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Alojamiento</title>
+    <link rel="stylesheet" href="styless.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo de Roommatch">
+        </div>
+        <div class="user-options">
+            <div class="user-icon">
+                <img src="user.png" alt="Ícono de Usuario">
+            </div>
+            <form id="language-form">
+                <label for="language-select">Change language:</label>
+                <select id="language-select">
+                    <option value="español">Español</option>
+                    <option value="english">English</option>
+                </select>
+                <button type="button" id="change-language-button">Change</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+    <h1>Reserva de Alojamiento</h1>
+    <form id="reservaForm" aria-label="Formulario para reservar un alojamiento">
+        <label for="selectAlojamientos">Selecciona el alojamiento que deseas reservar:</label>
+        <select id="selectAlojamientos" required aria-label="Campo para seleccionar el alojamiento deseado">
+            <option value="">Selecciona un alojamiento</option>
+        </select>
+        <div class="error-message" id="error-selectAlojamientos" aria-live="polite" aria-label="Mensaje de error para el campo de selección de alojamiento"></div>
+
+        <!-- Recuadro para la descripción del alojamiento -->
+        <div id="descripcionAlojamiento" style="display: none;" aria-live="polite" aria-label="Descripción del alojamiento seleccionado">
+            <strong>Descripción:</strong>
+            <p id="descripcionTexto" aria-label="Texto de descripción del alojamiento"></p>
+        </div>
+
+        <label for="emailEstudiante">Rectifica tu correo:</label>
+        <input type="email" id="emailEstudiante" required aria-label="Campo para ingresar o rectificar el correo electrónico del estudiante">
+        <div class="error-message" id="error-emailEstudiante" aria-live="polite" aria-label="Mensaje de error para el campo de correo electrónico"></div>
+
+        <label for="fechaInicio">Selecciona la Fecha de Inicio:</label>
+        <input type="date" id="fechaInicio" required aria-label="Campo para seleccionar la fecha de inicio de la reserva">
+        <div class="error-message" id="error-fechaInicio" aria-live="polite" aria-label="Mensaje de error para la fecha de inicio"></div>
+
+        <label for="fechaFin">Selecciona la fecha de Fin:</label>
+        <input type="date" id="fechaFin" required aria-label="Campo para seleccionar la fecha de fin de la reserva">
+        <div class="error-message" id="error-fechaFin" aria-live="polite" aria-label="Mensaje de error para la fecha de fin"></div>
+
+        <button type="submit" aria-label="Botón para crear la reserva de alojamiento">Crear Reserva</button>
+    </form>
+
+    <div id="mensaje" aria-live="polite" aria-label="Contenedor de mensajes de error generales"></div>
+    <div id="mensajeExito" aria-live="polite" aria-label="Mensaje de éxito al crear la reserva"></div> 
+</main>
+<footer class="footer">
+    <div class="contact-info">
+        <p tabindex="0">Contáctanos</p>
+        <p tabindex="0">Roommatch@getyourhome.com<br>3232353608</p>
+    </div>
+    <div class="policies">
+        <p tabindex="0">Políticas</p>
+        <p tabindex="0">Tratamiento de datos</p>
+        <p tabindex="0">Política de privacidad</p>
+    </div>
+</footer> 
+</body>
+<script src="script.js"></script>
+</html>

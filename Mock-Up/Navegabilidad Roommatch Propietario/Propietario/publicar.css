@@ -1,0 +1,608 @@
+/* Estilos generales */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f4ede3, #005f5f);
+  color: #333;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #005f5f;
+}
+
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+header .logo img {
+  max-width: 150px;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 40px;
+}
+
+header nav ul li {
+  font-size: 18px;
+  font-weight: 600;
+  color: #005a5a;
+  cursor: pointer;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav ul li a.active {
+  color: #527575;
+  border-bottom: 2px solid #527575;
+}
+
+/* Opciones de usuario */
+.logo img {
+  max-width: 150px;
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.user-icon-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.logout-option {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  z-index: 100;
+}
+
+/* Estilos generales para la sección de usuario */
+.user-options {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.user-icon-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-icon-container:hover {
+  transform: scale(1.1); /* Efecto de hover para aumentar el tamaño del ícono */
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #4CAF50; /* Borde verde */
+  transition: border 0.3s ease;
+}
+
+.user-icon-container:hover .user-icon {
+  border-color: #30a7a7; /* Cambiar color del borde al hacer hover */
+}
+
+/*Boton usuario*/
+.logout-option {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 160px;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+}
+
+.logout-option a {
+  display: block;
+  padding: 8px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-option a:hover {
+  background-color: #f4f4f4;
+  color: #30a7a7;
+}
+
+/* Mostrar las opciones de logout cuando el usuario hace hover sobre el icono */
+.user-icon-container:hover .logout-option {
+  display: block;
+  opacity: 1; /* Mostrar el menú */
+}
+
+/* Mejoras para pantallas pequeñas */
+@media (max-width: 768px) {
+  .user-icon {
+    width: 35px;
+    height: 35px;
+  }
+  .logout-option {
+    width: 140px; /* Ajustar tamaño en pantallas pequeñas */
+  }
+}
+/* Botones */
+#change-language-button, #login-button {
+  background-color: #4e7a78;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+#change-language-button:hover, #login-button:hover {
+  background-color: #3e6d69;
+}
+
+/* Dropdown de idiomas */
+.language-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-dropdown select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #005f5f;
+  background-color: #f8f8f8;
+  color: #005f5f;
+  cursor: pointer;
+}
+
+.language-dropdown select:focus {
+  outline: 2px solid #005f5f;
+}
+
+/* Pie de página */
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  color: #629898;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer .contact-info, footer .policies {
+  font-size: 14px;
+  color: #005a5a;
+}
+
+/* Formulario */
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 0 auto; /* Centrar el formulario */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+select, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #007373;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Área de carga de archivos */
+.upload-area {
+  border: 2px dashed #008080;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin: 20px auto; /* Centrar el área de carga */
+  width: 80%; /* Ajustar el ancho según sea necesario */
+}
+
+.upload-area:hover {
+  background-color: #e0f7f7;
+  border-color: #007373;
+}
+
+.upload-area input[type="file"] {
+  display: none;
+}
+
+.upload-area .upload-icon {
+  font-size: 40px;
+  color: #008080;
+  margin-bottom: 10px;
+}
+
+.upload-area .upload-text {
+  font-size: 16px;
+  color: #555;
+}
+
+.upload-area:hover .upload-icon {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .user-options {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: -40px;
+  }
+
+  .logo img {
+    max-width: 120px;
+  }
+
+  .language-dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .language-dropdown select {
+    width: 100%;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  form {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  button[type="submit"] {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  h1, h2 {
+    font-size: 20px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+}
+
+/* Responsive para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    padding: 15px;
+  }
+
+  .language-dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .language-dropdown select {
+    width: 100%;
+  }
+}
+
+
+/* boton accesibilidad */
+/* Modo normal: Cambia el color del texto "Change language" a negro */
+.change-language-label {
+  color: #000 !important;  /* Texto negro en modo normal */
+}
+
+/* Modo de alto contraste */
+body.high-contrast {
+  background: linear-gradient(135deg, #ffffff, #2d6400) !important; /* Fondo en modo alto contraste: degradado blanco a amarillo */
+  color: #fff;  /* Texto en blanco */
+  min-height: 100vh;  /* Asegura que el fondo cubra toda la pantalla */
+}
+
+body.high-contrast .change-language-label {
+  color: #ffff00 !important; /* Texto en amarillo en modo alto contraste */
+}
+
+body.high-contrast a {
+  color: #ffff00;  /* Enlaces en amarillo */
+}
+
+body.high-contrast .logo img {
+  filter: invert(1);  /* Invertir colores de la imagen */
+}
+
+body.high-contrast .search-bar input[type="search"] {
+  border: 2px solid #ffff00;  /* Borde amarillo */
+  background-color: #333;  /* Fondo gris oscuro */
+  color: #fff;  /* Texto blanco */
+}
+
+body.high-contrast .search-bar button {
+  background-color: #ffff00;  /* Botón de búsqueda amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+body.high-contrast header {
+  background-color: #333; /* Fondo oscuro en el encabezado */
+  color: #fff; /* Texto en blanco */
+}
+
+body.high-contrast .featured-item {
+  background-color: #333;  /* Fondo de los elementos destacados en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+  border: 2px solid #ffff00;  /* Borde amarillo */
+}
+
+body.high-contrast .services-item {
+  background-color: #333; /* Fondo negro para las tarjetas de servicios */
+  color: #ffff00; /* Texto en amarillo */
+  border: 2px solid #ffff00; /* Borde amarillo */
+}
+
+body.high-contrast h1, 
+body.high-contrast h2, 
+body.high-contrast h3, 
+body.high-contrast h4, 
+body.high-contrast h5, 
+body.high-contrast h6 {
+  color: #333; /* Títulos en amarillo */
+}
+
+body.high-contrast .footer {
+  background-color: #333;  /* Fondo del pie de página en gris oscuro */
+  color: #ffff00;  /* Texto en amarillo */
+}
+
+body.high-contrast p, 
+body.high-contrast .featured-item p, 
+body.high-contrast .services-item p, 
+body.high-contrast .services-item h2 {
+  color: #333;  /* Texto general en amarillo */
+}
+
+/* Asegura que el texto de los botones también sea amarillo */
+body.high-contrast button {
+  color: #ffff00; /* Texto en amarillo para los botones */
+}
+
+body.high-contrast label {
+  color: #ffff00;  /* Texto de las etiquetas en amarillo */
+}
+body.high-contrast .filter-bar{
+  background-color: #333;
+  color: #ffff00;
+
+}
+
+body.high-contrast .filter-bar select{
+  border: 2px solid #ffff00 ;
+  color: #0c0c03;
+}
+
+body.high-contrast .filter-bar input{
+  border: 2px solid #ffff00 ;
+  color: #0c0c03;
+}
+
+body.high-contrast form{
+  background-color: #1a1a1a;
+}
+
+body.high-contrast .featured-section{
+  background: linear-gradient(135deg, #ffffff, #2d6400);
+}
+
+
+/* Estilo del botón de accesibilidad */
+.accessibility-button {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  background-color: #004f4f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+  z-index: 9999;
+}
+
+body.high-contrast .accessibility-button {
+  background-color: #ffff00;  /* Botón de accesibilidad en amarillo */
+  color: #000;  /* Texto en negro */
+}
+
+
+/* Ajustes para el panel de accesibilidad */
+.accessibility-panel {
+  width: 300px;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  top: 50px;
+  right: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+body.high-contrast .accessibility-panel {
+  background-color: #333;
+}
+
+.accessibility-panel h2 {
+  margin-top: 0;
+}
+
+.accessibility-panel .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.accessibility-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.accessibility-option input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.accessibility-option label {
+  font-size: 14px;
+}
+
+.content-size {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.content-size span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.content-size button {
+  background-color: #1a1a1a;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.reset-btn, .hide-btn {
+  width: 100%;
+  background-color: #1a1a1a;
+  border: none;
+  color: #4a90e2;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.declaration-link {
+  text-align: center;
+}
+
+.declaration-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
